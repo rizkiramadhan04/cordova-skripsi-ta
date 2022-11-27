@@ -1,0 +1,97 @@
+<script type="text/javascript" src="assets/js/register-frontliner
+.js"></script>
+<!-- page main start -->
+<div class="page">
+    <div class="page-content h-100">
+        <div class="background"><img src="assets/img/background-blue-general.png" alt=""></div>
+
+        <div class="row mx-0">
+            <div class="col">
+                <div style="font-weight:700;color:#FFF;text-align:center" class="prompt mt-4 mb-4">
+                    Form Pendaftaran Frontliner
+                </div>
+                <!-- tabs content start here -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="signup" role="tabpanel">
+                        <form id="formRegisterFrontliner" method="POST" role="form" onSubmit="submitRegisterFrontliner()">
+                            <div class="login-input-content">
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="material-icons">person</i></span>
+                                    </div>
+                                    <input id="formRegisterFrontlinerName" type="text" class="form-control" placeholder="Nama FL" name="name" aria-label="frontliner_name" required>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="material-icons">phone</i></span>
+                                    </div>
+                                    <input id="formRegisterFrontlinerNoHp" type="tel" class="form-control" placeholder="Nomer HP" name="no_hp" aria-label="frontliner_phone_number" required>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="material-icons">location_on</i></span>
+                                    </div>
+                                    <textarea id="formRegisterFrontlinerAddress" placeholder="Alamat" class="form-control" name="address" rows="3" required></textarea>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="material-icons">email</i></span>
+                                    </div>
+                                    <input id="formRegisterFrontlinerEmail" type="text" class="form-control" placeholder="Email" name="email" aria-label="frontliner_email" required>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="material-icons">lock</i></span>
+                                    </div>
+                                    <input id="formRegisterFrontlinerPassword" type="password" class="form-control" placeholder="Kata sandi" name="password" aria-label="password" required>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="material-icons">lock</i></span>
+                                    </div>
+                                    <input id="formRegisterFrontlinerPasswordConfirmation" type="password" class="form-control" placeholder="Konfirmasi Kata Sandi" name="password_confirmation" aria-label="password_confirmation" required>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="material-icons">credit_card</i></span>
+                                    </div>
+                                    <select id="formRegisterFrontlinerEwallet" class="form-control" id="ewallet" name="ewallet" required>
+                                    <option value="">-- Select Wallet --</option>
+                                    <option value="gopay">Gopay</option>
+                                    <option value="ovo">OVO</option>
+                                </select>
+                                </div>
+                                <div class="form-group">
+                                    <label style="font-size:1.1em" class="ml-3 mt-3">Foto Ewallet</label>
+                                    <div class="add-foto-box m-2">
+                                        <img id="real_foto_ewallet" onClick="fotoActionSheet('ewallet')" src="assets/img/icon-add-image.png" alt="Add Foto Ewallet" width="90" height="82" />
+                                        <input type="hidden" name="foto_text_ewallet" id="foto_text_ewallet" />
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mx-0 justify-content-end no-gutters">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-block gradient-blue border-0 z-3">DAFTAR FRONTLINER</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- tabs content end here -->
+            </div>
+        </div>
+
+        <br>
+
+    </div>
+
+</div>
+<!-- page main ends -->

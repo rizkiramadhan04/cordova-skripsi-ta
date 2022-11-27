@@ -1,50 +1,496 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
-            https://cordova.apache.org/docs/en/latest/
-        Some notes:
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta name="color-scheme" content="light dark">
-        <link rel="stylesheet" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+  <head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="style-src 'self' 'unsafe-inline'; media-src *;"
+    />
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"
+    />
+
+    <title>TPA Al Muhibbin</title>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="assets/js/popper.min.js"></script>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script>
+
+    <!-- Material design icons CSS -->
+    <link
+      rel="stylesheet"
+      href="assets/vendor/materializeicon/material-icons.css"
+    />
+
+    <!-- swiper carousel CSS -->
+    <link rel="stylesheet" href="assets/vendor/swiper/css/swiper.min.css" />
+
+    <!-- select2 CSS -->
+    <link rel="stylesheet" href="assets/vendor/select2/css/select2.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+    <!-- owl carousol CSS -->
+    <link
+      rel="stylesheet"
+      href="assets/vendor/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/vendor/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"
+    />
+
+    <!-- Bootstrap -->
+    <script src="assets/vendor/bootstrap-5.1.0/bootstrap.bundle.min.js"></script>
+
+    <!-- Base Js File -->
+    <script src="assets/js/base.js"></script>
+  </head>
+
+  <body>
+    <!-- canvas untuk convert ke base64 -->
+    <canvas style="width: 0px; height: 0px; display: none" id="canvas"></canvas>
+    <!-- loader -->
+    <!-- <div id="loader">
+        <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
+    </div> -->
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader bg-primary text-light">
+      <div class="left">
+        <a
+          href="javascript:void(0)"
+          class="headerButton"
+          onClick="showSidebar()"
+        >
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+      <div class="pageTitle"></div>
+      <div id="topRightAfterLogin" class="right" style="display: none">
+        <a
+          href="javascript:void(0)"
+          onClick="pages('message')"
+          class="headerButton"
+        >
+          <i class="material-icons">notifications</i>
+          <span class="badge badge-danger">0</span>
+        </a>
+        <a
+          href="javascript:void(0)"
+          onClick="pages('profil')"
+          class="headerButton"
+        >
+          <img
+            src=""
+            alt="image"
+            class="rounded-circle imaged w32"
+            id="profileHeader"
+          />
+          <!-- <span class="badge badge-danger">0</span> -->
+        </a>
+      </div>
+      <div id="topRightNoLogin" class="right">
+        <a
+          href="javascript:void(0)"
+          onClick="pages('login')"
+          class="headerButton"
+        >
+          <i class="material-icons">notifications</i>
+        </a>
+        <a
+          href="javascript:void(0)"
+          onClick="pages('login')"
+          class="headerButton"
+        >
+          <img
+            src="assets/img/sample/avatar/icon-user.png"
+            alt="image"
+            class="rounded-circle imaged w32"
+          />
+        </a>
+      </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule"></div>
+    <!-- * App Capsule -->
+
+    <div class="app-call-center">
+      <div class="call-center">
+        <img
+          onClick="pages('layanan-informasi')"
+          src="assets/img/new-layanan-informasi2.png"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+      <a
+        id="linkBottomMenuDashboard"
+        href="javascript:void(0)"
+        onClick="pages('dashboard');"
+        class="item"
+      >
+        <div class="col">
+          <i class="material-icons">home</i>
+          <strong>Beranda</strong>
         </div>
-        <script src="cordova.js"></script>
-        <script src="js/index.js"></script>
-    </body>
+      </a>
+      <a
+        id="linkBottomMenuPromo"
+        href="javascript:void(0)"
+        onClick="pages('promo');"
+        class="item"
+      >
+        <div class="col">
+          <i class="material-icons">loyalty</i>
+          <strong>Promo</strong>
+        </div>
+      </a>
+      <a
+        id="linkBottomMenuFotoStruk"
+        href="javascript:void(0)"
+        onClick="pages('foto-struk');"
+        class="item"
+      >
+        <div class="col">
+          <i class="material-icons">camera_alt</i>
+          <strong>Foto Struk</strong>
+        </div>
+      </a>
+
+      <a
+        id="linkBottomMenuVoucher"
+        href="javascript:void(0)"
+        onClick="pages('voucher');"
+        class="item"
+      >
+        <div class="col">
+          <i class="material-icons">receipt</i>
+          <strong>Voucher</strong>
+        </div>
+      </a>
+
+      <a
+        id="linkBottomMenuKupon"
+        href="javascript:void(0)"
+        onClick="pages('kupon');"
+        class="item"
+      >
+        <div class="col">
+          <i class="material-icons">library_books</i>
+          <strong>List Struk</strong>
+        </div>
+      </a>
+    </div>
+    <!-- * App Bottom Menu -->
+
+    <!-- App Sidebar -->
+    <div
+      class="modal fade panelbox panelbox-left"
+      id="sidebarPanel"
+      tabindex="-1"
+      role="dialog"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <!-- profile-box -->
+            <div
+              id="userInfoSidebarPanel"
+              class="sidebar-profile-pic text-center justify-content-center"
+              style="display: none"
+            >
+              <a
+                href="#"
+                class="btn btn-icon sidebar-close text-white"
+                data-bs-dismiss="modal"
+              >
+                <i class="material-icons">close</i>
+              </a>
+              <div class="listview-title">
+                <img
+                  onClick="pages('profil')"
+                  class="rounded-circle"
+                  alt=""
+                  id="sidebarPanelFoto"
+                />
+              </div>
+              <div class="d-block">
+                <h3 class="text-white"><span id="nameSidebarPanel"></span></h3>
+              </div>
+              <span id="emailSidebarPanel"></span>
+            </div>
+            <div
+              id="userInfoSidebarPanelBeforeLogin"
+              class="sidebar-profile-pic text-center justify-content-center"
+            >
+              <a
+                href="#"
+                class="btn btn-icon sidebar-close text-white"
+                data-bs-dismiss="modal"
+              >
+                <i class="material-icons">close</i>
+              </a>
+              <div class="listview-title">
+                <img
+                  onClick="pages('profil')"
+                  width="75"
+                  class="rounded-circle"
+                  src="assets/img/sample/avatar/icon-user.png"
+                  alt=""
+                />
+              </div>
+              <div class="d-block">
+                <h3>
+                  <a
+                    class="text-white"
+                    href="javascript:void(0)"
+                    onClick="pages('login')"
+                    >Silahkan login dahulu</a
+                  >
+                </h3>
+              </div>
+              <a
+                class="text-white"
+                href="javascript:void(0)"
+                onClick="pages('login')"
+                >Silahkan login dahulu</a
+              >
+            </div>
+            <!-- * profile-box -->
+
+            <!-- menu -->
+            <div class="listview-title mt-1">Menu</div>
+            <ul class="listview flush transparent no-line image-listview">
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  onClick="pages('dashboard');"
+                  class="item"
+                >
+                  <div class="icon-box bg-primary">
+                    <i class="material-icons">home</i>
+                  </div>
+                  <div class="in">Beranda</div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  onClick="pages('kupon');"
+                  class="item"
+                >
+                  <div class="icon-box bg-primary">
+                    <i class="material-icons">library_books</i>
+                  </div>
+                  <div class="in">List Struk</div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  onClick="pages('foto-struk');"
+                  class="item"
+                >
+                  <div class="icon-box bg-danger">
+                    <i class="material-icons">camera_alt</i>
+                  </div>
+                  <div class="in">Foto Struk</div>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  onClick="pages('voucher');"
+                  class="item"
+                >
+                  <div class="icon-box bg-primary">
+                    <i class="material-icons">receipt</i>
+                  </div>
+                  <div class="in">Voucher</div>
+                </a>
+              </li>
+            </ul>
+            <!-- * menu -->
+
+            <!-- others -->
+            <div class="listview-title mt-1">Lainnya</div>
+            <ul class="listview flush transparent no-line image-listview">
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  onClick="clickProdukKategori(this.id)"
+                  id="0"
+                  class="item"
+                >
+                  <div class="icon-box bg-primary">
+                    <i class="material-icons">shopping_basket</i>
+                  </div>
+                  <div class="in">Produk</div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  onClick="pages('site');"
+                  class="item"
+                >
+                  <div class="icon-box bg-primary">
+                    <i class="material-icons">local_gas_station</i>
+                  </div>
+                  <div class="in">Site</div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  data-id="3"
+                  onClick="PageBeritaAll(this);"
+                  class="item"
+                >
+                  <div class="icon-box bg-primary">
+                    <i class="material-icons">cast</i>
+                  </div>
+                  <div class="in">Berita</div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  onClick="pages('profil');"
+                  class="item"
+                >
+                  <div class="icon-box bg-primary">
+                    <i class="material-icons">account_circle</i>
+                  </div>
+                  <div class="in">Profil</div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  onClick="pages('layanan-informasi')"
+                  class="item"
+                >
+                  <div class="icon-box bg-success">
+                    <i class="material-icons">help_outline</i>
+                  </div>
+                  <div class="in">Bantuan</div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  onClick="pages('privasi')"
+                  class="item"
+                >
+                  <div class="icon-box bg-success">
+                    <i class="material-icons">security</i>
+                  </div>
+                  <div class="in">Kebijakan Privasi</div>
+                </a>
+              </li>
+              <li id="linkLoginSidebarPanel">
+                <a
+                  href="javascript:void(0)"
+                  onClick="pages('login');"
+                  class="item"
+                >
+                  <div class="icon-box bg-success">
+                    <i class="material-icons">perm_identity</i>
+                  </div>
+                  <div class="in">Login</div>
+                </a>
+              </li>
+              <li id="linkLogoutSidebarPanel" style="display: none">
+                <a href="javascript:void(0)" onClick="logout()" class="item">
+                  <div class="icon-box bg-danger">
+                    <i class="material-icons">exit_to_app</i>
+                  </div>
+                  <div class="in">Keluar</div>
+                </a>
+              </li>
+            </ul>
+            <!-- * others -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- * App Sidebar -->
+
+    <!-- Modal Alert -->
+    <div
+      class="modal fade"
+      id="generalModal"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content z4">
+          <div class="modal-header">
+            <h5 class="header-title mb-0 modal-title"></h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body text-center pr-4 pl-4">
+            <p class="text-left modal-body-message"></p>
+            <br />
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" onClick="submitCustomer()">
+              Ok
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="assets/js/core.js"></script>
+    <script type="text/javascript" src="assets/js/sidebar-menu.js"></script>
+    <script type="text/javascript" src="assets/js/pakai-voucher.js"></script>
+    <!-- <script type="text/javascript" src="assets/js/profil.js"></script> -->
+    <script type="text/javascript" src="assets/js/SocialSharing.js"></script>
+
+    <!-- Cookie jquery file -->
+    <script src="assets/vendor/cookie/jquery.cookie.js"></script>
+
+    <!-- Swiper carousel jquery file -->
+    <script src="assets/vendor/swiper/js/swiper.min.js"></script>
+
+    <!-- Application main common jquery file -->
+    <script src="assets/js/main.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/vendor/select2/js/select2.min.js"
+    ></script>
+    <script type="text/javascript" src="assets/js/jquery.fakecrop.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/vendor/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/vendor/OwlCarousel2-2.3.4/dist/owl.carousel.js"
+    ></script>
+  </body>
 </html>

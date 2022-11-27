@@ -1,0 +1,211 @@
+<script type="text/javascript" src="assets/js/update-user.js"></script>
+<script type="text/javascript" src="assets/js/profil.js"></script>
+<div class="appHeader bg-primary">
+  <div class="left">
+    <a
+      href="javascript:void(0)"
+      onClick="pages('profil')"
+      class="headerButton goBack"
+    >
+      <i style="font-size: 2rem" class="material-icons">chevron_left</i>
+    </a>
+  </div>
+  <div class="pageTitle">Ubah Profil</div>
+  <div class="right"></div>
+</div>
+
+<div
+  style="height: 180px"
+  class="section wallet-card-section pt-1 text-center edit-user"
+  id="profil-user"
+>
+  <div
+    style="
+      padding: 2px 2px !important;
+      background: transparent;
+      border-radius: 0;
+      margin: 0 auto;
+      top: 35px;
+      box-shadow: none;
+    "
+    class="wallet-card"
+  >
+    <div class="listview-title">
+      <form id="uploadFotoUser">
+        <img
+          class="rounded-circle"
+          src="assets/img/sample/avatar/icon-user.png"
+          alt=""
+          onClick="fotoActionSheet('foto_user')"
+          id="real_foto_foto_user"
+          style="width: 150px; height: 150px"
+        />
+        <img
+          src="assets/img/icon-edit.png"
+          class="logo-edit"
+          onClick="fotoActionSheet('foto_user')"
+        />
+        <input
+          type="hidden"
+          name="foto_text_foto_user"
+          id="foto_text_foto_user"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="section-page" style="margin: 60px auto" id="update-user">
+  <div class="section wallet-card-section pt-1 text-center">
+    <div class="wallet-card pt-3 pb-3">
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label">Nama<span class="form-mandatory">*</span></label>
+          <input
+            type="text"
+            class="form-control"
+            id="formUpdateName"
+            name="formUpdateName"
+            placeholder=""
+          />
+        </div>
+      </div>
+
+      <fieldset disabled>
+        <div class="form-group basic">
+          <div class="input-wrapper">
+            <label class="label"
+              >Nomor Telepon<span class="form-mandatory">*</span></label
+            >
+            <input
+              style="color: grey !important"
+              type="tel"
+              class="form-control"
+              id="formUpdateNoHp"
+              name="formUpdateNoHp"
+              placeholder=""
+            />
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label"
+            >Tanggal lahir<span class="form-mandatory">*</span></label
+          >
+          <input
+            type="date"
+            class="form-control"
+            id="formUpdateDob"
+            name="formUpdateDob"
+            placeholder=""
+          />
+        </div>
+      </div>
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label"
+            >Nomor KTP<span class="form-mandatory">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="formUpdateKTP"
+            name="formUpdateKTP"
+            placeholder=""
+          />
+        </div>
+      </div>
+
+      <fieldset disabled>
+        <div class="form-group basic">
+          <div class="input-wrapper">
+            <label class="label"
+              >Alamat E-Mail<span class="form-mandatory">*</span></label
+            >
+            <input
+              style="color: grey !important"
+              type="text"
+              class="form-control"
+              id="formUpdateEmail"
+              name="formUpdateEmail"
+              placeholder=""
+            />
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label"
+            >Provinsi<span class="form-mandatory">*</span></label
+          >
+          <select
+            id="formUpdateProvinsi"
+            name="formUpdateProvinsi"
+            class="form-control select2-basic"
+            required
+          >
+            <option value="" id="opt-update-provinsi"></option>
+            <option value="1">ACEH</option>
+            <option value="2">SUMATERA UTARA</option>
+            <option value="3">SUMATERA BARAT</option>
+            <option value="4">RIAU</option>
+            <option value="5">KEPULAUAN RIAU</option>
+            <option value="6">JAMBI</option>
+            <option value="7">BENGKULU</option>
+            <option value="8">SUMATERA SELATAN</option>
+            <option value="9">KEPULAUAN BANGKA BELITUNG</option>
+            <option value="10">LAMPUNG</option>
+            <option value="11">BANTEN</option>
+            <option value="12">JAWA BARAT</option>
+            <option value="13">JAKARTA</option>
+            <option value="14">JAWA TENGAH</option>
+            <option value="15">YOGYAKARTA</option>
+            <option value="16">JAWA TIMUR</option>
+            <option value="17">BALI</option>
+            <option value="18">NUSA TENGGARA BARAT</option>
+            <option value="19">NUSA TENGGARA TIMUR</option>
+            <option value="20">KALIMANTAN BARAT</option>
+            <option value="21">KALIMANTAN SELATAN</option>
+            <option value="22">KALIMANTAN TENGAH</option>
+            <option value="23">KALIMANTAN TIMUR</option>
+            <option value="24">KALIMANTAN UTARA</option>
+            <option value="25">GORONTALO</option>
+            <option value="26">SULAWESI BARAT</option>
+            <option value="27">SULAWESI SELATAN</option>
+            <option value="28">SULAWESI TENGGARA</option>
+            <option value="29">SULAWESI TENGAH</option>
+            <option value="30">SULAWESI UTARA</option>
+            <option value="31">MALUKU</option>
+            <option value="32">MALUKU UTARA</option>
+            <option value="33">PAPUA</option>
+            <option value="34">PAPUA BARAT</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label">Kota<span class="form-mandatory">*</span></label>
+          <select
+            id="formUpdateKota"
+            name="formUpdateKota"
+            class="form-control select2-basic"
+            required
+          >
+            <option value="" id="opt-update-kota"></option>
+          </select>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 10px">
+        <button onClick="updateData()" class="btn btn-outline-primary btn-lg">
+          Simpan Profil
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,48 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.rizkiramadhan.aplikasiTA" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
-    <description>Sample Apache Cordova App</description>
-    <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
-        Apache Cordova Team
+    <name>TPA Al Muhibbin</name>
+    <description>Aplikasi TPA Al Muhibbin</description>
+    <author email="dev.rizkiramadhan@gmail.com" href="https://cordova.apache.org">
+        TPA Al Muhibbin
     </author>
     <content src="index.html" />
+    <preference name="orientation" value="portrait" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="android-targetSdkVersion" value="30" />
+    <preference name="android-minSdkVersion" value="22" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="scheme" value="http" />
+    <preference name="AndroidXEnabled" value="true" />
+    <preference name="AndroidInsecureFileModeEnabled" value="true" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <icon density="ldpi" src="res/icon/android/icon-36-ldpi-new.png" />
+        <icon density="mdpi" src="res/icon/android/icon-48-mdpi-new.png" />
+        <icon density="hdpi" src="res/icon/android/icon-72-hdpi-new.png" />
+        <icon density="xhdpi" src="res/icon/android/icon-96-xhdpi-new.png" />
+        <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
+        <splash density="land-ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
+        <splash density="land-mdpi" src="res/screen/android/screen-mdpi-landscape.png" />
+        <splash density="land-xhdpi" src="res/screen/android/screen-xhdpi-landscape.png" />
+        <splash density="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
+        <splash density="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
+        <splash density="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" />
+        <splash density="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
+        <splash density="port-xxhdpi" src="res/screen/android/screen-xxhdpi-portrait.png" />
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
+            <application android:usesCleartextTraffic="true" />
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data  android:host="onelink-basic-app.onelink.me" android:pathPrefix="/H5hv" android:scheme="https" />
+            </intent-filter>
+        </edit-config>
+         <preference name="AndroidXEnabled" value="true" />
+
+    </platform>
 </widget>

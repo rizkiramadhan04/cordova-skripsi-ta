@@ -1,0 +1,210 @@
+<script type="text/javascript" src="assets/js/page-berita.js"></script>
+<script type="text/javascript" src="assets/js/berita.js"></script>
+<script type="text/javascript" src="assets/js/dashboard.js"></script>
+<div class="appHeader bg-primary">
+  <div class="left">
+    <a
+      href="javascript:void(0)"
+      onClick="pages('dashboard')"
+      class="headerButton goBack"
+    >
+      <i style="font-size: 2rem" class="material-icons">chevron_left</i>
+    </a>
+  </div>
+  <div class="pageTitle">Berita</div>
+  <div class="right"></div>
+</div>
+
+<div class="section text-center" style="background: #001451">
+  <img
+    style="height: 40px"
+    src="assets/img/logo.png"
+    alt="logo"
+    class="logo mt-2 mb-2"
+  />
+</div>
+
+<div class="section wallet-card-section pt-1 text-center" id="src-berita">
+  <div style="padding: 10px 10px !important" class="wallet-card">
+    <div class="search-berita">
+      <input
+        type="text"
+        name="search_berita"
+        placeholder="Cari Berita"
+        id="src-news"
+      />
+      <button
+        onClick="cariBerita()"
+        class="btn btn-primary"
+        type="button"
+        id="button-addon2"
+      >
+        <i class="material-icons">search</i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="page-berita">
+  <div class="section-page">
+    <div class="section-heading">
+      <h2 class="title">Sedang Tren</h2>
+      <!-- <a href="javascript:void(0)" class="link">Lihat lebih banyak</a> -->
+    </div>
+    <div class="section mb-2">
+      <div
+        class="carousel-berita splide splide--loop splide--ltr splide--draggable is-active"
+        id="splide02"
+        style="visibility: visible"
+      >
+        <div
+          class="splide__track berita-dashboard"
+          id="splide02-track"
+          style="padding-left: 16px; padding-right: 16px"
+        >
+          <ul class="splide__list">
+            <li
+              class="splide__slide list-one"
+              onClick="clickBeritaDetailSliderBerita(this.id)"
+              id=""
+            >
+              <div class="card">
+                <img
+                  class="img-slider-dsb-0"
+                  src=""
+                  class="card-img-top"
+                  alt="image"
+                />
+                <div class="card-body">
+                  <h5 class="card-title news-title-0"></h5>
+                  <p class="card-text news-dshb-0"></p>
+                </div>
+              </div>
+            </li>
+
+            <li
+              class="splide__slide list-two"
+              onClick="clickBeritaDetailSliderBerita(this.id)"
+              id=""
+            >
+              <div class="card">
+                <img
+                  class="img-slider-dsb-1"
+                  src=""
+                  class="card-img-top"
+                  alt="image"
+                />
+                <div class="card-body">
+                  <h5 class="card-title news-title-1"></h5>
+                  <p class="card-text news-dshb-1"></p>
+                </div>
+              </div>
+            </li>
+
+            <li
+              class="splide__slide list-three"
+              onClick="clickBeritaDetailSliderBerita(this.id)"
+              id=""
+            >
+              <div class="card">
+                <img
+                  class="img-slider-dsb-2"
+                  src=""
+                  class="card-img-top"
+                  alt="image"
+                />
+                <div class="card-body">
+                  <h5 class="card-title news-title-2"></h5>
+                  <p class="card-text news-dshb-2"></p>
+                </div>
+              </div>
+            </li>
+
+            <li
+              class="splide__slide list-three"
+              onClick="clickBeritaDetailSliderBerita(this.id)"
+              id=""
+            >
+              <div class="card">
+                <img
+                  class="img-slider-dsb-3"
+                  src=""
+                  class="card-img-top"
+                  alt="image"
+                />
+                <div class="card-body">
+                  <h5 class="card-title news-title-3"></h5>
+                  <p class="card-text news-dshb-3"></p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section-heading">
+      <h2 class="title" id="title-list-kategori">Kategori Berita</h2>
+      <!-- <a href="javascript:void(0)" class="link">Lihat lebih banyak</a> -->
+    </div>
+
+    <div class="section-berita">
+      <div class="list-kategori">
+        <a
+          href="javascript:void(0)"
+          data-id="3"
+          onClick="PageBeritaAll(this);"
+          class="btn-list-kategori"
+          style="background: #47c9c9"
+          >Umum
+          <div id="img-ceklis-umum">
+            <img
+              src="assets/img/sample/kupon/checklist.png"
+              style="width: 13%"
+            /></div
+        ></a>
+        <a
+          href="javascript:void(0)"
+          data-id="1"
+          onClick="PageBeritaAll(this);"
+          class="btn-list-kategori"
+          style="background: #476fc9"
+          >Promo
+          <div id="img-ceklis-promo">
+            <img
+              src="assets/img/sample/kupon/checklist.png"
+              style="width: 13%"
+            /></div
+        ></a>
+        <a
+          href="javascript:void(0)"
+          data-id="2"
+          onClick="PageBeritaAll(this);"
+          class="btn-list-kategori"
+          style="background: #c94765"
+          >Acara
+          <div id="img-ceklis-acara">
+            <img
+              src="assets/img/sample/kupon/checklist.png"
+              style="width: 13%"
+            /></div
+        ></a>
+      </div>
+      <div class="list-berita" id="pages-list-berita">
+        <h2 class="title" id="titlenya">Berita terbaru</h2>
+        <h2 class="title" id="cari-titlenya" style="display: none">
+          List Berita
+        </h2>
+        <div class="new-berita" id="berita-page"></div>
+        <div
+          class="new-berita"
+          id="berita-page-search"
+          style="display: none"
+        ></div>
+      </div>
+    </div>
+
+    <input type="hidden" name="" id="count_awal_news" value="" />
+    <input type="hidden" name="" id="count_news" value="" />
+    <div class="load-more-news"><span>Muat Lebih Banyak</span></div>
+  </div>
+</div>

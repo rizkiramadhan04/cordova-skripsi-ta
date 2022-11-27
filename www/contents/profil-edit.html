@@ -1,0 +1,207 @@
+<script type="text/javascript" src="assets/js/profil-edit.js"></script>
+<style>
+  .select2-selection__rendered {
+    line-height: 40px !important;
+  }
+
+  .select2-container .select2-selection--single {
+    height: 40px !important;
+  }
+
+  .select2-selection__arrow {
+    height: 40px !important;
+  }
+</style>
+<div class="appHeader bg-primary">
+  <div class="left">
+    <a
+      href="javascript:void(0)"
+      onClick="pages('profil')"
+      class="headerButton goBack"
+    >
+      <i style="font-size: 2rem" class="material-icons">chevron_left</i>
+    </a>
+  </div>
+  <div class="pageTitle">Edit Profile</div>
+  <div class="right"></div>
+</div>
+
+<div class="section text-center" style="background: #001451">
+  <img
+    style="height: 40px"
+    src="assets/img/logo.png"
+    alt="logo"
+    class="logo mt-2 mb-2"
+  />
+</div>
+
+<div class="section wallet-card-section pt-1 text-center">
+  <div class="wallet-card pt-3 pb-3">
+    <h2>Update Profile</h2>
+    <p></p>
+    <form method="POST" role="form" onSubmit="cekPasswordLama()">
+      <!-- <div class="form-group basic">
+                <div class="input-wrapper">
+                    <label class="label" for="formRegisterName">Nama lengkap sesuai KTP<span class="form-mandatory">*</span></label>
+                    <input type="text" class="form-control" id="formRegisterName" name="formRegisterName" required placeholder="">
+                    <i class="clear-input">
+                            <i class="material-icons">clear</i>
+                    </i>
+                </div>
+            </div> -->
+
+      <!-- <div class="form-group basic">
+                <div class="input-wrapper">
+                    <label class="label" for="formRegisterKTP">Nomor KTP</label>
+                    <input type="text" class="form-control" id="formRegisterKTP" name="formRegisterKTP" required placeholder="">
+                    <i class="clear-input">
+                            <i class="material-icons">clear</i>
+                    </i>
+                </div>
+            </div> -->
+
+      <!-- <div class="form-group basic">
+                <div class="input-wrapper">
+                    <label class="label" for="formRegisterEmail">Alamat E-Mail<span class="form-mandatory">*</span></label>
+                    <input type="text" class="form-control" id="formRegisterEmail" name="formRegisterEmail" required placeholder="">
+                    <i class="clear-input">
+                            <i class="material-icons">clear</i>
+                    </i>
+                </div>
+            </div> -->
+
+      <!-- <div class="form-group basic">
+                <div class="input-wrapper">
+                    <label class="label" for="formRegisterNoHp">Nomor Telepon<span class="form-mandatory">*</span></label>
+                    <input type="text" class="form-control" id="formRegisterNoHp" name="formRegisterNoHp" placeholder="">
+                    <i class="clear-input">
+                            <i class="material-icons">clear</i>
+                    </i>
+                </div>
+            </div> -->
+
+      <!-- <div class="form-group basic">
+                <div class="input-wrapper">
+                    <label class="label" for="formRegisterTglLahir">Tanggal lahir<span class="form-mandatory">*</span></label>
+                    <div class="row">
+                        <div style="padding:0 !important" class="col-4">
+
+                            <select id="formRegisterTglLahir" name="formRegisterTglLahir" class="form-control select2-basic" required>
+                                        <option value="">Tanggal</option>
+                            </select>
+
+                        </div>
+                        <div style="padding:0 !important" class="col-4">
+                            <select id="formRegisterBlnLahir" name="formRegisterBlnLahir" class="form-control select2-basic" required>
+                                        <option value="">Bulan</option>
+                            </select>
+                        </div>
+                        <div style="padding:0 !important" class="col-3">
+                            <select id="formRegisterThnLahir" name="formRegisterThnLahir" class="form-control select2-basic" required>
+                                        <option value="">Tahun</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label" for="formRegisterOldPassword"
+            >Kata sandi saat ini<span class="form-mandatory">*</span></label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="formRegisterOldPassword"
+            autocomplete="off"
+            required
+            placeholder="Kata sandi saat ini"
+          />
+          <i class="clear-input">
+            <i class="material-icons">clear</i>
+          </i>
+        </div>
+      </div>
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label" for="formRegisterPassword"
+            >Kata sandi baru<span class="form-mandatory">*</span></label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="formRegisterPassword"
+            autocomplete="off"
+            required
+            placeholder="Kata sandi"
+          />
+          <i class="clear-input">
+            <i class="material-icons">clear</i>
+          </i>
+        </div>
+      </div>
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label" for="formRegisterPasswordConfirmation"
+            >Konfirmasi kata sandi baru<span class="form-mandatory"
+              >*</span
+            ></label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="formRegisterPasswordConfirmation"
+            autocomplete="off"
+            required
+            placeholder="Ulangi kata sandi"
+          />
+          <i class="clear-input">
+            <i class="material-icons">clear</i>
+          </i>
+        </div>
+      </div>
+
+      <div class="mt-2 mb-4 transparent">
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="otpModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content z4">
+            <div class="modal-body text-center pr-4 pl-4">
+                <div id="otp-container">
+                    <div id="otp-form">
+                        <div class="section mt-2 text-center">
+                            <h2>Masukkan Kode Verifikasi</h2>
+                            <p>Masukkan 6 digit kode verifikasi yang telah dikirim ke SMS/Email</p>
+                        </div>
+                        <form onSubmit="submitOTPProfileEdit()" id="formOTP" method="get" class="digit-group" data-group-name="digits" data-autosubmit="false" autocomplete="off">
+
+                            <div class="form-group basic">
+                                <input type="tel" class="form-control verification-input" id="input_otp" name="input_otp" placeholder="••••••" maxlength="6">
+                            </div>
+
+                            <input type="hidden" name="otp" id="otp" />
+                            <input type="hidden" name="otp_type" id="otp_type" value="profile_edit" />
+
+
+                            <div class="transparent mt-4">
+                                <button type="submit" class="btn btn-primary btn-block btn-lg">Verifikasi</button>
+                            </div>
+                        </form>
+                    </div> -->
+<!-- ./otp-form -->
+<!-- </div>
+            </div>
+        </div>
+    </div>
+</div> -->

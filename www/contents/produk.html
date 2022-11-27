@@ -1,0 +1,92 @@
+<script type="text/javascript" src="assets/js/produk.js"></script>
+<script type="text/javascript" src="assets/js/dashboard.js"></script>
+<script type="text/javascript" src="assets/js/slider-promo.js"></script>
+
+<div class="appHeader bg-primary">
+    <div class="left">
+        <a href="javascript:void(0)" onClick="pages('dashboard')" class="headerButton goBack">
+            <i style="font-size:2rem" class="material-icons">chevron_left</i>
+        </a>
+    </div>
+    <div class="pageTitle">
+        Produk
+    </div>
+    <div class="right">
+    </div>
+</div>
+
+<div class="section text-center" style="background:#001451">
+    <img style="height:40px;" src="assets/img/logo.png" alt="logo" class="logo mt-2 mb-2">
+</div>
+
+<div class="section wallet-card-section pt-1 text-center" id="src-produk">
+    <div style="padding:10px 1px !important" class="wallet-card">
+        <div class="search-produk">
+          
+            <input type="text" name="search_produk" placeholder="Cari Produk" id="src-prd">
+            <button onClick="cariProduk()" class="btn btn-primary" type="button" id="button-addon2"><i class="material-icons">search</i></button>
+         
+        </div>
+    </div>
+</div>
+
+<div class="section wallet-card-section pt-1 text-center page-produk">
+    <div style="padding:2px 2px !important" class="wallet-card">
+        <div class="carousel-dashboard splide splide--loop splide--ltr splide--draggable is-active" id="splide02" style="visibility: visible;">
+            <div class="splide__track" id="splide02-track">
+                <ul class="splide__list" id="splide02-list">
+
+                    <li class="splide__slide splide__slide--clone">
+                        <div class="card">
+                            <img src="" class="card-img-top slider-promo1" alt="image" onClick="clickPromoDetailDashboard(this.id)" id="">
+                        </div>
+                    </li>
+                    <li class="splide__slide splide__slide--clone">
+                        <div class="card">
+                            <img src="" class="card-img-top slider-promo2" alt="image" onClick="clickPromoDetailDashboard(this.id)" id="">
+                        </div>
+                    </li>
+                    <li class="splide__slide splide__slide--clone">
+                        <div class="card">
+                            <img src="" class="card-img-top slider-promo3" alt="image" onClick="clickPromoDetailDashboard(this.id)" id="">
+                        </div>
+                    </li>
+                    <li class="splide__slide splide__slide--clone">
+                        <div class="card">
+                            <img src="" class="card-img-top slider-promo4" alt="image" onClick="clickPromoDetailDashboard(this.id)" id="">
+                        </div>
+                    </li>
+                    <li class="splide__slide splide__slide--clone">
+                        <div class="card">
+                            <img src="" class="card-img-top slider-promo5" alt="image" onClick="clickPromoDetailDashboard(this.id)" id="">
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="produk-page">
+    <div class="section-page">
+        <div class="kategori-produk" id="js-kategori-produk">
+            
+        </div>
+        <div class="list-produk" id="div-produk">
+            <div class="row lst-produk" id="js-lst-produk">
+
+            </div>
+
+        </div>
+        <div class="list-produk" style="display:none;" id="div-src-produk">
+            <div class="row lst-produk" id="js-lst-produk-cari">
+
+            </div>
+        </div>
+        <input type="hidden" name="" id="count_awal" value="">
+        <input type="hidden" name="" id="count_produk" value="">
+        <div class="load-more-produk" style="text-align: center;font-size: 16px;color: #2f2f8f;"><span>Muat Lebih Banyak</span></div>
+    </div>
+</div>

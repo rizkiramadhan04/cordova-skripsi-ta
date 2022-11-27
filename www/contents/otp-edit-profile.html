@@ -1,0 +1,33 @@
+<script type="text/javascript" src="assets/js/profil-edit.js"></script>
+
+<div class="section mt-2 text-center">
+  <h1>Masukkan Kode Verifikasi</h1>
+  <p>Masukkan 6 digit kode verifikasi yang telah dikirim ke nomor HP anda</p>
+  <!-- <p class="mt-1 mb-2">
+    Silahkan cek pada folder SPAM di email Anda, untuk melihat kode OTP Anda
+  </p> -->
+</div>
+<div class="section mb-3 p-2">
+  <form method="POST" onSubmit="submitOTPProfileEdit()">
+    <div class="form-group basic">
+      <input
+        type="number"
+        class="form-control verification-input"
+        id="input_otp"
+        placeholder="••••••"
+        maxlength="6"
+      />
+      <input type="hidden" name="otp_type" id="otp_type" value="profile_edit" />
+    </div>
+
+    <div class="transparent mt-4">
+      <button type="submit" class="btn btn-primary btn-block btn-lg">
+        Verifikasi
+      </button>
+    </div>
+  </form>
+
+  <!-- <a href="javascript:void(0)" id="link-resend-otp" onclick="resendOtp()" class="link mt-3" style="text-decoration: none; text-align: center;">Resend OTP</a> -->
+  
+  </div>
+</div>

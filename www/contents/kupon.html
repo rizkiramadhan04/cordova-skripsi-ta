@@ -1,0 +1,160 @@
+<script type="text/javascript" src="assets/js/kupon.js"></script>
+
+<div class="appHeader bg-primary">
+  <div class="left">
+    <a
+      href="javascript:void(0)"
+      onClick="pages('dashboard')"
+      class="headerButton goBack"
+    >
+      <i style="font-size: 2rem" class="material-icons">chevron_left</i>
+    </a>
+  </div>
+  <div class="pageTitle">Struk Saya</div>
+  <div class="right"></div>
+</div>
+
+<div class="section text-center" style="background: #001451">
+  <img
+    style="height: 40px"
+    src="assets/img/logo.png"
+    alt="logo"
+    class="logo mt-2 mb-5"
+  />
+</div>
+
+<div class="section wallet-card-section pt-1 new-menu-promo" id="card-wrapper">
+  <div style="padding: 0 !important" class="wallet-card" id="wallet-card">
+    <div class="img-menu-promo">
+      <img src="assets/img/promo/App-Banner-Untung-berlimpah-Jatim-min.jpg" />
+    </div>
+    <div class="text-promo">
+      <div class="title">
+        <span>Ayo beli Bensinnya dan Dapatkan Diskonnya!</span>
+      </div>
+      <div class="detail-text">
+        <ul style="padding: 2px 15px">
+          <li>
+            Khusus User Banten! Tukarkan voucher mu di site terdekat sekarang
+            juga, dan nikmati potongan pembelian bensin dan oli mobil/oli
+            federal. Perbanyak pembelian bensin Mu dan raih voucher potongan
+            pembelian bensin Mobil sebanyak-banyaknya!
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="menu-kupon">
+  <div class="section-page">
+    <div class="total-kupon">
+      <div class="div-total-kupon">
+        <img
+          src="assets/img/sample/home/icon3.png"
+          class="icon-voucher"
+          alt="image"
+          style="width: 10%"
+        /><span
+          >Total struk (Receipt) yang anda unggah
+          <strong id="struk-count"></strong>
+          <span id="jml-kupon" style="margin-left: 1px"></span
+        ></span>
+      </div>
+    </div>
+
+    <div class="kategori-kupon">
+      <a
+        href="javascript:void(0)"
+        id="all"
+        onClick="clickKuponAll(this.id)"
+        class="btn-list-kategori"
+        style="background: #476fc9"
+        >Semua
+        <div id="img-ceklis-all">
+          <img
+            src="assets/img/sample/kupon/checklist.png"
+            style="width: 13%"
+          /></div
+      ></a>
+      <a
+        href="javascript:void(0)"
+        id="1"
+        onClick="clickKuponSilver(this.id)"
+        class="btn-list-kategori"
+        style="background: #47c9c9"
+        >Valid
+        <div id="img-ceklis-silver">
+          <img
+            src="assets/img/sample/kupon/checklist.png"
+            style="width: 13%"
+          /></div
+      ></a>
+      <a
+        href="javascript:void(0)"
+        id="0"
+        onClick="clickKuponGold(this.id)"
+        class="btn-list-kategori"
+        style="background: #ff4e4e"
+        >Invalid
+        <div id="img-ceklis-gold">
+          <img
+            src="assets/img/sample/kupon/checklist.png"
+            style="width: 13%"
+          /></div
+      ></a>
+    </div>
+
+    <div id="list-kupon"></div>
+
+    <input type="hidden" name="" id="count_awal_kupon" value="" />
+    <input type="hidden" name="" id="count_kupon" value="" />
+    <!-- <div class="load-more-kupon"><span>Muat Lebih Banyak</span></div> -->
+  </div>
+</div>
+
+<div
+  class="modal fade modal-detail-struk"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+  style="margin-top: 100px"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Modal title voucher
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center">
+        <div class="icon-close" id="icon-close">
+          <img src="assets/img/sample/home/icon-close.png" />
+        </div>
+        <div class="img-pesan" style="margin-bottom: 0">
+          <img id="img-struk" src="" style="width: 85% !important" />
+        </div>
+
+        <!-- <div class="btn-lihat-voucher">
+          <a href="javascript:void(0)" style="color: white"></a>
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
