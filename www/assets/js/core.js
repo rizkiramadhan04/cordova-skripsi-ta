@@ -373,8 +373,7 @@ function onDeviceReady() {
   //end clear cache
   updateVersion();
   cekMaintenance();
-  OneSignalInit();
-  getCity();
+  // OneSignalInit();
   modalStruk();
 
   var deviceManufacturer = device.manufacturer;
@@ -395,7 +394,7 @@ function onDeviceReady() {
   document.addEventListener("backbutton", onBackKeyDown, false);
   navigator.splashscreen.hide();
   //In your 'deviceready' handler, set up your Analytics tracker:
-  window.ga.startTrackerWithId("G-C4BN1Z0H3D", 30);
+  // window.ga.startTrackerWithId("G-C4BN1Z0H3D", 30);
   cordova.plugin.http.setHeader(
     "Access-Control-Allow-Origin",
     "https://localhost"
@@ -860,30 +859,30 @@ function pages(main) {
       target_main.load("contents/bantuan.html");
       break;
 
-    case "berita":
-      window.localStorage.setItem("current_page", "berita");
-      target_main.load("contents/berita.html");
+    case "agenda":
+      window.localStorage.setItem("current_page", "agenda");
+      target_main.load("contents/agenda.html");
       break;
 
-    case "berita-detail":
-      window.localStorage.setItem("current_page", "berita-detail");
-      target_main.load("contents/berita-detail.html");
+    case "agenda-detail":
+      window.localStorage.setItem("current_page", "agenda-detail");
+      target_main.load("contents/agenda-detail.html");
       break;
 
-    case "foto-struk":
-      window.localStorage.setItem("current_page", "foto-struk");
+    case "pembayaran":
+      window.localStorage.setItem("current_page", "pembayaran");
       $(".appBottomMenu").find("a").removeClass("active");
-      $("#linkBottomMenuFotoStruk").addClass("active");
+      $("#linkBottomMenuPembayaran").addClass("active");
 
-      target_main.load("contents/foto-struk.html");
+      target_main.load("contents/pembayaran.html");
       break;
 
-    case "kupon":
-      window.localStorage.setItem("current_page", "kupon");
+    case "presensi":
+      window.localStorage.setItem("current_page", "presensi");
       $(".appBottomMenu").find("a").removeClass("active");
-      $("#linkBottomMenuKupon").addClass("active");
+      $("#linkBottomMenuPresensi").addClass("active");
 
-      target_main.load("contents/kupon.html");
+      target_main.load("contents/presensi.html");
       break;
 
     case "produk":
@@ -911,12 +910,12 @@ function pages(main) {
       target_main.load("contents/message.html");
       break;
 
-    case "promo":
-      window.localStorage.setItem("current_page", "promo");
+    case "mengaji":
+      window.localStorage.setItem("current_page", "mengaji");
       $(".appBottomMenu").find("a").removeClass("active");
-      $("#linkBottomMenuPromo").addClass("active");
+      $("#linkBottomMenuMengaji").addClass("active");
 
-      target_main.load("contents/promo.html");
+      target_main.load("contents/mengaji.html");
       break;
 
     case "site":
@@ -929,12 +928,12 @@ function pages(main) {
       target_main.load("contents/site-detail.html");
       break;
 
-    case "voucher":
-      window.localStorage.setItem("current_page", "voucher");
+    case "hafalan":
+      window.localStorage.setItem("current_page", "hafalan");
       $(".appBottomMenu").find("a").removeClass("active");
-      $("#linkBottomMenuVoucher").addClass("active");
+      $("#linkBottomMenuHafalan").addClass("active");
 
-      target_main.load("contents/voucher.html");
+      target_main.load("contents/hafalan.html");
       break;
 
     case "settings":
@@ -972,9 +971,9 @@ function pages(main) {
       target_main.load("contents/layanan-informasi.html");
       break;
 
-    case "slider-promo-detail":
-      window.localStorage.setItem("current_page", "slider-promo-detail");
-      target_main.load("contents/slider-promo-detail.html");
+    case "slider-agenda-detail":
+      window.localStorage.setItem("current_page", "slider-agenda-detail");
+      target_main.load("contents/slider-agenda-detail.html");
       break;
 
     case "privasi":
@@ -1025,8 +1024,16 @@ function pages(main) {
       target_main.load("contents/otp-edit-profile.html");
       break;
 
+    case "list-pembayaran":
+      window.localStorage.setItem(
+        "current_page",
+        "list-pembayaran"
+      );
+      target_main.load("contents/list-pembayaran.html");
+      break;
+
     default:
-      window.localStorage.setItem("current_page", "dashboard");
+      window.localStorage.setItem("current_page", "dashboard"); //default login
       target_main.load("contents/dashboard.html");
   }
   $("#sidebarPanel").modal("hide");
@@ -2157,27 +2164,27 @@ function updateVersion() {
     });
 }
 
-function OneSignalInit() {
-  //28b62ea9-2eb1-489e-bbe8-c18bdff1b7f4 app id nadyne
-  //0b5f9921-46b2-431f-8a11-4c80e752eb81 app id indostation
+// function OneSignalInit() {
+//   //28b62ea9-2eb1-489e-bbe8-c18bdff1b7f4 app id nadyne
+//   //0b5f9921-46b2-431f-8a11-4c80e752eb81 app id indostation
 
-  window.plugins.OneSignal.setAppId("28b62ea9-2eb1-489e-bbe8-c18bdff1b7f4");
+//   window.plugins.OneSignal.setAppId("28b62ea9-2eb1-489e-bbe8-c18bdff1b7f4");
 
-  window.plugins.OneSignal.setNotificationOpenedHandler(function (jsonData) {
-    console.log("notificationOpenedCallback: " + JSON.stringify(jsonData));
-  });
+//   window.plugins.OneSignal.setNotificationOpenedHandler(function (jsonData) {
+//     console.log("notificationOpenedCallback: " + JSON.stringify(jsonData));
+//   });
 
-  window.plugins.OneSignal.promptForPushNotificationsWithUserResponse(function (
-    accepted
-  ) {
-    console.log("User accepted notifications: " + accepted);
-  });
+//   window.plugins.OneSignal.promptForPushNotificationsWithUserResponse(function (
+//     accepted
+//   ) {
+//     console.log("User accepted notifications: " + accepted);
+//   });
 
-  window.plugins.OneSignal.getDeviceState((state) => {
-    console.log("Player id : " + state.userId);
-    window.localStorage.setItem("player_id", state.userId);
-  });
-}
+//   window.plugins.OneSignal.getDeviceState((state) => {
+//     console.log("Player id : " + state.userId);
+//     window.localStorage.setItem("player_id", state.userId);
+//   });
+// }
 
 function deviceUserRegister() {
   var data = {
@@ -2242,80 +2249,6 @@ function deviceUserRegister() {
     });
 }
 
-function getCity() {
-  $.ajax({
-    type: "GET",
-    url: conn + "/kota",
-    dataType: "json",
-    timeout: timeout,
-  })
-    .done(function (values) {
-      // console.log(values);
-      if (values.status == "success") {
-        var data_city = values.data;
-        // console.log(data_city);
-
-        myDB.transaction(function (transaction) {
-          for (var i = 0; i < data_city.length; i++) {
-            var city = data_city[i];
-
-            // console.log(city.id);
-
-            var city_local =
-              "('" +
-              city.id +
-              "', '" +
-              city.parent_id +
-              "', '" +
-              city.name +
-              "', '" +
-              city.latitude +
-              "', '" +
-              city.longitude +
-              "')";
-
-            // console.log(city_local);
-            insertDatabase("city_local", city_local, transaction);
-          }
-        });
-      }
-    })
-    .fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(jqXHR);
-      console.log(textStatus);
-      console.log(errorThrown);
-
-      if (jqXHR.responseJSON.message == "Service Unavailable") {
-        $(".modal-maintenance").modal("show");
-
-        $("#btn-modal-close").click(function () {
-          navigator.app.exitApp();
-        });
-      }
-
-      if (jqXHR.readyState == 0) {
-        console.log(
-          "Network error (i.e. connection refused, access denied due to CORS, etc.)"
-        );
-        navigator.notification.alert(
-          "Koneksi offline. Silahkan hubungi Call Center : Kode #DB-001",
-          alertDismissed,
-          TITLE_ALERT,
-          "Ok"
-        );
-      } else {
-        SpinnerDialog.hide();
-        if (textStatus == "timeout") {
-          navigator.notification.alert(
-            "Koneksi Time Out - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #OFF-001",
-            alertDismissed,
-            TITLE_ALERT,
-            "Ok"
-          );
-        }
-      }
-    });
-}
 
 function modalGetVoucher(type) {
   $(document).ready(function () {

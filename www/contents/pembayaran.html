@@ -1,4 +1,4 @@
-<script type="text/javascript" src="assets/js/foto-struk.js"></script>
+<script type="text/javascript" src="assets/js/pembayaran.js"></script>
 
 <div class="appHeader bg-primary">
     <div class="left">
@@ -7,7 +7,7 @@
         </a>
     </div>
     <div class="pageTitle">
-        Unggah Struk
+        Pembayaran
     </div>
     <div class="right">
     </div>
@@ -15,12 +15,12 @@
 
 <div id="containerUploadStruk" class="section wallet-card-section pt-1 text-center">
     <div class="wallet-card pt-3 pb-3">
-        <h2>Unggah Struk</h2>
-        <p>Foto atau unggah struk dan dapatkan voucher</p>
+        <h2>Unggah Bukti Pembayaran</h2>
+        <p>Foto atau unggah bukti pembayaran via transfer Bank / ATM</p>
         <form id="formCekStruk">
             <div class="mt-2 transparent">
                 <div class="btn-group btn-block" role="group">
-                    <button onClick="fotoActionSheet('struk')" class="btn btn-primary btn-lg">Ambil foto Struk</button>
+                    <button onClick="fotoActionSheet('struk')" class="btn btn-primary btn-lg">Unggah Bukti</button>
                     <button onClick="fotoActionSheet('struk')" class="btn btn-primary btn-lg"><i class="material-icons">camera_alt</i></button>
                 </div>
                 <img class="mt-2" id="real_foto_struk" src="assets/img/icon-add-image.png" width="98%" />
@@ -58,8 +58,15 @@
 
             <div class="mt-2 transparent">
                 <div id="containerButtonCekStruk" class="btn-group btn-block" role="group">
-                    <button style="border-right:0" onClick="cekStruk()" class="btn btn-outline-primary btn-lg">Cek Struk</button>
-                    <button style="border-left:0" onClick="cekStruk()" class="btn btn-outline-primary btn-lg"><i class="material-icons">cloud_upload</i></button>
+                    <div class="form-group basic">
+                        <div class="input-wrapper">
+                            <label class="label" for="jumlah">Jumlah Transfer Rp. </label>
+                            <input type="number" class="form-control" id="usernameFormLogin" placeholder="Masukan jumlah transfer">
+                            <i class="clear-input">
+                                    <i class="material-icons">clear</i>
+                            </i>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="containerButtonUlangiCekStruk" style="display:none;">
@@ -163,14 +170,18 @@
         <div class="card-body">
             <h5 class="card-title news-title-0"></h5>
             <p class="card-text news-dshb-0">
-                <h3>Syarat dan ketentuan pengambilan foto struk</h3>
+                <h3>Syarat dan ketentuan unggah bukti pembayaran</h3>
                 <ul>
-                    <li>Klik tombol <strong>Ambil foto struk</strong></li>
-                    <li>Foto struk bensin (minimal Rp. 25.000)</li>
-                    <li>Mohon dipastikan, Nomer Site, Nomer Nota, Tanggal dan Waktu, Nominal Pembelian tercantum jelas pada hasil foto</li>
-                    <li>Klik "Lanjut" dan voucher anda akan otomatis berhasil digunakan</li>
+                    <li>Klik tombol <strong>Unggah bukti</strong></li>
+                    <li>Kirimkan foto bukti pembayaran yang ditrasfer ke rekening yang telah diberikan</li>
+                    <li>Mohon dipastikan, jumlah uang pembayaran yang telah ditranfer sesuai dengan yang ada masukan pada kolom jumlah.</li>
+                    <li>Klik "Lanjut" akan otomatis berhasil dan selanjutnya akan dicek oleh pihak administrasi untuk perubahan status</li>
                 </ul>
             </p>
         </div>
     </div>
+</div>
+
+<div class="text-center mt-4">
+    <button class="btn btn-lg btn-primary" width="100" onclick="pages('list-pembayaran')">Lihat data pembayaran</button>
 </div>

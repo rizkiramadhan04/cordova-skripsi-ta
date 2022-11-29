@@ -45,12 +45,6 @@ $.ajax({
         var foto = values.file_photo;
       }
 
-      if (values.city == null || values.city == "") {
-        var city = "Kota tidak ditemukan";
-      } else {
-        var city = values.city;
-      }
-
       // console.log("foto :" + foto);
       $("#foto-user").attr("src", foto);
       $("#real_foto_foto_user").attr("src", foto);
@@ -76,32 +70,23 @@ $.ajax({
         '<td class="text-end text-primary">' + values.dob + "</td>";
       data_profile += "</tr>";
       data_profile += "<tr>";
-      data_profile += '<th scope="row">Nomor KTP</th>';
-      data_profile +=
-        '<td class="text-end text-primary">' + values.ktp + "</td>";
-      data_profile += "</tr>";
-      data_profile += "<tr>";
       data_profile += '<th scope="row">Email</th>';
       data_profile +=
         '<td class="text-end text-primary">' + values.email + "</td>";
       data_profile += "</tr>";
       data_profile += "<tr>";
-      data_profile += '<th scope="row">Provinsi</th>';
+      data_profile += '<th scope="row">Alamat</th>';
       data_profile +=
         '<td class="text-end text-primary">' + values.provinsi + "</td>";
       data_profile += "</tr>";
       data_profile += "<tr>";
-      data_profile += '<th scope="row">Kota</th>';
-      data_profile += '<td class="text-end text-primary">' + city + "</td>";
-      data_profile += "</tr>";
-      data_profile += "<tr>";
       data_profile +=
-        '<td colspan="2 pt-2 pb-2"><button type="submit" onClick="pages(\'profil-edit\')"class="btn btn-primary btn-block btn-lg">Ubah Kata Sandi</button>';
+        '<td colspan="2 pt-2 pb-2"><button type="submit" onClick="pages(\'edit-user\')"class="btn btn-primary btn-block btn-lg">Ubah Profil</button>';
       data_profile += "</td>";
       data_profile += "</tr>";
       data_profile += "<tr>";
       data_profile +=
-        '<td colspan="2 pt-2 pb-2"><button type="submit" onClick="pages(\'edit-user\')"class="btn btn-primary btn-block btn-lg">Ubah Profil</button>';
+        '<td colspan="2 pt-2 pb-2"><button type="submit" onClick="pages(\'edit-user\')"class="btn btn-primary btn-block btn-lg"><i class="material-icons">exit_to_app</i> Logout</button>';
       data_profile += "</td>";
       data_profile += "</tr>";
       data_profile += "</table></div>";
@@ -110,13 +95,9 @@ $.ajax({
 
       $("#formUpdateName").val(values.nama);
       $("#formUpdateNoHp").val(values.no_hp);
-      $("#formUpdateKTP").val(values.ktp);
       $("#formUpdateEmail").val(values.email);
       $("#formUpdateDob").val(values.tgl_lahir);
       $("#formUpdateProvinsi").val(values.province_id);
-      $("#opt-update-kota").append(city);
-      window.localStorage.setItem("province_id", values.province_id);
-      window.localStorage.setItem("city", city);
       window.localStorage.setItem("provinsi", values.provinsi);
     }
     SpinnerDialog.hide();

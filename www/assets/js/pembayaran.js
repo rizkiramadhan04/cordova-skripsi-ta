@@ -14,6 +14,21 @@ $(document).ready(function () {
   $("#formInputStruk").submit(function (e) {
     e.preventDefault();
   });
+
+  if (type_struk == "1") {
+    $("#img-ceklis-all").css("display", "none");
+    $("#img-ceklis-gold").css("display", "none");
+    $("#img-ceklis-silver").css("display", "inline");
+    // console.log('silver active');
+  } else if (type_struk == "0") {
+    $("#img-ceklis-all").css("display", "none");
+    $("#img-ceklis-gold").css("display", "inline");
+    $("#img-ceklis-silver").css("display", "none");
+  } else {
+    $("#img-ceklis-all").css("display", "inline");
+    $("#img-ceklis-gold").css("display", "none");
+    $("#img-ceklis-silver").css("display", "none");
+  }
 });
 
 function cekStruk() {
