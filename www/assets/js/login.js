@@ -28,55 +28,6 @@ if (firstCon == "offline") {
     TITLE_ALERT, // title
     "Ok" // buttonName
   );
-} else {
-  // console.log("Latitude : ", window.localStorage.getItem("latitude"));
-  // console.log("Longitude : ", window.localStorage.getItem("longitude"));
-
-  if (player_id == "undefined") {
-    OneSignalInit();
-  }
-
-  if (
-    latitude == null ||
-    (latitude == 0 && longitude == null) ||
-    longitude == 0
-  ) {
-    if (pop_up_geoloc) {
-      if (pop_up_geoloc == 0) {
-        function onConfirm(buttonIndex) {
-          // console.log(buttonIndex);
-          if (buttonIndex == 1) {
-            window.localStorage.setItem("pop_up_geoloc", 1);
-            document.addEventListener(getLocation());
-          }
-        }
-
-        navigator.notification.confirm(
-          "Pastikan lokasi anda menyala & izinkan akses lokasi anda!", // message
-          onConfirm, // callback to invoke with index of button pressed
-          TITLE_ALERT, // title
-          ["Oke"] // buttonLabels
-        );
-      } else {
-        document.addEventListener(getLocation());
-      }
-    } else {
-      function onConfirm(buttonIndex) {
-        // console.log(buttonIndex);
-        if (buttonIndex == 1) {
-          window.localStorage.setItem("pop_up_geoloc", 1);
-          document.addEventListener(getLocation());
-        }
-      }
-
-      navigator.notification.confirm(
-        "Pastikan lokasi anda menyala & izinkan akses lokasi anda!, sebelum melakukan Login", // message
-        onConfirm, // callback to invoke with index of button pressed
-        TITLE_ALERT, // title
-        ["Oke"] // buttonLabels
-      );
-    }
-  }
 }
 
 document.addEventListener("offline", onOfflineLogin, false);

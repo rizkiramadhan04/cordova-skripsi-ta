@@ -8053,174 +8053,11 @@ a.btn-list-kategori {
   font-size: 12px;
 }
 
-.section-berita .list-berita {
-  width: 100%;
-  margin-top: 15px;
-}
-
-.section-berita .list-new-berita {
-  background: white;
-  display: flex;
-  padding: 10px;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  margin-bottom: 15px;
-}
-
-.section-berita .img-new-berita {
-  width: 35%;
-  float: left;
-}
-
-.section-berita .img-new-berita img {
-  width: 100%;
-  padding: 5px;
-}
-
-.section-berita .isi-new-berita {
-  width: 65%;
-  float: right;
-  padding: 5px;
-}
-
-.section-berita .title-berita {
-  color: black;
-  margin-bottom: 1px;
-  font-weight: bolder;
-  font-size: 13px;
-}
-
-.section-berita .isi-berita {
-  color: black;
-  font-size: 11px !important;
-  word-break: break-word;
-  /* text-align: justify; */
-  /* word-spacing: 1px; */
-}
-
-#page-berita .load-more-news {
-  text-align: center;
-  color: #4949db;
-  margin-top: 20px;
-}
-
-#src-detail-berita .wallet-card {
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-#src-detail-berita .search-berita {
-  width: 90%;
-  margin: 7px auto;
-}
-
-#src-detail-berita .search-berita input {
-  width: 100%;
-  padding: 8px 5px;
-  border-radius: 10px;
-  border-color: transparent;
-}
-
-#src-detail-berita:before {
-  height: 89px !important;
-}
-
-#page-detail-berita {
-  /* display: inline-block;*/
-  width: 100%;
-}
-
-#page-detail-berita .content-detailisi-berita {
-  background: white;
-  position: relative;
-  top: -80px;
-  width: 88%;
-  margin: 0 auto;
-  border-radius: 10px;
-}
-
-.berita-terkait {
-  width: 93%;
-  margin: 0 auto;
-  display: block;
-}
-
-#page-detail-berita .detail-berita {
-  background: white;
-}
-
-#page-detail-berita .isi-detail-berita {
-  padding: 17px;
-  text-align: justify;
-}
-
-#page-detail-berita .isi-detail-berita .title {
-  margin-bottom: 5px;
-  font-size: 18px;
-  color: black;
-  font-weight: bolder;
-  text-align: left;
-  /*word-break: break-all;*/
-}
-
-#page-detail-berita .isi-detail-berita .time-title {
-  font-size: 10px;
-  margin-bottom: 11px;
-}
-
-#page-detail-berita .isi-detail-berita .isi {
-  font-size: 13px !important;
-  text-align: justify;
-  letter-spacing: initial;
-  color: #4a4a4a;
-  line-break: auto;
-}
-
-#page-detail-berita .isi-detail-berita .isi span {
-  white-space: pre-wrap;
-  word-break: break-word;
-  letter-spacing: 1px;
-}
-
-#berita-page-terkait .img-new-berita img {
-  border-radius: 10px;
-}
-
-#berita-page .img-new-berita img {
-  border-radius: 10px;
-}
-
-#berita-page-search .img-new-berita img {
-  border-radius: 10px;
-}
-
-.dsb-kategori-produk .stat-box.bg-primary {
-  padding: 20px 10px 20px 10px;
-  background: #074cb5 !important;
-}
-
-.dsb-kategori-produk .stat-box.bg-warning {
-  padding: 20px 10px 20px 10px;
-  background: #f6d435 !important;
-}
-
-.dsb-kategori-produk .stat-box .title {
-  margin-bottom: 0;
-  line-height: 30px;
-  font-size: 14px;
-}
-
 img.img-pom {
   width: 15%;
   margin-right: 3px;
 }
 
-#page-detail-berita .content {
-  /* position: relative; */
-  background: white;
-  height: auto;
-}
 
 #dsb-vcr-kpn .title {
   display: grid;
@@ -8235,24 +8072,6 @@ img.img-pom {
 #dsb-vcr-kpn .title .icon-arrow {
   width: 80%;
   margin-left: 7px;
-}
-
-.share-sosmed {
-  display: grid;
-  grid-template-columns: 30% 30% 30%;
-  width: 40%;
-  margin-top: 30px;
-  grid-column-gap: 10px;
-}
-
-.share-sosmed img {
-  width: 90%;
-}
-
-.carousel-berita img {
-  width: 100%;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }
 
 #count-voucher:before {
@@ -8281,21 +8100,6 @@ img.img-pom {
   color: #0d0d40;
 }
 
-#page-berita .carousel-berita ul li .card {
-  /*height: 290px;*/
-  min-height: 320px;
-}
-
-#page-berita .carousel-berita ul li .card .card-title {
-  font-size: 14px;
-}
-
-#page-berita .carousel-berita ul li .card .card-text {
-  font-size: 12px;
-  text-align: justify;
-  word-break: break-word;
-  letter-spacing: initial;
-}
 
 #list-voucher .card {
   margin-bottom: 20px;
@@ -8746,29 +8550,29 @@ img.img-pom {
   font-size: 11px;
 }
 
-.new-menu-promo .img-menu-promo img {
+.new-menu-content .img-menu-content img {
   width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-.new-menu-promo .text-promo {
+.new-menu-content .text-content {
   padding: 15px;
   color: black;
 }
 
-.new-menu-promo .title {
+.new-menu-content .title {
   font-weight: bolder;
 }
 
-.new-menu-promo .detail-text {
+.new-menu-content .detail-text {
   font-size: 12px;
   text-align: justify;
   line-break: auto;
   letter-spacing: initial;
 }
 
-.new-menu-promo .detail-text span {
+.new-menu-content .detail-text span {
   width: 100%;
   /*text-align: justify;*/
   word-break: break-word;
@@ -8856,20 +8660,6 @@ img.img-pom {
   display: none !important;
 }
 
-#slider-berita-dashboard .card {
-  min-height: 330px;
-}
-
-#slider-berita-dashboard .card .card-body .card-text {
-  /* word-break: break-word;
-    text-align: justify;
-    line-break: auto; */
-  font-size: 13px;
-}
-
-.herf-list-news {
-  /*display: none;*/
-}
 
 #produk-page-detail .div-image-detail {
   background: white;
@@ -9079,26 +8869,26 @@ img.img-pom {
   padding: 5px;
 }
 
-.slider-promo-detail img {
+.slider-agenda-detail img {
   border-radius: 10px;
 }
 
-.slider-promo-detail:before {
+.slider-agenda-detail:before {
   height: 100px !important;
 }
 
-#slider-promo-detail {
+#slider-agenda-detail {
   width: 95%;
   margin: 20px auto;
   background: white;
   border-radius: 10px;
 }
 
-#slider-promo-detail .text-slider {
+#slider-agenda-detail .text-slider {
   padding: 10px;
 }
 
-#slider-promo-detail .title-slider {
+#slider-agenda-detail .title-slider {
   color: black;
   font-size: 15px;
   word-break: break-word;
@@ -9106,7 +8896,7 @@ img.img-pom {
   font-weight: bolder;
 }
 
-#slider-promo-detail .description-slider {
+#slider-agenda-detail .description-slider {
   margin-top: 10px;
   color: black;
   font-size: 12px;
@@ -9143,139 +8933,7 @@ img.img-pom {
   /*line-break: anywhere;*/
 }
 
-#exampleModalCenterVoucher {
-  top: -80px !important;
-}
-
-#exampleModalCenterVoucher .modal-content {
-  width: 80% !important;
-  margin: 0 auto !important;
-}
-
-#exampleModalCenterVoucher .modal-footer {
-  display: none !important;
-}
-
-#exampleModalCenterVoucher .modal-header {
-  display: none !important;
-}
-
-#exampleModalCenterVoucher .btn-lihat-voucher {
-  width: 50%;
-  background: #0e0e95;
-  margin: 0 auto;
-  border-radius: 10px;
-  padding: 7px;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-}
-
-#exampleModalCenterVoucher .btn-lihat-voucher {
-  color: white !important;
-}
-
-#exampleModalCenterVoucher .icon-close-voucher {
-  position: absolute;
-  top: -25px;
-  right: -55px;
-}
-
-#exampleModalCenterVoucher .icon-close-voucher img {
-  width: 50%;
-}
-
-#exampleModalCenterVoucherConfirm {
-  top: -80px !important;
-}
-
-#exampleModalCenterVoucherConfirm .modal-content {
-  width: 80% !important;
-  margin: 0 auto !important;
-}
-
-#exampleModalCenterVoucherConfirm .modal-footer {
-  display: none !important;
-}
-
-#exampleModalCenterVoucherConfirm .modal-header {
-  display: none !important;
-}
-
-#exampleModalCenterVoucherConfirm .btn-lihat-voucherconfirm {
-  width: 50%;
-  background: #00aca8;
-  margin: 0 auto;
-  border-radius: 10px;
-  padding: 7px;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-}
-
-#exampleModalCenterVoucherConfirm .btn-lihat-voucherconfirm {
-  color: white !important;
-}
-
-#exampleModalCenterVoucherConfirm .icon-close-voucherconfirm {
-  position: absolute;
-  top: -25px;
-  right: -55px;
-}
-
-#exampleModalCenterVoucherConfirm .icon-close-voucherconfirm img {
-  width: 50%;
-}
-
-#exampleModalCenterVoucherManual {
-  top: -80px !important;
-}
-
-#exampleModalCenterVoucherManual .modal-content {
-  width: 80% !important;
-  margin: 0 auto !important;
-}
-
-#exampleModalCenterVoucherManual .modal-footer {
-  display: none !important;
-}
-
-#exampleModalCenterVoucherManual .modal-header {
-  display: none !important;
-}
-
-#exampleModalCenterVoucherManual .btn-lihat-vouchermanual {
-  width: 50%;
-  background: #0e0e95;
-  margin: 0 auto;
-  border-radius: 10px;
-  padding: 7px;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-}
-
-#exampleModalCenterVoucherManual .btn-lihat-vouchermanual {
-  color: white !important;
-}
-
-#exampleModalCenterVoucherManual .icon-close-vouchermanual {
-  position: absolute;
-  top: -25px;
-  right: -55px;
-}
-
-#exampleModalCenterVoucherManual .icon-close-vouchermanual img {
-  width: 50%;
-}
-
-#menu-kupon .total-kupon {
+#menu-listed .total-kupon {
   display: inline-block;
   margin-top: 10px;
   width: 100%;
@@ -9284,35 +8942,35 @@ img.img-pom {
   padding: 10px;
 }
 
-#menu-kupon .div-total-kupon {
+#menu-listed .div-total-kupon {
   font-size: 13px;
   color: black;
 }
 
-#menu-kupon .div-total-kupon span {
+#menu-listed .div-total-kupon span {
   margin-left: 7px;
 }
 
-#menu-kupon .card-image img {
+#menu-listed .card-image img {
   width: 100%;
   /*border-radius: 8px;*/
 }
 
-#menu-kupon .card-detail {
+#menu-listed .card-detail {
   margin-top: 10px;
 }
 
-#menu-kupon .card-status .col-8 {
+#menu-listed .card-status .col-8 {
   color: black;
   font-size: 14px;
 }
 
-#menu-kupon .card-status .col-4 {
+#menu-listed .card-status .col-4 {
   text-align: center;
   margin-top: 13px;
 }
 
-#menu-kupon .card-status .col-4 a {
+#menu-listed .card-status .col-4 a {
   background: #181881;
   color: white;
   padding: 11px;
@@ -9322,15 +8980,15 @@ img.img-pom {
   /* margin-top: 15px; */
 }
 
-#list-kupon {
+#list-listed {
   margin-top: 20px;
 }
 
-#list-kupon .card {
+#list-listed .card {
   margin-bottom: 10px;
 }
 
-#menu-kupon .kategori-kupon {
+#menu-listed .kategori-listed {
   display: grid;
   grid-template-columns: 30% 30% 30%;
   grid-gap: 5%;
@@ -9339,7 +8997,7 @@ img.img-pom {
   margin-top: 15px;
 }
 
-#menu-kupon .kategori-kupon a.btn-list-kategori {
+#menu-listed .kategori-listed a.btn-list-kategori {
   padding: 8px 1px;
   border-radius: 10px;
   color: white;
@@ -9551,196 +9209,46 @@ img.img-pom {
   height: 32px;
 }
 
-#page-detail-berita .category-news {
-  width: 100%;
-  display: inline-block;
-}
 
-#page-detail-berita .category-news .nama-kategori {
-  width: 50%;
-  float: left;
-}
-
-#page-detail-berita .category-news .detail-view {
-  width: 50%;
-  float: right;
-  text-align: right;
-}
-
-#page-detail-berita .category-news .nama-kategori .arrow {
-  position: relative;
-  width: 70px;
-  /* margin: 0 auto; */
-  text-align: left;
-  background: #3fa1db;
-  color: white;
-  font-size: 11px;
-  margin-left: 5p;
-  border: 0px solid transparent;
-  line-height: 26px;
-  height: 26px;
-}
-
-#page-detail-berita .category-news .nama-kategori .arrow:after {
-  content: "";
-  position: absolute;
-  border-top: 13px solid transparent;
-  border-right: 40px solid transparent;
-  border-bottom: 13px solid transparent;
-  border-left: 16px solid #3fa1db;
-  top: 0px;
-  right: -55px;
-  z-index: 1;
-}
-
-#page-detail-berita .category-news .nama-kategori span {
-  margin-left: 8px;
-}
-
-#page-detail-berita .category-news .detail-view img {
-  width: 13%;
-}
-
-#slider-promo-detail .footer-slider-detail {
-  width: 100%;
-  display: inline-block;
-  margin-top: 10px;
-}
-
-#slider-promo-detail .footer-slider-detail .share-promo {
-  width: 50%;
-  float: left;
-  text-align: left;
-}
-
-#slider-promo-detail .footer-slider-detail .total-view {
-  width: 50%;
-  float: right;
-  text-align: right;
-  margin-top: 5px;
-}
-
-#slider-promo-detail .footer-slider-detail .total-view img {
-  width: 12%;
-}
-
-.share-news {
-  margin-top: 15px;
-}
-
-.share-news img {
-  width: 14%;
-}
-
-.share-promo img {
-  width: 23%;
-  margin-left: 10px;
-}
-
-/* .rounded-left {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-} */
-
-/* progress struk */
-
-/* .line::before {
-  content: "";
-  border: 1px dashed grey;
-  width: 100%;
-  height: 1px;
-  top: 21px;
-  left: -40%;
-  right: 0;
-  position: absolute;
-  opacity: 0.5;
-  z-index: -2 !important;
-} */
-
-.line::after {
-  content: "";
-  border: 1px dashed grey;
-  width: 100%;
-  height: 1px;
-  top: 21px;
-  left: 40%;
-  right: 0;
-  position: absolute;
-  opacity: 0.5;
-  z-index: -2 !important;
-}
-
-.line.completed::after {
-  content: "";
-  border: 1px solid grey;
-  width: 80%;
-  height: 1px;
-  top: 21px;
-  left: 50%;
-  right: 0;
-  position: absolute;
-  opacity: 0.5;
-  z-index: -1 !important;
-}
-
-.wrapper-img {
-  z-index: 5 !important;
-}
-
-/* .owl-item img:hover {
-  border-radius: 50%;
-  box-shadow: 0px 0px 3px grey;
-} */
-
-.owl-item p {
-  font-size: 10px;
-  padding-left: 9px;
-}
-
-/* progress struk */
 
 /* list struk */
 
-/* #list-struk:before {
-  height: 250px !important;
-} */
-
-#list-struk .card-image {
+#list-data .card-image {
   border-radius: 10px;
   align-items: center;
 }
 
-#list-struk .card-image img {
+#list-data .card-image img {
   width: 100%;
   padding-top: 8px;
   padding-bottom: 8px;
 }
 
-#list-struk .card-detail {
+#list-data .card-detail {
   font-size: 11px;
 }
 
-#list-struk .card-status {
+#list-data .card-status {
   margin-top: 0px;
   text-align: left;
 }
 
-#list-struk table {
+#list-data table {
   width: 100%;
 }
 
-#list-struk .card-keterangan {
+#list-data .card-keterangan {
   font-size: 11px;
   margin-top: 10px;
 }
 
-#list-struk .btn-pakai-voucher {
+#list-data .btn-pakai-voucher {
   margin-top: 15px;
   width: 100%;
   text-align: center;
 }
 
-#list-struk .btn-pakai-voucher a {
+#list-data .btn-pakai-voucher a {
   background: grey;
   color: white;
   /* padding: 10px 35px; */

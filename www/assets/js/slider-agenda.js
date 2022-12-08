@@ -19,11 +19,11 @@ if (firstCon == "online") {
   };
   $.ajax({
     beforeSend: function (xhr) {
-      $(".slider-promo1").attr("src", "assets/img/sample/news/loading.gif");
-      $(".slider-promo2").attr("src", "assets/img/sample/news/loading.gif");
-      $(".slider-promo3").attr("src", "assets/img/sample/news/loading.gif");
-      $(".slider-promo4").attr("src", "assets/img/sample/news/loading.gif");
-      $(".slider-promo5").attr("src", "assets/img/sample/news/loading.gif");
+      $(".slider-agenda1").attr("src", "assets/img/sample/news/loading.gif");
+      $(".slider-agenda2").attr("src", "assets/img/sample/news/loading.gif");
+      $(".slider-agenda3").attr("src", "assets/img/sample/news/loading.gif");
+      $(".slider-agenda4").attr("src", "assets/img/sample/news/loading.gif");
+      $(".slider-agenda5").attr("src", "assets/img/sample/news/loading.gif");
     },
     type: "POST",
     url: conn + "/promo",
@@ -46,137 +46,137 @@ if (firstCon == "online") {
         var length_data = data_fl.length;
         // console.log('jumlah data promo:'+length_data);
         if (length_data >= 5) {
-          $(".slider-promo1").attr("id", data_fl[0].id);
-          $(".slider-promo2").attr("id", data_fl[1].id);
-          $(".slider-promo3").attr("id", data_fl[2].id);
-          $(".slider-promo4").attr("id", data_fl[3].id);
-          $(".slider-promo5").attr("id", data_fl[4].id);
+          $(".slider-agenda1").attr("id", data_fl[0].id);
+          $(".slider-agenda2").attr("id", data_fl[1].id);
+          $(".slider-agenda3").attr("id", data_fl[2].id);
+          $(".slider-agenda4").attr("id", data_fl[3].id);
+          $(".slider-agenda5").attr("id", data_fl[4].id);
 
-          $(".slider-promo1").attr(
+          $(".slider-agenda1").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
-          $(".slider-promo2").attr(
+          $(".slider-agenda2").attr(
             "src",
             server_url + "/images/" + data_fl[1].image
           );
-          $(".slider-promo3").attr(
+          $(".slider-agenda3").attr(
             "src",
             server_url + "/images/" + data_fl[2].image
           );
-          $(".slider-promo4").attr(
+          $(".slider-agenda4").attr(
             "src",
             server_url + "/images/" + data_fl[3].image
           );
-          $(".slider-promo5").attr(
+          $(".slider-agenda5").attr(
             "src",
             server_url + "/images/" + data_fl[4].image
           );
         } else if (length_data == 4) {
-          $(".slider-promo1").attr("id", data_fl[0].id);
-          $(".slider-promo2").attr("id", data_fl[1].id);
-          $(".slider-promo3").attr("id", data_fl[2].id);
-          $(".slider-promo4").attr("id", data_fl[3].id);
-          $(".slider-promo5").attr("id", data_fl[0].id);
+          $(".slider-agenda1").attr("id", data_fl[0].id);
+          $(".slider-agenda2").attr("id", data_fl[1].id);
+          $(".slider-agenda3").attr("id", data_fl[2].id);
+          $(".slider-agenda4").attr("id", data_fl[3].id);
+          $(".slider-agenda5").attr("id", data_fl[0].id);
 
-          $(".slider-promo1").attr(
+          $(".slider-agenda1").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
-          $(".slider-promo2").attr(
+          $(".slider-agenda2").attr(
             "src",
             server_url + "/images/" + data_fl[1].image
           );
-          $(".slider-promo3").attr(
+          $(".slider-agenda3").attr(
             "src",
             server_url + "/images/" + data_fl[2].image
           );
-          $(".slider-promo4").attr(
+          $(".slider-agenda4").attr(
             "src",
             server_url + "/images/" + data_fl[3].image
           );
-          $(".slider-promo5").attr(
+          $(".slider-agenda5").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
         } else if (length_data == 3) {
-          $(".slider-promo1").attr("id", data_fl[0].id);
-          $(".slider-promo2").attr("id", data_fl[1].id);
-          $(".slider-promo3").attr("id", data_fl[2].id);
-          $(".slider-promo4").attr("id", data_fl[0].id);
-          $(".slider-promo5").attr("id", data_fl[1].id);
+          $(".slider-agenda1").attr("id", data_fl[0].id);
+          $(".slider-agenda2").attr("id", data_fl[1].id);
+          $(".slider-agenda3").attr("id", data_fl[2].id);
+          $(".slider-agenda4").attr("id", data_fl[0].id);
+          $(".slider-agenda5").attr("id", data_fl[1].id);
 
-          $(".slider-promo1").attr(
+          $(".slider-agenda1").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
-          $(".slider-promo2").attr(
+          $(".slider-agenda2").attr(
             "src",
             server_url + "/images/" + data_fl[1].image
           );
-          $(".slider-promo3").attr(
+          $(".slider-agenda3").attr(
             "src",
             server_url + "/images/" + data_fl[2].image
           );
-          $(".slider-promo4").attr(
+          $(".slider-agenda4").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
-          $(".slider-promo5").attr(
+          $(".slider-agenda5").attr(
             "src",
             server_url + "/images/" + data_fl[1].image
           );
         } else if (length_data == 2) {
-          $(".slider-promo1").attr("id", data_fl[0].id);
-          $(".slider-promo2").attr("id", data_fl[1].id);
-          $(".slider-promo3").attr("id", data_fl[0].id);
-          $(".slider-promo4").attr("id", data_fl[1].id);
-          $(".slider-promo5").attr("id", data_fl[0].id);
+          $(".slider-agenda1").attr("id", data_fl[0].id);
+          $(".slider-agenda2").attr("id", data_fl[1].id);
+          $(".slider-agenda3").attr("id", data_fl[0].id);
+          $(".slider-agenda4").attr("id", data_fl[1].id);
+          $(".slider-agenda5").attr("id", data_fl[0].id);
 
-          $(".slider-promo1").attr(
+          $(".slider-agenda1").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
-          $(".slider-promo2").attr(
+          $(".slider-agenda2").attr(
             "src",
             server_url + "/images/" + data_fl[1].image
           );
-          $(".slider-promo3").attr(
+          $(".slider-agenda3").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
-          $(".slider-promo4").attr(
+          $(".slider-agenda4").attr(
             "src",
             server_url + "/images/" + data_fl[1].image
           );
-          $(".slider-promo5").attr(
+          $(".slider-agenda5").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
         } else if (length_data == 1) {
-          $(".slider-promo1").attr("id", data_fl[0].id);
-          $(".slider-promo2").attr("id", data_fl[0].id);
-          $(".slider-promo3").attr("id", data_fl[0].id);
-          $(".slider-promo4").attr("id", data_fl[0].id);
-          $(".slider-promo5").attr("id", data_fl[0].id);
+          $(".slider-agenda1").attr("id", data_fl[0].id);
+          $(".slider-agenda2").attr("id", data_fl[0].id);
+          $(".slider-agenda3").attr("id", data_fl[0].id);
+          $(".slider-agenda4").attr("id", data_fl[0].id);
+          $(".slider-agenda5").attr("id", data_fl[0].id);
 
-          $(".slider-promo1").attr(
+          $(".slider-agenda1").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
-          $(".slider-promo2").attr(
+          $(".slider-agenda2").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
-          $(".slider-promo3").attr(
+          $(".slider-agenda3").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
-          $(".slider-promo4").attr(
+          $(".slider-agenda4").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
-          $(".slider-promo5").attr(
+          $(".slider-agenda5").attr(
             "src",
             server_url + "/images/" + data_fl[0].image
           );
@@ -198,11 +198,11 @@ if (firstCon == "online") {
       console.log(textStatus);
       console.log(errorThrown);
       SpinnerDialog.hide();
-      $(".slider-promo1").attr("src", "assets/img/sample/news/loading.gif");
-      $(".slider-promo2").attr("src", "assets/img/sample/news/loading.gif");
-      $(".slider-promo3").attr("src", "assets/img/sample/news/loading.gif");
-      $(".slider-promo4").attr("src", "assets/img/sample/news/loading.gif");
-      $(".slider-promo5").attr("src", "assets/img/sample/news/loading.gif");
+      $(".slider-agenda1").attr("src", "assets/img/sample/news/loading.gif");
+      $(".slider-agenda2").attr("src", "assets/img/sample/news/loading.gif");
+      $(".slider-agenda3").attr("src", "assets/img/sample/news/loading.gif");
+      $(".slider-agenda4").attr("src", "assets/img/sample/news/loading.gif");
+      $(".slider-agenda5").attr("src", "assets/img/sample/news/loading.gif");
       if (jqXHR.readyState == 0) {
         console.log(
           "Network error (i.e. connection refused, access denied due to CORS, etc.)"
@@ -219,20 +219,20 @@ if (firstCon == "online") {
     });
 } else {
   SpinnerDialog.hide();
-  $(".slider-promo1").attr("src", "assets/img/sample/news/loading.gif");
-  $(".slider-promo2").attr("src", "assets/img/sample/news/loading.gif");
-  $(".slider-promo3").attr("src", "assets/img/sample/news/loading.gif");
-  $(".slider-promo4").attr("src", "assets/img/sample/news/loading.gif");
-  $(".slider-promo5").attr("src", "assets/img/sample/news/loading.gif");
+  $(".slider-agenda1").attr("src", "assets/img/sample/news/loading.gif");
+  $(".slider-agenda2").attr("src", "assets/img/sample/news/loading.gif");
+  $(".slider-agenda3").attr("src", "assets/img/sample/news/loading.gif");
+  $(".slider-agenda4").attr("src", "assets/img/sample/news/loading.gif");
+  $(".slider-agenda5").attr("src", "assets/img/sample/news/loading.gif");
   // navigator.notification.alert('Koneksi offline - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #DB-001', alertDismissed, TITLE_ALERT, 'Ok');
 }
 
-function clickPromoDetailDashboard(id) {
-  window.localStorage.removeItem("id_promo");
-  window.localStorage.setItem("id_promo", id);
-  var id_slider_p = id;
+function clickAgendaDetailDashboard(id) {
+  window.localStorage.removeItem("id_agenda");
+  window.localStorage.setItem("id_agenda", id);
+  var id_agenda_p = id;
   if (id != 2) {
-    pages("slider-promo-detail");
+    pages("slider-agenda-detail");
   } else {
     pages("layanan-informasi");
   }

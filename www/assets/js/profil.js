@@ -86,7 +86,7 @@ $.ajax({
       data_profile += "</tr>";
       data_profile += "<tr>";
       data_profile +=
-        '<td colspan="2 pt-2 pb-2"><button type="submit" onClick="pages(\'edit-user\')"class="btn btn-primary btn-block btn-lg"><i class="material-icons">exit_to_app</i> Logout</button>';
+        '<td colspan="2 pt-2 pb-2"><button type="submit" onClick="logout()"class="btn btn-primary btn-block btn-lg"><i class="material-icons">exit_to_app</i> Logout</button>';
       data_profile += "</td>";
       data_profile += "</tr>";
       data_profile += "</table></div>";

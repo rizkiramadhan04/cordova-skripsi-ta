@@ -13,29 +13,24 @@
     </div>
 </div>
 
-<div id="containerUploadStruk" class="section wallet-card-section pt-1 text-center">
+<div id="containerUploadPembayaran" class="section wallet-card-section pt-1 text-center">
     <div class="wallet-card pt-3 pb-3">
         <h2>Unggah Bukti Pembayaran</h2>
         <p>Foto atau unggah bukti pembayaran via transfer Bank / ATM</p>
-        <form id="formCekStruk">
+        <form id="formCekPembayaran">
             <div class="mt-2 transparent">
                 <div class="btn-group btn-block" role="group">
                     <button onClick="fotoActionSheet('struk')" class="btn btn-primary btn-lg">Unggah Bukti</button>
                     <button onClick="fotoActionSheet('struk')" class="btn btn-primary btn-lg"><i class="material-icons">camera_alt</i></button>
                 </div>
-                <img class="mt-2" id="real_foto_struk" src="assets/img/icon-add-image.png" width="98%" />
-                <input type="hidden" name="foto_text_struk" id="foto_text_struk" />
+                <img class="mt-2" id="real_foto_pembayaran" src="assets/img/icon-add-image.png" width="98%" />
+                <input type="hidden" name="foto_text_pembayaran" id="foto_text_pembayaran" />
             </div>
 
-            <div id="resultCheckStruk" class="mt-2 transparent" style="display:none;">
+            <div id="resultCheckPembayaran" class="mt-2 transparent" style="display:none;">
                 <table id="tableResultSuccessReadReceipt" style="text-align:left;font-weight:bold;color:#001451;display:none">
                     <tr>
-                        <td colspan="3"><span style="font-weight:bold;color:#001451;">Info Struk</span></td>
-                    </tr>
-                    <tr>
-                        <td>Site</td>
-                        <td style="width:38px;text-align:center;">:</td>
-                        <td><span id="siteIdCheckReceipt"></span></td>
+                        <td colspan="3"><span style="font-weight:bold;color:#001451;">Info Pembayaran</span></td>
                     </tr>
                     <tr>
                         <td>Receipt</td>
@@ -57,7 +52,7 @@
             </div>
 
             <div class="mt-2 transparent">
-                <div id="containerButtonCekStruk" class="btn-group btn-block" role="group">
+                <div id="containerButtonCekPembayaran" class="btn-group btn-block" role="group">
                     <div class="form-group basic">
                         <div class="input-wrapper">
                             <label class="label" for="jumlah">Jumlah Transfer Rp. </label>
@@ -69,29 +64,23 @@
                     </div>
                 </div>
 
-                <div id="containerButtonUlangiCekStruk" style="display:none;">
+                <div id="containerButtonUlangiCekPembayaran" style="display:none;">
                     <div class="row mt-2">
                         <div class="col-6">
-                            <button onClick="ulangiSubmitStruk()" class="btn btn-primary btn-block btn-lg"><i class="material-icons">refresh</i>&nbsp;Ulangi</button>
-                        </div>
-                        <div class="col-6">
-                            <button onClick="revealFormStruk()" class="btn btn-outline-primary btn-block btn-lg d-none"><i class="material-icons">edit</i>&nbsp;Input Manual</button>
+                            <button onClick="ulangiSubmitPembayaran()" class="btn btn-primary btn-block btn-lg"><i class="material-icons">refresh</i>&nbsp;Ulangi</button>
                         </div>
                     </div>
                 </div>
 
-                <div id="containerButtonUploadStruk" style="display:none;">
+                <div id="containerButtonUploadPembayaran" style="display:none;">
                     <div class="row">
                         <div class="col-12">
-                            <button onClick="uploadStruk()" class="btn btn-primary btn-lg btn-block"><i class="material-icons">cloud_upload</i>&nbsp;Unggah Struk</button>
+                            <button onClick="uploadPembayaran()" class="btn btn-primary btn-lg btn-block"><i class="material-icons">cloud_upload</i>&nbsp;Unggah Struk</button>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">
-                            <button onClick="ulangiSubmitStruk()" class="btn btn-outline-primary btn-block btn-lg"><i class="material-icons">refresh</i>&nbsp;Ulangi</button>
-                        </div>
-                        <div class="col-6">
-                            <button onClick="revealFormStruk()" class="btn btn-outline-primary btn-block btn-lg d-none"><i class="material-icons">edit</i>&nbsp;Input Manual</button>
+                            <button onClick="ulangiSubmitPembayaran()" class="btn btn-outline-primary btn-block btn-lg"><i class="material-icons">refresh</i>&nbsp;Ulangi</button>
                         </div>
                     </div>
 
@@ -99,63 +88,15 @@
             </div>
 
         </form>
-
-        <form id="formUploadStruk" >
-            <input type="hidden" id="formUploadStrukUserId" name="formUploadStrukUserId">
-            <input type="hidden" id="formUploadStrukSiteId" name="formUploadStrukSiteId">
-            <input type="hidden" id="formUploadStrukReceiptNumber" name="formUploadStrukReceiptNumber">
-            <input type="hidden" id="formUploadStrukPurchaseDate" name="formUploadStrukPurchaseDate">
-            <input type="hidden" id="formUploadStrukAmount" name="formUploadStrukAmount">
-            <input type="hidden" id="formUploadStrukFileReceipt" name="formUploadStrukReceipt">
+        <form id="formuploadPembayaran" >
+            <input type="hidden" id="formuploadPembayaranUserId" name="formuploadPembayaranUserId">
+            <input type="hidden" id="formuploadPembayaranSiteId" name="formuploadPembayaranSiteId">
+            <input type="hidden" id="formuploadPembayaranReceiptNumber" name="formuploadPembayaranReceiptNumber">
+            <input type="hidden" id="formuploadPembayaranPurchaseDate" name="formuploadPembayaranPurchaseDate">
+            <input type="hidden" id="formuploadPembayaranAmount" name="formuploadPembayaranAmount">
+            <input type="hidden" id="formuploadPembayaranFileReceipt" name="formuploadPembayaranReceipt">
         </form>
-    </div>
-</div>
 
-<div id="containerFormStruk" class="section wallet-card-section pt-1 text-center" style="display: none;">
-    <div class="wallet-card pt-3 pb-3">
-        <h2>Input Manual</h2>
-        <p>Masukkan informasi yang tertera di struk, ke dalam form di bawah ini.</p>
-        <form id="formInputStruk">
-            <div class="mt-2 transparent">
-
-                <div class="form-group basic">
-                    <div class="input-wrapper">
-                        <label class="label" for="formInputStrukSiteId">Nomer Site<span class="form-mandatory">*</span></label>
-                        <input type="text" class="form-control" id="formInputStrukSiteId" name="formInputStrukSiteId" placeholder="">
-                    </div>
-                </div>
-
-                <div class="form-group basic">
-                    <div class="input-wrapper">
-                        <label class="label" for="formInputStrukReceiptNumber">Nomer Nota<span class="form-mandatory">*</span></label>
-                        <input type="text" class="form-control" id="formInputStrukReceiptNumber" name="formInputStrukReceiptNumber" placeholder="">
-                    </div>
-                </div>
-
-                <div class="form-group basic">
-                    <div class="input-wrapper">
-                        <label class="label" for="formInputStrukPurchaseDate">Tanggal - Waktu Transaksi<span class="form-mandatory">*</span></label>
-                        <input type="datetime-local" class="form-control" id="formInputStrukPurchaseDate" name="formInputStrukPurchaseDate" placeholder="">
-                    </div>
-                </div>
-
-                <div class="form-group basic">
-                    <div class="input-wrapper">
-                        <label class="label" for="formInputStrukAmount">Jumlah<span class="form-mandatory">*</span></label>
-                        <input type="text" class="form-control" id="formInputStrukAmount" name="formInputStrukAmount" placeholder="">
-                    </div>
-                </div>
-
-                <div class="row mt-2">
-                    <div class="col-6">
-                        <button onClick="ulangiSubmitStruk()" class="btn btn-outline-primary btn-block btn-lg"><i class="material-icons">refresh</i>&nbsp;Batal</button>
-                    </div>
-                    <div class="col-6">
-                        <button onClick="submitManualStruk()" class="btn btn-outline-primary btn-block btn-lg"><i class="material-icons">edit</i>&nbsp;Submit Data</button>
-                    </div>
-                </div>
-            </div>
-        </form>
     </div>
 </div>
 
@@ -166,7 +107,7 @@
 </div>
 <div class="section mb-2">
     <div class="card">
-        <img src="assets/img/ketentuan-upload-struk.png" class="card-img-top" alt="image">
+        <img src="assets/img/" class="card-img-top" alt="image">
         <div class="card-body">
             <h5 class="card-title news-title-0"></h5>
             <p class="card-text news-dshb-0">

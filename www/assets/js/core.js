@@ -53,23 +53,9 @@ document.querySelectorAll("img").forEach((img) => {
   };
 });
 
-var OneSignal = window.OneSignal || [];
-OneSignal.push(function () {
-  OneSignal.init({
-    appId: "28b62ea9-2eb1-489e-bbe8-c18bdff1b7f4",
-  });
 
-  //28b62ea9-2eb1-489e-bbe8-c18bdff1b7f4 app id nadyne
-  //0b5f9921-46b2-431f-8a11-4c80e752eb81 app id indostation
 
-  // console.log("Berhasil subscribe");
-  OneSignal.showNativePrompt();
-});
 
-// onSuccess Callback
-// This method accepts a Position object, which contains the
-// current GPS coordinates
-//
 var onSuccessGeoLocation = function (position) {
   window.localStorage.setItem("latitude", position.coords.latitude);
   window.localStorage.setItem("longitude", position.coords.longitude);
@@ -371,10 +357,7 @@ function onDeviceReady() {
   };
   window.CacheClear(success, error);
   //end clear cache
-  updateVersion();
-  cekMaintenance();
-  // OneSignalInit();
-  modalStruk();
+  
 
   var deviceManufacturer = device.manufacturer;
   var model = device.model;
@@ -500,32 +483,6 @@ function onDeviceReady() {
   window.localStorage.setItem("versi_app", versionDevice);
   // window.localStorage.setItem("pop_up_update_sudah_tampil", "");
 
-  window.plugins.appsFlyer.registerDeepLink(function (res) {
-    console.log("AppsFlyer DDL ==> " + res);
-    //alert('AppsFlyer DDL ==> ' + res);
-  });
-
-  window.plugins.appsFlyer.initSdk(
-    {
-      devKey: "qC69oBPHF2WD3cyUoz3pra", // your AppsFlyer devKey
-      isDebug: false,
-      appId: "3135196843475135", // your ios appID
-      waitForATTUserAuthorization: 10, //time for the sdk to wait before launch - IOS 14 ONLY!
-      onInstallConversionDataListener: true,
-      onDeepLinkListener: true, // by default onDeepLinkListener is false!
-    },
-    (result) => {
-      console.log(result);
-    },
-    (error) => {
-      console.error(error);
-    }
-  );
-
-  //start-pusher
-  // initPusher();
-  //end-pusher
-
   // console.log(versionDevice);
   window.localStorage.setItem("versionDevice", versionDevice);
   window.localStorage.removeItem("province_id");
@@ -546,110 +503,6 @@ function getLocation() {
     optionsGeoLoc
   );
 }
-
-// function initPusher() {
-//   if (window.localStorage.getItem("access_token") !== "") {
-//     var pusher = new Pusher("eb3ec020eefa4815a37050ffcd3883bc", {
-//       cluster: "ap1",
-//       authEndpoint: server_url + "/broadcasting/auth",
-//       wsHost: "sandboxc.brahmayasa.com",
-//       wssHost: "sandboxc.brahmayasa.com",
-//       wsPort: 6001,
-//       wssPort: 6001,
-//       forceTLS: true,
-//       encrypted: true,
-//       disableStats: true,
-//       enabledTransports: ["ws", "wss"],
-//       auth: {
-//         headers: {
-//           Authorization:
-//             "Bearer " + window.localStorage.getItem("access_token"),
-//         },
-//       },
-//     });
-//   }
-
-//   if (window.localStorage.getItem("userID") !== "") {
-//     var channel_name =
-//       "private-App.User." + window.localStorage.getItem("userID");
-//     var event_name = "notification.general";
-
-//     var channel = pusher.subscribe(channel_name);
-//     channel.bind(event_name, function (data) {
-//       console.log(JSON.stringify(data));
-//       //alert(JSON.stringify(data));
-//       cordova.plugins.notification.local.schedule({
-//         title: "Mobil Indostation",
-//         text: data.message,
-//         foreground: true,
-//       });
-//     });
-//     channel.bind("pusher:subscription_error", function (data) {
-//       console.log(data);
-//     });
-//   }
-
-//   return 1;
-// }
-
-function generateOTP() {
-  return $.ajax({
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader(
-        "Authorization",
-        "Bearer " + window.localStorage.getItem("access_token")
-      );
-      xhr.setRequestHeader("Accept", "application/json");
-    },
-    type: "POST",
-    url: conn + "/otp/generate",
-    dataType: "json",
-    async: true,
-    timeout: timeout1,
-  });
-}
-
-function ajaxCheckVersion() {
-  return $.ajax({
-    type: "POST",
-    url: conn + "/check-version",
-    dataType: "json",
-    async: true,
-    timeout: timeout1,
-  });
-}
-
-function runningVersion() {
-  /*
-      ajaxCheckVersion().done(function(values) {
-          if (values.version != '') {
-
-              versionServer = values.version;
-              checkVersion = true;
-              console.log(versionServer);
-              console.log(versionDevice);
-              var compareVer = compareVersion(versionServer, versionDevice);
-              console.log(compareVer);
-              var pop_up_update_sudah_tampil = window.localStorage.getItem("pop_up_update_sudah_tampil");
-
-              if (compareVer == '1' && (pop_up_update_sudah_tampil != '1')) {
-                  //alert('New App Version : ' + server + '\nChange the latest version!' );
-                  general_modal('Version Info', '<p style="width:100%;text-align:center">Ada update APK baru, silahkan klik button Download <br/><a style="margin-top:20px" class="btn btn-block gradient-blue" onClick="getAPK()" href="javascript:void(0)">Download</a><br/></p>');
-                  window.localStorage.setItem("pop_up_update_sudah_tampil", "1");
-              } else {
-                  //general_modal('Version Info', '<p style="width:100%;text-align:center">APK sudah terupdate</p>');
-              }
-          }
-
-      }).fail(function(jqXHR, textStatus, error) {
-          console.log('Error ajax check version server');
-          console.log('---------------');
-          console.log('error : ');
-          console.log(jqXHR);
-          console.log('---------------');
-      });
-      */
-} //
 
 function firstConnection() {
   //console.log(checkConnection());
@@ -845,20 +698,6 @@ function pages(main) {
       target_main.load("contents/login.html");
       break;
 
-    case "register":
-      window.localStorage.setItem("current_page", "register");
-      target_main.load("contents/register.html");
-      break;
-
-    case "otp-register":
-      target_main.load("contents/otp-register.html");
-      break;
-
-    case "bantuan":
-      window.localStorage.setItem("current_page", "bantuan");
-      target_main.load("contents/bantuan.html");
-      break;
-
     case "agenda":
       window.localStorage.setItem("current_page", "agenda");
       target_main.load("contents/agenda.html");
@@ -885,16 +724,6 @@ function pages(main) {
       target_main.load("contents/presensi.html");
       break;
 
-    case "produk":
-      window.localStorage.setItem("current_page", "produk");
-      target_main.load("contents/produk.html");
-      break;
-
-    case "produk-detail":
-      window.localStorage.setItem("current_page", "produk-detail");
-      target_main.load("contents/produk-detail.html");
-      break;
-
     case "profil":
       window.localStorage.setItem("current_page", "profil");
       target_main.load("contents/profil.html");
@@ -905,27 +734,12 @@ function pages(main) {
       target_main.load("contents/profil-edit.html");
       break;
 
-    case "message":
-      window.localStorage.setItem("current_page", "message");
-      target_main.load("contents/message.html");
-      break;
-
     case "mengaji":
       window.localStorage.setItem("current_page", "mengaji");
       $(".appBottomMenu").find("a").removeClass("active");
       $("#linkBottomMenuMengaji").addClass("active");
 
       target_main.load("contents/mengaji.html");
-      break;
-
-    case "site":
-      window.localStorage.setItem("current_page", "site");
-      target_main.load("contents/site.html");
-      break;
-
-    case "site-detail":
-      window.localStorage.setItem("current_page", "site-detail");
-      target_main.load("contents/site-detail.html");
       break;
 
     case "hafalan":
@@ -936,92 +750,14 @@ function pages(main) {
       target_main.load("contents/hafalan.html");
       break;
 
-    case "settings":
-      window.localStorage.setItem("current_page", "settings");
-      target_main.load("contents/settings.html");
-      break;
-
-    case "contact-us":
-      window.localStorage.setItem("current_page", "contact-us");
-      target_main.load("contents/contact-us.html");
-      break;
-
-    case "privacy-policy":
-      window.localStorage.setItem("current_page", "privacy-policy");
-      target_main.load("contents/privacy-policy.html");
-      break;
-
-    case "scan-voucher":
-      window.localStorage.setItem("current_page", "scan-voucher");
-      target_main.load("contents/scan-voucher.html");
-      break;
-
-    case "promo-gold":
-      window.localStorage.setItem("current_page", "promo-gold");
-      target_main.load("contents/promo-detail-gold.html");
-      break;
-
-    case "promo-silver":
-      window.localStorage.setItem("current_page", "promo-silver");
-      target_main.load("contents/promo-detail-silver.html");
-      break;
-
-    case "layanan-informasi":
-      window.localStorage.setItem("current_page", "layanan-informasi");
-      target_main.load("contents/layanan-informasi.html");
-      break;
-
     case "slider-agenda-detail":
       window.localStorage.setItem("current_page", "slider-agenda-detail");
       target_main.load("contents/slider-agenda-detail.html");
       break;
 
-    case "privasi":
-      window.localStorage.setItem("current_page", "privasi");
-      target_main.load("contents/privasi.html");
-      break;
-
-    case "pakai-voucher":
-      window.localStorage.setItem("current_page", "pakai-voucher");
-      target_main.load("contents/pakai-voucher.html");
-      break;
-
-    case "detail-kupon":
-      window.localStorage.setItem("current_page", "detail-kupon");
-      target_main.load("contents/detail-kupon.html");
-      break;
-
-    case "sukses-struk":
-      window.localStorage.setItem("current_page", "sukses-struk");
-      target_main.load("contents/berhasil-upload-struk.html");
-      break;
-
-    case "cari-produk":
-      window.localStorage.setItem("current_page", "cari-produk");
-      target_main.load("contents/cari-produk.html");
-      break;
-
-    case "lupa-password":
-      window.localStorage.setItem("current_page", "lupa-password");
-      target_main.load("contents/lupa-password.html");
-      break;
-
     case "edit-user":
       window.localStorage.setItem("current_page", "edit-user");
       target_main.load("contents/edit-user.html");
-      break;
-
-    case "progress-struk":
-      window.localStorage.setItem("current_page", "progress-struk");
-      target_main.load("contents/progress-struk.html");
-      break;
-
-    case "otp-edit-profile":
-      window.localStorage.setItem(
-        "current_page",
-        "progress-strukotp-edit-profile"
-      );
-      target_main.load("contents/otp-edit-profile.html");
       break;
 
     case "list-pembayaran":
@@ -1033,8 +769,8 @@ function pages(main) {
       break;
 
     default:
-      window.localStorage.setItem("current_page", "dashboard"); //default login
-      target_main.load("contents/dashboard.html");
+      window.localStorage.setItem("current_page", "login");
+      target_main.load("contents/login.html");
   }
   $("#sidebarPanel").modal("hide");
 }
@@ -1159,8 +895,6 @@ function loginOnline() {
         } else if (values.status == "success") {
           //console.log(values.role[0]);
 
-          window.localStorage.setItem("provinsi", values.provinsi);
-
           window.localStorage.setItem("userID", values.user_id);
           NativeStorage.setItem(
             "userID",
@@ -1198,13 +932,6 @@ function loginOnline() {
             $("#topRightAfterLogin").show();
             $("#linkLoginSidebarPanel").hide();
             $("#linkLogoutSidebarPanel").show();
-
-            //start-pusher
-            // initPusher();
-            //end-pusher
-
-            //oneSignal-register-player_id
-            deviceUserRegister();
           }
 
           //loading('show');
@@ -1265,7 +992,6 @@ function loginOnline() {
 }
 
 function logout(logout_type) {
-  window.localStorage.setItem("pop_up_update_sudah_tampil", "");
   var data = [];
 
   $.ajax({
@@ -1322,24 +1048,10 @@ function logout(logout_type) {
         window.localStorage.removeItem("device_uuid");
         window.localStorage.removeItem("versi_app");
         window.localStorage.removeItem("versionDevice");
-        window.localStorage.removeItem("city_local_insertId");
         window.localStorage.removeItem("model_device");
         window.localStorage.removeItem("nama_device");
         window.localStorage.removeItem("current_page");
         window.localStorage.removeItem("register_user_id_sess");
-        window.localStorage.removeItem("product_id");
-        window.localStorage.removeItem("id_kategori_berita");
-        window.localStorage.removeItem("provinsi_id");
-        window.localStorage.removeItem("category_id");
-        window.localStorage.removeItem("jenis_kupon");
-        window.localStorage.removeItem("provinsi");
-        window.localStorage.removeItem("city");
-        window.localStorage.removeItem("voucher");
-        window.localStorage.removeItem("register_email_sess");
-        window.localStorage.removeItem("id_promo");
-        window.localStorage.removeItem("pop_up_update_sudah_tampil");
-        window.localStorage.removeItem("province_id");
-        window.localStorage.removeItem("pop_up_geoloc");
 
         $(document.body).removeClass("modal-open");
         $("#sidebarPanel").modal("hide");
@@ -1370,7 +1082,7 @@ function logout(logout_type) {
           );
         }
 
-        pages("dashboard");
+        pages("login");
       }
       //loading('close');
     })
@@ -1383,7 +1095,7 @@ function logout(logout_type) {
 
 function init() {
   // runningVersion();
-  pages("dashboard");
+  pages("login");
 }
 
 function convertImgToBase64URL(url, callback) {
@@ -1508,307 +1220,48 @@ function openMap(latitude, longitude, site_name) {
   );
 }
 
-$(document).ready(function () {
-  $(".btn-lihat-voucher").click(function () {
-    $("#exampleModalCenter").modal("hide");
-    $(".modal-v2").modal("hide");
-    $(".modal-v3").modal("hide");
-    pages("voucher");
-  });
-
-  // $(".icon-close").click(function () {
-  //   $("#exampleModalCenter").modal("hide");
-  //   // pages('voucher');
-  // });
-
-  $("#icon-close-3").click(function () {
-    $(".modal-v3").modal("hide");
-  });
-
-  $("#icon-close-2").click(function () {
-    $(".modal-v2").modal("hide");
-  });
-
-  $("#icon-close-1").click(function () {
-    $(".v1").modal("hide");
-  });
-  // var namaSidebar = window.localStorage.getItem('nama_profil_sidebar');
-  // console.log('nama sidebar:' +namaSidebar);
-  // $('#nameSidebarPanel').val(namaSidebar);
-});
-
-function voucher_modal() {
-  $.ajax({
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader(
-        "Authorization",
-        "Bearer " + window.localStorage.getItem("access_token")
-      );
-      xhr.setRequestHeader("Accept", "application/json");
-    },
-    type: "POST",
-    url: conn + "/voucher-cek",
-    dataType: "json",
-    timeout: timeout,
-  })
-    .done(function (values) {
-      console.log(values);
-
-      var data = values.type;
-
-      // console.log("datanya ada  :" + data[0]);
-
-      if (data.length == 1) {
-        if (data[0] == "bensin") {
-          $(".v1").modal("show");
-          $("#icon-close-1").click(function () {
-            $(".v1").modal("hide");
-          });
-          console.log("Berhasil 1");
-        } else if (data[0] == "oli mobil") {
-          $(".modal-v2").modal("show");
-          $("#icon-close-2").click(function () {
-            $(".modal-v2").modal("hide");
-          });
-        } else if (data[0] == "oli federal") {
-          $(".modal-v3").modal("show");
-          $("#icon-close-3").click(function () {
-            $(".modal-v3").modal("hide");
-          });
-        }
-      } else if (data.length == 2) {
-        if (data[0] == "bensin") {
-          $(".v1").modal("show");
-          if (data[1] == "oli mobil") {
-            console.log("Berhasil 2");
-            $("#icon-close-1").click(function () {
-              $(".v1").modal("hide");
-              $(".modal-v2").modal("show");
-            });
-          } else {
-            // console.log("Berhasil 2");
-            $("#icon-close-1").click(function () {
-              $(".v1").modal("hide");
-              $(".modal-v3").modal("show");
-              $("#icon-close-3").click(function () {
-                $(".modal-v3").modal("hide");
-              });
-            });
-          }
-          $("#icon-close-1").click(function () {
-            $(".v1").modal("hide");
-          });
-        } else if (data[0] == "oli mobil") {
-          $(".modal-v2").modal("show");
-          if (data[1] == "oli federal") {
-            $("#icon-close-2").click(function () {
-              $(".modal-v2").modal("hide");
-              $(".modal-v3").modal("show");
-            });
-          } else {
-            $("#icon-close-2").click(function () {
-              $(".modal-v2").modal("hide");
-              $(".v1").modal("show");
-              $("#icon-close-1").click(function () {
-                $(".v1").modal("hide");
-              });
-            });
-          }
-
-          $("#icon-close-2").click(function () {
-            $(".modal-v2").modal("hide");
-          });
-        } else if (data[0] == "oli federal") {
-          $(".modal-v3").modal("show");
-          if (data[1] == "bensin") {
-            $("#icon-close-3").click(function () {
-              $(".modal-v3").modal("hide");
-              $(".v1").modal("show");
-            });
-          } else {
-            $("#icon-close-2").click(function () {
-              $(".modal-v2").modal("show");
-              $(".modal-v3").modal("hide");
-              $("#icon-close-2").click(function () {
-                $(".modal-v2").modal("hide");
-              });
-            });
-          }
-
-          $("#icon-close-3").click(function () {
-            $(".modal-v3").modal("hide");
-          });
-        } else {
-          $("#icon-close-1").click(function () {
-            $("#exampleModalCenter").modal("hide");
-          });
-        }
-      } else if (data.length == 3) {
-        $(".v1").modal("show");
-
-        $(".v1").on("hidden", function () {
-          $(".modal-v2").modal("show");
-          $(".v1").modal("hide");
-          $(".modal-v3").modal("hide");
-        });
-        $(".modal-v2").on("hidden", function () {
-          $(".modal-v3").modal("show");
-          $(".modal-v2").modal("hide");
-          $(".v1").modal("hide");
-        });
-        // if ($(".modal-v2").modal("hide")) {
-        //   $(".modal-v3").modal("show");
-        //   $(".modal-v2").modal("hide");
-        // }
-        // if ($(".v1").modal("hide")) {
-        //   $(".v1").modal("hide");
-        //   $(".modal-v2").modal("show");
-        // }
-        $("#icon-close-3").click(function () {
-          $(".modal-v3").modal("hide");
-        });
-        $("#icon-close-2").click(function () {
-          $(".modal-v2").modal("hide");
-          $(".modal-v3").modal("show");
-        });
-        $("#icon-close-1").click(function () {
-          $(".v1").modal("hide");
-          $(".modal-v2").modal("show");
-          $(".modal-v3").modal("hide");
-        });
-      }
-
-      if (values.status == "errors" || values.status == "failed") {
-        $("#exampleModalCenter").modal("hide");
-        // navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
-      }
-
-      // else if (values.status == "success") {
-      // $("#exampleModalCenter").modal("show");
-      // if (values.jumlah_vcr == 1) {
-      //   // $(".v1").modal("show");
-      //   // $("#icon-close-1").click(function () {
-      //   //   $(".v1").modal("hide");
-      //   // });
-      //   // } else if (values.jumlah_vcr > 1) {
-      //   //   $(".v1").on("hidden", function () {
-      //   //     $(".modal-v2").modal("show");
-      //   //     $(".v1").modal("hide");
-      //   //     $(".modal-v3").modal("show");
-      //   //   });
-      //   //   $(".modal-v2").on("hidden", function () {
-      //   //     $(".modal-v3").modal("show");
-      //   //     $(".modal-v2").modal("hide");
-      //   //     $(".v1").modal("hide");
-      //   //   });
-      //   //   if ($(".modal-v2").modal("hide")) {
-      //   //     $(".modal-v3").modal("show");
-      //   //     $(".modal-v2").modal("hide");
-      //   //   }
-      //   //   if ($(".v1").modal("hide")) {
-      //   //     $(".v1").modal("hide");
-      //   //     $(".modal-v2").modal("show");
-      //   //   }
-      //   // $("#icon-close-3").click(function () {
-      //   //   $(".modal-v3").modal("hide");
-      //   // });
-      //   // $("#icon-close-2").click(function () {
-      //   //   $(".modal-v2").modal("hide");
-      //   //   $(".modal-v3").modal("show");
-      //   // });
-      //   // $("#icon-close-1").click(function () {
-      //   //   $(".v1").modal("hide");
-      //   //   $(".modal-v2").modal("show");
-      //   //   $(".modal-v3").modal("hide");
-      //   // });
-      // } else {
-      //   $("#exampleModalCenter").modal("hide");
-      // }
-      // }
-
-      SpinnerDialog.hide();
-    })
-    .fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(jqXHR);
-      console.log(textStatus);
-      console.log(errorThrown);
-
-      if (jqXHR.responseJSON.message == "Service Unavailable") {
-        $(".modal-maintenance").modal("show");
-
-        $("#btn-modal-close").click(function () {
-          navigator.app.exitApp();
-        });
-      }
-
-      if (jqXHR.readyState == 0) {
-        console.log(
-          "Network error (i.e. connection refused, access denied due to CORS, etc.)"
-        );
-        navigator.notification.alert(
-          "Koneksi offline. Silahkan hubungi Call Center : Kode #DB-001",
-          alertDismissed,
-          TITLE_ALERT,
-          "Ok"
-        );
-      } else {
-        SpinnerDialog.hide();
-        if (textStatus == "timeout") {
-          navigator.notification.alert(
-            "Koneksi Time Out - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #OFF-001",
-            alertDismissed,
-            TITLE_ALERT,
-            "Ok"
-          );
-        }
-      }
-    });
+function clickPresensiTelat(id) {
+  window.localStorage.removeItem("status_presensi");
+  window.localStorage.setItem("status_presensi", id);
+  
+  pages("presensi");
 }
 
-function clickProdukKategori(id) {
-  window.localStorage.setItem("category_id", id);
-  pages("produk");
+function clickPresensiTepat(id) {
+  window.localStorage.removeItem("status_presensi");
+  window.localStorage.setItem("status_presensi", id);
+  
+  pages("presensi");
 }
 
-function clickKuponGold(id) {
-  window.localStorage.removeItem("status_struk");
-  window.localStorage.setItem("status_struk", id);
-  // console.log("type struk :" + window.localStorage.setItem("status_struk", id));
-  pages("kupon");
+function clickPresensiAll(id) {
+  window.localStorage.removeItem("status_presensi");
+  window.localStorage.setItem("status_presensi", id);
+  
+  pages("presensi");
 }
 
-function clickKuponSilver(id) {
-  window.localStorage.removeItem("status_struk");
-  window.localStorage.setItem("status_struk", id);
-  // console.log("type struk :" + window.localStorage.setItem("status_struk", id));
-  pages("kupon");
+function clickPembayaranA(id) {
+  window.localStorage.removeItem("status_pembayaran");
+  window.localStorage.setItem("status_pembayaran", id);
+  
+  pages("list-pembayaran");
 }
 
-function clickKuponAll(id) {
-  window.localStorage.removeItem("status_struk");
-  window.localStorage.setItem("status_struk", id);
-  // console.log("type struk :" + window.localStorage.setItem("status_struk", id));
-  pages("kupon");
+function clickPembayaranB(id) {
+  window.localStorage.removeItem("status_pembayaran");
+  window.localStorage.setItem("status_pembayaran", id);
+  
+  pages("list-pembayaran");
 }
 
-function clickKuponAllMenu(param) {
-  window.localStorage.removeItem("status_struk");
-  // window.localStorage.setItem('kupon_type', id);
-  window.localStorage.setItem("status_struk", $(param).data("id"));
-  // console.log('type kupon :' +window.localStorage.setItem('kupon_type', id));
-  pages("kupon");
+function clickPembayaranAll(id) {
+  window.localStorage.removeItem("status_pembayaran");
+  window.localStorage.setItem("status_pembayaran", id);
+  
+  pages("list-pembayaran");
 }
 
-function PageBeritaAll(param) {
-  window.localStorage.removeItem("id_kategori_berita");
-  window.localStorage.setItem("id_kategori_berita", $(param).data("id"));
-  pages("berita");
-}
-
-function PageRegister() {
-  $("#exampleModalFgtPassword").modal("hide");
-  pages("register");
-}
 
 function profilHeader() {
   var akses_token = window.localStorage.getItem("access_token");
@@ -1864,594 +1317,4 @@ function profilHeader() {
         }
       });
   }
-}
-
-// $(document).ready(function () {
-//   var firstCon = firstConnection();
-//   if (firstCon == "online") {
-//     var status_login = window.localStorage.getItem("otp_login");
-//     if (status_login == 1) {
-//       setTimeout(() => {
-//         // notification();
-//       }, 36000);
-//     }
-//   }
-// });
-
-// function notification() {
-//   $.ajax({
-//     beforeSend: function (xhr) {
-//       xhr.setRequestHeader(
-//         "Authorization",
-//         "Bearer " + window.localStorage.getItem("access_token")
-//       );
-//     },
-//     type: "POST",
-//     url: conn + "/message",
-//     dataType: "json",
-//     timeout: timeout,
-//   })
-//     .done(function (values) {
-//       // console.log(values);
-
-//       var data = values.data;
-//       // var status = values.data[0].status;
-
-//       // console.log(status);
-//       // var jml_data = values.total_awal;
-
-//       console.log("Jmlah Data = " + data.length);
-
-//       if (data.length > 0) {
-//         if (data[0].status == 0 && data[1].status == 0 && data[2].status == 0) {
-//           cordova.plugins.notification.local.schedule([
-//             { id: 1, title: data[0].title, text: data[0].pesan },
-//             { id: 2, title: data[1].title, text: data[1].pesan },
-//             { id: 3, title: data[2].title, text: data[2].pesan },
-//           ]);
-//         } else if (data[0].status == 0 && data[1].status == 0) {
-//           cordova.plugins.notification.local.schedule([
-//             { id: 1, title: data[0].title, text: data[0].pesan },
-//             { id: 2, title: data[1].title, text: data[1].pesan },
-//           ]);
-//         } else if (data[0].status == 0) {
-//           cordova.plugins.notification.local.schedule([
-//             { id: 1, title: data[0].title, text: data[0].pesan },
-//           ]);
-//         }
-//       } else {
-//         console.log("Data message terkini tidak ada");
-//       }
-
-//       // for (var i = 0; i < data.length; i++) {
-//       //   var obj = data[i];
-//       //   if (data.length == 3 && obj.status == 0) {
-//       //     cordova.plugins.notification.local.schedule([
-//       //       { id: 1, title: obj.title, text: obj.pesan },
-//       //       { id: 2, title: obj.title, text: obj.pesan },
-//       //       { id: 3, title: obj.title, text: obj.pesan },
-//       //     ]);
-//       //   } else if (data.length == 2 && obj.status == 0) {
-//       //     cordova.plugins.notification.local.schedule([
-//       //       { id: 1, title: obj.title, text: obj.pesan },
-//       //       { id: 2, title: obj.title, text: obj.pesan },
-//       //     ]);
-//       //   } else if (data.length == 1 && obj.status == 0) {
-//       //     cordova.plugins.notification.local.schedule([
-//       //       { id: 1, title: obj.title, text: obj.pesan },
-//       //     ]);
-//       //   }
-//       // }
-//     })
-//     .fail(function (jqXHR, textStatus, errorThrown) {
-//       console.log(jqXHR);
-//       console.log(textStatus);
-//       console.log(errorThrown);
-//       if (jqXHR.readyState == 0) {
-//         console.log(
-//           "Network error (i.e. connection refused, access denied due to CORS, etc.)"
-//         );
-//         navigator.notification.alert(
-//           "Koneksi offline.",
-//           alertDismissed,
-//           TITLE_ALERT,
-//           "Ok"
-//         );
-//       } else {
-//         SpinnerDialog.hide();
-//         if (textStatus == "timeout") {
-//           navigator.notification.alert(
-//             "Koneksi Time Out - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #OFF-001",
-//             alertDismissed,
-//             TITLE_ALERT,
-//             "Ok"
-//           );
-//         }
-//       }
-//     });
-// }
-
-// function notifVoucher() {
-//   $.ajax({
-//     beforeSend: function (xhr) {
-//       xhr.setRequestHeader(
-//         "Authorization",
-//         "Bearer " + window.localStorage.getItem("access_token")
-//       );
-//     },
-
-//     type: "POST",
-//     url: conn + "/cek-voucher-user",
-//     dataType: "json",
-//     timeout: timeout,
-//   })
-//     .done(function (values) {
-//       // console.log(values);
-//       if (values.status == "error" || values.status == "failed") {
-//         navigator.notification.alert(
-//           "Anda belum mendapatkan Voucher!",
-//           alertDismissed,
-//           TITLE_ALERT,
-//           "Ok"
-//         );
-//       } else {
-//         var data = values.voucher;
-
-//         for (var i = 0; i < data.length; i++) {
-//           var obj = data[i];
-
-//           if (obj.status_voucher == "Tersedia")
-//             if (obj.day_before_expired == 3) {
-//               navigator.notification.alert(
-//                 "Hai voucher " +
-//                   obj.type +
-//                   " anda akan segera expired di tanggal " +
-//                   obj.expired_date +
-//                   " Ayo segera gunakan di site Mobil terdekat",
-//                 alertDismissed,
-//                 TITLE_ALERT,
-//                 "Ok"
-//               );
-//               cordova.plugins.notification.local.schedule({
-//                 title: "Voucher Expired!!",
-//                 text:
-//                   "Hai, voucher " +
-//                   obj.type +
-//                   " anda akan segera expired pada tanggal " +
-//                   obj.expired_date +
-//                   " Ayo segera gunakan di site Mobil terdekat",
-//                 foreground: true,
-//               });
-//             } else if (obj.day_before_expired == 2) {
-//               navigator.notification.alert(
-//                 "Hai voucher " +
-//                   obj.type +
-//                   " anda akan segera expired di tanggal " +
-//                   obj.expired_date +
-//                   " Ayo segera gunakan di site Mobil terdekat",
-//                 alertDismissed,
-//                 TITLE_ALERT,
-//                 "Ok"
-//               );
-//               cordova.plugins.notification.local.schedule({
-//                 title: "Voucher Expired!!",
-//                 text:
-//                   "Hai, voucher " +
-//                   obj.type +
-//                   " anda akan segera expired pada tanggal " +
-//                   obj.expired_date +
-//                   " Ayo segera gunakan di site Mobil terdekat",
-//                 foreground: true,
-//               });
-//             } else if (obj.day_before_expired == 1) {
-//               navigator.notification.alert(
-//                 "Hai voucher " +
-//                   obj.type +
-//                   " anda akan segera expired di tanggal " +
-//                   obj.expired_date +
-//                   " Ayo segera gunakan di site Mobil terdekat",
-//                 alertDismissed,
-//                 TITLE_ALERT,
-//                 "Ok"
-//               );
-//               cordova.plugins.notification.local.schedule({
-//                 title: "Voucher Expired!!",
-//                 text:
-//                   "Hai, voucher " +
-//                   obj.type +
-//                   " anda akan segera expired pada tanggal " +
-//                   obj.expired_date +
-//                   " Ayo segera gunakan di site Mobil terdekat",
-//                 foreground: true,
-//               });
-//             }
-//         }
-//       }
-//     })
-//     .fail(function (jqXHR, textStatus, errorThrown) {
-//       console.log(jqXHR);
-//       console.log(textStatus);
-//       console.log(errorThrown);
-//       if (jqXHR.readyState == 0) {
-//         console.log(
-//           "Network error (i.e. connection refused, access denied due to CORS, etc.)"
-//         );
-//         navigator.notification.alert(
-//           "Koneksi offline.",
-//           alertDismissed,
-//           TITLE_ALERT,
-//           "Ok"
-//         );
-//       } else {
-//         SpinnerDialog.hide();
-//         if (textStatus == "timeout") {
-//           navigator.notification.alert(
-//             "Koneksi Time Out - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #OFF-001",
-//             alertDismissed,
-//             TITLE_ALERT,
-//             "Ok"
-//           );
-//         }
-//       }
-//     });
-// }
-
-function updateVersion() {
-  var data = {
-    version: versionDevice,
-  };
-
-  console.log(data);
-  $.ajax({
-    type: "POST",
-    url: conn + "/check-version",
-    dataType: "json",
-    timeout: timeout,
-    data: data,
-  })
-    .done(function (values) {
-      // console.log(values);
-      // console.log("Version : ", window.localStorage.getItem("versionDevice"));
-      if (values.status == "success") {
-        // $("#message").append(values.message);
-
-        $(".modal-update-apps").modal("show");
-        $(".icon-close-voucherconfirm").click(() => {
-          $(".modal-update-apps").modal("hide");
-        });
-
-        $("#btn-update").click(() => {
-          cordova.plugins.market.open("com.nadyne.MobilIndostation");
-        });
-      } else {
-        $(".modal-update-apps").modal("hide");
-      }
-    })
-    .fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(jqXHR);
-      console.log(textStatus);
-      console.log(errorThrown);
-
-      if (jqXHR.responseJSON.message == "Service Unavailable") {
-        $(".modal-maintenance").modal("show");
-
-        $("#btn-modal-close").click(function () {
-          navigator.app.exitApp();
-        });
-      }
-
-      if (jqXHR.readyState == 0) {
-        console.log(
-          "Network error (i.e. connection refused, access denied due to CORS, etc.)"
-        );
-        navigator.notification.alert(
-          "Koneksi offline. Silahkan hubungi Call Center : Kode #DB-001",
-          alertDismissed,
-          TITLE_ALERT,
-          "Ok"
-        );
-      } else {
-        SpinnerDialog.hide();
-        if (textStatus == "timeout") {
-          navigator.notification.alert(
-            "Koneksi Time Out - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #OFF-001",
-            alertDismissed,
-            TITLE_ALERT,
-            "Ok"
-          );
-        }
-      }
-    });
-}
-
-// function OneSignalInit() {
-//   //28b62ea9-2eb1-489e-bbe8-c18bdff1b7f4 app id nadyne
-//   //0b5f9921-46b2-431f-8a11-4c80e752eb81 app id indostation
-
-//   window.plugins.OneSignal.setAppId("28b62ea9-2eb1-489e-bbe8-c18bdff1b7f4");
-
-//   window.plugins.OneSignal.setNotificationOpenedHandler(function (jsonData) {
-//     console.log("notificationOpenedCallback: " + JSON.stringify(jsonData));
-//   });
-
-//   window.plugins.OneSignal.promptForPushNotificationsWithUserResponse(function (
-//     accepted
-//   ) {
-//     console.log("User accepted notifications: " + accepted);
-//   });
-
-//   window.plugins.OneSignal.getDeviceState((state) => {
-//     console.log("Player id : " + state.userId);
-//     window.localStorage.setItem("player_id", state.userId);
-//   });
-// }
-
-function deviceUserRegister() {
-  var data = {
-    os_player_id: window.localStorage.getItem("player_id"),
-    device_type: window.localStorage.getItem("model_device"),
-  };
-
-  $.ajax({
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader(
-        "Authorization",
-        "Bearer " + window.localStorage.getItem("access_token")
-      );
-      xhr.setRequestHeader("Accept", "application/json");
-    },
-
-    type: "POST",
-    url: conn + "/user-device/register",
-    dataType: "json",
-    timeout: timeout,
-    data: data,
-  })
-    .done(function (values) {
-      // console.log(values);
-      if (values.status == "success") {
-      }
-    })
-    .fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(jqXHR);
-      console.log(textStatus);
-      console.log(errorThrown);
-
-      if (jqXHR.responseJSON.message == "Service Unavailable") {
-        $(".modal-maintenance").modal("show");
-
-        $("#btn-modal-close").click(function () {
-          navigator.app.exitApp();
-        });
-      }
-
-      if (jqXHR.readyState == 0) {
-        console.log(
-          "Network error (i.e. connection refused, access denied due to CORS, etc.)"
-        );
-        navigator.notification.alert(
-          "Koneksi offline. Silahkan hubungi Call Center : Kode #DB-001",
-          alertDismissed,
-          TITLE_ALERT,
-          "Ok"
-        );
-      } else {
-        SpinnerDialog.hide();
-        if (textStatus == "timeout") {
-          navigator.notification.alert(
-            "Koneksi Time Out - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #OFF-001",
-            alertDismissed,
-            TITLE_ALERT,
-            "Ok"
-          );
-        }
-      }
-    });
-}
-
-
-function modalGetVoucher(type) {
-  $(document).ready(function () {
-    if (type == "voucher") {
-      $(".v1").modal("show");
-
-      $("#icon-close-1").click(function () {
-        $(".v1").modal("hide");
-      });
-    }
-  });
-}
-
-function cekMaintenance() {
-  $(document).ready(function () {
-    data = {
-      name: "maintenance",
-    };
-
-    $.ajax({
-      type: "POST",
-      url: conn + "/setting",
-      dataType: "json",
-      data: data,
-      timeout: timeout,
-    })
-      .done(function (values) {
-        // console.log("status maintenance", values.message);
-
-        if (values.message == "true") {
-          $(".modal-maintenance").modal("show");
-
-          $("#btn-modal-close").click(function () {
-            navigator.app.exitApp();
-          });
-        }
-      })
-      .fail(function (jqXHR, textStatus, errorThrown) {
-        console.log(jqXHR);
-        console.log(textStatus);
-        console.log(errorThrown);
-        console.log("status : ", jqXHR.responseJSON.message);
-
-        if (jqXHR.responseJSON.message == "Service Unavailable") {
-          $(".modal-maintenance").modal("show");
-
-          $("#btn-modal-close").click(function () {
-            navigator.app.exitApp();
-          });
-        }
-        if (jqXHR.readyState == 0) {
-          console.log(
-            "Network error (i.e. connection refused, access denied due to CORS, etc.)"
-          );
-          navigator.notification.alert(
-            "Koneksi offline. Silahkan hubungi Call Center : Kode #DB-001",
-            alertDismissed,
-            TITLE_ALERT,
-            "Ok"
-          );
-        } else {
-          SpinnerDialog.hide();
-          if (textStatus == "timeout") {
-            navigator.notification.alert(
-              "Koneksi Time Out - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #OFF-001",
-              alertDismissed,
-              TITLE_ALERT,
-              "Ok"
-            );
-          }
-        }
-      });
-  });
-}
-
-function modalStruk() {
-  $.ajax({
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader(
-        "Authorization",
-        "Bearer " + window.localStorage.getItem("access_token")
-      );
-      xhr.setRequestHeader("Accept", "application/json");
-    },
-
-    type: "POST",
-    url: conn + "/get-popup-voucher",
-    dataType: "json",
-    timeout: timeout,
-  })
-    .done(function (values) {
-      // console.log(values);
-      if (values.status == "success") {
-        if (values.status_popup == 1) {
-          $(".v1").modal("show");
-          if ($(".v1").modal("show")) {
-            updateStatusStruk();
-          }
-
-          $("#icon-close-1").click(function () {
-            updateStatusStruk();
-            $(".v1").modal("hide");
-          });
-        } else if (values.status_popup == 0) {
-          $(".v1").modal("hide");
-        } else {
-          $(".v1").modal("hide");
-        }
-      }
-    })
-    .fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(jqXHR);
-      console.log(textStatus);
-      console.log(errorThrown);
-
-      if (jqXHR.responseJSON.message == "Service Unavailable") {
-        $(".modal-maintenance").modal("show");
-
-        $("#btn-modal-close").click(function () {
-          navigator.app.exitApp();
-        });
-      }
-
-      if (jqXHR.readyState == 0) {
-        console.log(
-          "Network error (i.e. connection refused, access denied due to CORS, etc.)"
-        );
-        navigator.notification.alert(
-          "Koneksi offline. Silahkan hubungi Call Center : Kode #DB-001",
-          alertDismissed,
-          TITLE_ALERT,
-          "Ok"
-        );
-      } else {
-        SpinnerDialog.hide();
-        if (textStatus == "timeout") {
-          navigator.notification.alert(
-            "Koneksi Time Out - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #OFF-001",
-            alertDismissed,
-            TITLE_ALERT,
-            "Ok"
-          );
-        }
-      }
-    });
-}
-
-function updateStatusStruk() {
-  var data = {
-    popup_voucher: 0,
-  };
-
-  $.ajax({
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader(
-        "Authorization",
-        "Bearer " + window.localStorage.getItem("access_token")
-      );
-      xhr.setRequestHeader("Accept", "application/json");
-    },
-
-    type: "POST",
-    url: conn + "/update-popup-voucher",
-    dataType: "json",
-    timeout: timeout,
-    data: data,
-  })
-    .done(function (values) {
-      // console.log(values);
-    })
-    .fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(jqXHR);
-      console.log(textStatus);
-      console.log(errorThrown);
-
-      if (jqXHR.responseJSON.message == "Service Unavailable") {
-        $(".modal-maintenance").modal("show");
-
-        $("#btn-modal-close").click(function () {
-          navigator.app.exitApp();
-        });
-      }
-
-      if (jqXHR.readyState == 0) {
-        console.log(
-          "Network error (i.e. connection refused, access denied due to CORS, etc.)"
-        );
-        navigator.notification.alert(
-          "Koneksi offline. Silahkan hubungi Call Center : Kode #DB-001",
-          alertDismissed,
-          TITLE_ALERT,
-          "Ok"
-        );
-      } else {
-        SpinnerDialog.hide();
-        if (textStatus == "timeout") {
-          navigator.notification.alert(
-            "Koneksi Time Out - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #OFF-001",
-            alertDismissed,
-            TITLE_ALERT,
-            "Ok"
-          );
-        }
-      }
-    });
 }

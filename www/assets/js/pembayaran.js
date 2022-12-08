@@ -5,35 +5,36 @@ $(document).ready(function () {
     }
   });
 
-  $("#formUploadStruk").submit(function (e) {
+  $("#formuploadPembayaran").submit(function (e) {
     e.preventDefault();
   });
-  $("#formCekStruk").submit(function (e) {
+  $("#formCekPembayaran").submit(function (e) {
     e.preventDefault();
   });
   $("#formInputStruk").submit(function (e) {
     e.preventDefault();
   });
 
-  if (type_struk == "1") {
+  var type_pembayaran = window.localStorage.getItem("status_pembayaran");
+
+  if (type_pembayaran == "1") {
     $("#img-ceklis-all").css("display", "none");
-    $("#img-ceklis-gold").css("display", "none");
-    $("#img-ceklis-silver").css("display", "inline");
-    // console.log('silver active');
-  } else if (type_struk == "0") {
+    $("#img-ceklis-agenda").css("display", "none");
+    $("#img-ceklis-bulanan").css("display", "inline");
+  } else if (type_pembayaran == "0") {
     $("#img-ceklis-all").css("display", "none");
-    $("#img-ceklis-gold").css("display", "inline");
-    $("#img-ceklis-silver").css("display", "none");
+    $("#img-ceklis-agenda").css("display", "inline");
+    $("#img-ceklis-bulanan").css("display", "none");
   } else {
     $("#img-ceklis-all").css("display", "inline");
-    $("#img-ceklis-gold").css("display", "none");
-    $("#img-ceklis-silver").css("display", "none");
+    $("#img-ceklis-agenda").css("display", "none");
+    $("#img-ceklis-bulanan").css("display", "none");
   }
 });
 
 function cekStruk() {
-  SpinnerDialog.show(null, "Pengecekan struk ...");
-  var foto_struk = $("#foto_text_struk").val();
+  SpinnerDialog.show(null, "Pengecekan pembayaran ...");
+  var foto_struk = $("#foto_text_pembayaran").val();
   var user_id = window.localStorage.getItem("userID");
 
   data = {
@@ -59,9 +60,9 @@ function cekStruk() {
       // console.log(values);
 
       if (values.site_no != "" && values.nota_no != "") {
-        $("#containerButtonCekStruk").hide();
-        $("#containerButtonUploadStruk").show();
-        $("#resultCheckStruk").show();
+        $("#containerButtonCekPembayaran").hide();
+        $("#containerButtonUploadPembayaran").show();
+        $("#resultCheckPembayaran").show();
         $("#tableResultSuccessReadReceipt").show();
         $("#tableResultFailedReadReceipt").hide();
         $("#siteIdCheckReceipt").text(values.site_no);
@@ -69,17 +70,17 @@ function cekStruk() {
         $("#receiptTimeCheckReceipt").text(values.date_time);
         $("#receiptTotalCheckReceipt").text("Rp. " + values.total);
 
-        $("#formUploadStrukFileReceipt").val(foto_struk);
-        $("#formUploadStrukUserId").val(user_id);
-        $("#formUploadStrukSiteId").val(values.site_no);
-        $("#formUploadStrukReceiptNumber").val(values.nota_no);
-        $("#formUploadStrukPurchaseDate").val(values.date_time);
-        $("#formUploadStrukAmount").val(values.total);
+        $("#formuploadPembayaranFileReceipt").val(foto_struk);
+        $("#formuploadPembayaranUserId").val(user_id);
+        $("#formuploadPembayaranSiteId").val(values.site_no);
+        $("#formuploadPembayaranReceiptNumber").val(values.nota_no);
+        $("#formuploadPembayaranPurchaseDate").val(values.date_time);
+        $("#formuploadPembayaranAmount").val(values.total);
       } else {
-        $("#containerButtonCekStruk").hide();
-        $("#resultCheckStruk").hide();
-        $("#containerButtonUlangiCekStruk").show();
-        $("#resultCheckStruk").show();
+        $("#containerButtonCekPembayaran").hide();
+        $("#resultCheckPembayaran").hide();
+        $("#containerButtonUlangiCekPembayaran").show();
+        $("#resultCheckPembayaran").show();
         $("#tableResultSuccessReadReceipt").hide();
         $("#tableResultFailedReadReceipt")
           .show()
@@ -120,10 +121,10 @@ function cekStruk() {
       //     "Ok"
       //   );
 
-      //   $("#containerButtonCekStruk").hide();
-      //   $("#resultCheckStruk").hide();
-      //   $("#containerButtonUlangiCekStruk").hide();
-      //   $("#resultCheckStruk").hide();
+      //   $("#containerButtonCekPembayaran").hide();
+      //   $("#resultCheckPembayaran").hide();
+      //   $("#containerButtonUlangiCekPembayaran").hide();
+      //   $("#resultCheckPembayaran").hide();
       //   $("#tableResultSuccessReadReceipt").hide();
       //   $("#tableResultFailedReadReceipt")
       //     .show()
@@ -168,18 +169,18 @@ function cekStruk() {
     });
 }
 
-function uploadStruk() {
+function uploadPembayaran() {
   SpinnerDialog.show(null, "Mengupload data struk ...");
 
   var user_id = window.localStorage.getItem("userID");
 
   data = {
-    file_receipt: $("#formUploadStrukFileReceipt").val(),
+    file_receipt: $("#formuploadPembayaranFileReceipt").val(),
     user_id: user_id,
-    site_no: $("#formUploadStrukSiteId").val(),
-    receipt_no: $("#formUploadStrukReceiptNumber").val(),
-    purchase_date: $("#formUploadStrukPurchaseDate").val(),
-    amount: $("#formUploadStrukAmount").val(),
+    site_no: $("#formuploadPembayaranSiteId").val(),
+    receipt_no: $("#formuploadPembayaranReceiptNumber").val(),
+    purchase_date: $("#formuploadPembayaranPurchaseDate").val(),
+    amount: $("#formuploadPembayaranAmount").val(),
     type: "apps-ocr",
   };
 
@@ -353,19 +354,19 @@ function submitManualStruk() {
 }
 
 function revealFormStruk() {
-  $("#resultCheckStruk").hide();
-  $("#foto_text_struk").val("");
+  $("#resultCheckPembayaran").hide();
+  $("#foto_text_pembayaran").val("");
   $("#containerFormStruk").show();
-  $("#containerUploadStruk").hide();
+  $("#containerUploadPembayaran").hide();
 }
 
-function ulangiSubmitStruk() {
-  $("#foto_text_struk").val("");
-  $("#real_foto_struk").hide();
-  $("#resultCheckStruk").hide();
-  $("#containerButtonCekStruk").show();
-  $("#containerButtonUploadStruk").hide();
-  $("#containerButtonUlangiCekStruk").hide();
+function ulangiSubmitPembayaran() {
+  $("#foto_text_pembayaran").val("");
+  $("#real_foto_pembayaran").hide();
+  $("#resultCheckPembayaran").hide();
+  $("#containerButtonCekPembayaran").show();
+  $("#containerButtonUploadPembayaran").hide();
+  $("#containerButtonUlangiCekPembayaran").hide();
   $("#containerFormStruk").hide();
 
   pages("foto-struk");

@@ -14,101 +14,78 @@
   <div class="right"></div>
 </div>
 
-<div id="containerUploadStruk" class="section wallet-card-section pt-1 text-center">
+<div id="containerPresensi" class="section wallet-card-section pt-1 text-center">
   <div class="wallet-card pt-3 pb-3">
       <h2>Presensi</h2>
       <p>Silahkan scan QR-Code yang sudah disediakan untuk melakukan presensi</p>
-      <form id="formCekStruk">
+      <form id="formCekPresensi">
           <div class="mt-2 transparent">
               <div class="btn-group btn-block" role="group">
                   <button onClick="fotoActionSheet('struk')" class="btn btn-primary btn-lg">Scan QR-Code</button>
                   <button onClick="fotoActionSheet('struk')" class="btn btn-primary btn-lg"><i class="material-icons">flip</i></button>
               </div>
-              <img class="mt-2" id="real_foto_struk" src="assets/img/icon-add-image.png" width="98%" />
-              <input type="hidden" name="foto_text_struk" id="foto_text_struk" />
+              <img class="mt-2" id="scaner_qr" src="assets/img/icon-add-image.png" width="98%" />
+              <input type="hidden" name="kode_jadwal_presensi" id="kode_jadwal_presensi" />
           </div>
 
-          <div id="resultCheckStruk" class="mt-2 transparent" style="display:none;">
-              <table id="tableResultSuccessReadReceipt" style="text-align:left;font-weight:bold;color:#001451;display:none">
+          <div id="resultCheckPresensi" class="mt-2 transparent" style="display:none;">
+              <table id="tableCheckPresensi" style="text-align:left;font-weight:bold;color:black;display:none">
                   <tr>
                       <td>Nama</td>
                       <td style="width:38px;text-align:center;">:</td>
-                      <td><span id="receiptNumberCheckReceipt"></span></td>
+                      <td><span id="namePresensiUser"></span></td>
                   </tr>
                   <tr>
                       <td>Time</td>
                       <td style="width:38px;text-align:center;">:</td>
-                      <td><span id="receiptTimeCheckReceipt"></span></td>
+                      <td><span id="timePresensiUser"></span></td>
                   </tr>
                   
               </table>
-              <span id="tableResultFailedReadReceipt" style="font-weight:bold;color:#001451;display:none"></span>
+              <span id="failedPresensi" style="font-weight:bold;color:black;display:none"></span>
           </div>
-              <div id="containerButtonUlangiCekStruk" style="display:none;">
+              <div id="containerButtonUlangi" style="display:none;">
                   <div class="row mt-2">
                       <div class="col-6">
-                          <button onClick="ulangiSubmitStruk()" class="btn btn-primary btn-block btn-lg"><i class="material-icons">refresh</i>&nbsp;Ulangi</button>
-                      </div>
-                      <div class="col-6">
-                          <button onClick="revealFormStruk()" class="btn btn-outline-primary btn-block btn-lg d-none"><i class="material-icons">edit</i>&nbsp;Input Manual</button>
+                          <button onClick="ulangiPresensi()" class="btn btn-primary btn-block btn-lg"><i class="material-icons">refresh</i>&nbsp;Ulangi</button>
                       </div>
                   </div>
               </div>
 
-              <div id="containerButtonUploadStruk" style="display:none;">
+              <div id="containerButtonSubmitPresensi" style="display:none;">
                   <div class="row">
                       <div class="col-12">
-                          <button onClick="uploadStruk()" class="btn btn-primary btn-lg btn-block"><i class="material-icons">cloud_upload</i>&nbsp;Unggah Struk</button>
+                          <button onClick="submitPresensi()" class="btn btn-primary btn-lg btn-block"><i class="material-icons">cloud_upload</i>&nbsp;Simpan Presensi</button>
                       </div>
                   </div>
                   <div class="row mt-2">
                       <div class="col-12">
-                          <button onClick="ulangiSubmitStruk()" class="btn btn-outline-primary btn-block btn-lg"><i class="material-icons">refresh</i>&nbsp;Ulangi</button>
-                      </div>
-                      <div class="col-6">
-                          <button onClick="revealFormStruk()" class="btn btn-outline-primary btn-block btn-lg d-none"><i class="material-icons">edit</i>&nbsp;Input Manual</button>
+                          <button onClick="ulangiPresensi()" class="btn btn-outline-primary btn-block btn-lg"><i class="material-icons">refresh</i>&nbsp;Ulangi</button>
                       </div>
                   </div>
 
               </div>
           </div>
 
-      </form>
-
-      <form id="formUploadStruk" >
-          <input type="hidden" id="formUploadStrukUserId" name="formUploadStrukUserId">
-          <input type="hidden" id="formUploadStrukSiteId" name="formUploadStrukSiteId">
-          <input type="hidden" id="formUploadStrukReceiptNumber" name="formUploadStrukReceiptNumber">
-          <input type="hidden" id="formUploadStrukPurchaseDate" name="formUploadStrukPurchaseDate">
-          <input type="hidden" id="formUploadStrukAmount" name="formUploadStrukAmount">
-          <input type="hidden" id="formUploadStrukFileReceipt" name="formUploadStrukReceipt">
       </form>
   </div>
 </div>
 
-<div id="menu-kupon">
+<div id="menu-listed">
   <div class="section-page">
-    <div class="total-kupon">
-      <div class="div-total-kupon">
-        <!-- <img
-          src="assets/img/sample/home/icon3.png"
-          class="icon-voucher"
-          alt="image"
-          style="width: 10%"
-        /> -->
+    <div class="total-listed">
+      <div class="div-total-listed">
         <span
           >Total Presensi Saya
-          <strong id="struk-count"></strong>
-          <span id="jml-kupon" style="margin-left: 1px"></span
-        ></span>
+          <strong id="jml_presensi"></strong>
       </div>
     </div>
 
-    <div class="kategori-kupon">
+    <div class="kategori-listed">
       <a
         href="javascript:void(0)"
         id="all"
-        onClick="clickKuponAll(this.id)"
+        onClick="clickPresensiAll(this.id)"
         class="btn-list-kategori"
         style="background: #476fc9"
         >Semua
@@ -121,11 +98,11 @@
       <a
         href="javascript:void(0)"
         id="1"
-        onClick="clickKuponSilver(this.id)"
+        onClick="clickPresensiTepat(this.id)"
         class="btn-list-kategori"
         style="background: #47c9c9"
         >Tepat Waktu
-        <div id="img-ceklis-silver">
+        <div id="img-ceklis-tepat">
           <img
             src="assets/img/sample/kupon/checklist.png"
             style="width: 13%"
@@ -134,11 +111,11 @@
       <a
         href="javascript:void(0)"
         id="0"
-        onClick="clickKuponGold(this.id)"
+        onClick="clickPresensiTelat(this.id)"
         class="btn-list-kategori"
         style="background: #ff4e4e"
         >Telat / Izin
-        <div id="img-ceklis-gold">
+        <div id="img-ceklis-telat">
           <img
             src="assets/img/sample/kupon/checklist.png"
             style="width: 13%"
@@ -146,11 +123,7 @@
       ></a>
     </div>
 
-    <div id="list-kupon"></div>
-
-    <input type="hidden" name="" id="count_awal_kupon" value="" />
-    <input type="hidden" name="" id="count_kupon" value="" />
-    <!-- <div class="load-more-kupon"><span>Muat Lebih Banyak</span></div> -->
+    <div id="list-presensi"></div>
   </div>
 </div>
 

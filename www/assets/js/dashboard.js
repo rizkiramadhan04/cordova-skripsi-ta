@@ -5,9 +5,6 @@ var version_number = window.localStorage.getItem("versionDevice");
 if (firstCon == "online") {
   window.localStorage.removeItem("province_id");
 
-  //pop up voucher
-  modalStruk();
-  //pop up voucher
 
   $.ajax({
     type: "POST",
@@ -108,7 +105,6 @@ if (firstCon == "online") {
 $(document).ready(function () {
   $(".appBottomMenu").css("display", "flex");
   $("#dashboardSectionAppContainer").text("v" + version_number);
-  // $("#total-vcr-user").html(':('+get_count_vcr+')');
   document.querySelectorAll(".carousel-dashboard").forEach((carousel) =>
     new Splide(carousel, {
       perPage: 1,
@@ -131,26 +127,26 @@ $(document).ready(function () {
     }).mount()
   );
 
-  document.querySelectorAll(".carousel-berita").forEach((carousel) =>
-    new Splide(carousel, {
-      perPage: 3,
-      rewind: true,
-      type: "loop",
-      gap: 10,
-      padding: "1rem",
-      arrows: false,
-      pagination: false,
-      autoplay: true,
-      breakpoints: {
-        768: {
-          perPage: 1,
-        },
-        991: {
-          perPage: 2,
-        },
-      },
-    }).mount()
-  );
+  // document.querySelectorAll(".carousel-berita").forEach((carousel) =>
+  //   new Splide(carousel, {
+  //     perPage: 3,
+  //     rewind: true,
+  //     type: "loop",
+  //     gap: 10,
+  //     padding: "1rem",
+  //     arrows: false,
+  //     pagination: false,
+  //     autoplay: true,
+  //     breakpoints: {
+  //       768: {
+  //         perPage: 1,
+  //       },
+  //       991: {
+  //         perPage: 2,
+  //       },
+  //     },
+  //   }).mount()
+  // );
 
   // modalStruk();
 });

@@ -1,10 +1,10 @@
 var firstCon = firstConnection();
-var id_promo = window.localStorage.getItem("id_promo");
+var id_promo = window.localStorage.getItem("id_agenda");
 // console.log('id promo :'+id_promo);
 
 if (firstCon == "online") {
   data = {
-    id_promo: window.localStorage.getItem("id_promo"),
+    id_promo: window.localStorage.getItem("id_agenda"),
   };
   $.ajax({
     type: "POST",
@@ -23,17 +23,15 @@ if (firstCon == "online") {
       } else if (values.status == "success") {
         //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
 
-        $(".image-detail-sliderpromo").attr(
+        $(".image-detail-slideragenda").attr(
           "src",
           server_url + "/images/" + values.image_detail
         );
-        $("#title-slider-promo").html(values.title);
-        $("#desc-slider-promo").html(values.description);
-        $("#total-view").text(values.view);
-        $("#total-share").text(values.share);
+        $("#title-slider-agenda").html(values.title);
+        $("#desc-slider-agenda").html(values.description);
 
-        window.localStorage.removeItem("title_promo");
-        window.localStorage.setItem("title_promo", values.title);
+        window.localStorage.removeItem("title_agenda");
+        window.localStorage.setItem("title_agenda", values.title);
       } else {
         navigator.notification.alert(
           values.message,

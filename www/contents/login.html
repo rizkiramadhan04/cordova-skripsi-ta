@@ -1,0 +1,52 @@
+<script type="text/javascript" src="assets/js/login.js"></script>
+
+<div class="appHeader bg-primary">
+    <div class="pageTitle">
+        Login
+    </div>
+    <div class="right">
+    </div>
+</div>
+
+<div class="section wallet-card-section pt-1 text-center">
+    <div class="wallet-card pt-3 pb-3">
+        <h2>Selamat Datang</h2>
+        <p>Masukkan akun untuk melanjutkan</p>
+        <form id="formLogin" onSubmit="loginOnline()">
+
+            <div class="form-group basic">
+                <div class="input-wrapper">
+                    <label class="label" for="usernameFormLogin">E-mail</label>
+                    <input type="text" class="form-control" id="usernameFormLogin" placeholder="Alamat e-mail">
+                    <i class="clear-input">
+                            <i class="material-icons">clear</i>
+                    </i>
+                </div>
+            </div>
+
+            <div class="form-group basic">
+                <div class="input-wrapper">
+                    <div class="fgt-password">
+                        <label class="label" for="passwordFormLogin">Kata sandi</label>
+                        <a href="javascript:void(0)" onClick="pages('lupa-password');">Lupa Kata Sandi?</a>
+                    </div>
+                        <input type="password" class="form-control" id="passwordFormLogin" autocomplete="off" placeholder="Kata sandi">
+                        <i class="clear-input">
+                            <i class="material-icons">clear</i>
+                        </i>
+                </div>
+            </div>
+
+            <div class="form-links">
+                <div class="input-wrapper">
+                    <input type="checkbox" name="showPassword" class="checkbox-register" value="" id="showPassword"><span class="sk-register"><span style="color: #239B56;font-weight: bolder;" >Tampilkan kata sandi<span></span>
+                </div>
+            </div>
+
+            <div class="mt-2 transparent">
+                <button type="submit" onClick="pages('login')" class="btn btn-primary btn-block btn-lg">Masuk</button>
+            </div>
+
+        </form>
+    </div>
+</div>

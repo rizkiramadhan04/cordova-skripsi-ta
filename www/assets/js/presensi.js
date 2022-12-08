@@ -7,25 +7,25 @@ $(document).ready(function () {
 });
 
 var firstCon = firstConnection();
-var type_struk = window.localStorage.getItem("status_struk");
+var type_presensi = window.localStorage.getItem("status_presensi");
 
-if (type_struk == "1") {
+if (type_presensi == "1") {
   $("#img-ceklis-all").css("display", "none");
-  $("#img-ceklis-gold").css("display", "none");
-  $("#img-ceklis-silver").css("display", "inline");
+  $("#img-ceklis-telat").css("display", "none");
+  $("#img-ceklis-tepat").css("display", "inline");
   // console.log('silver active');
-} else if (type_struk == "0") {
+} else if (type_presensi == "0") {
   $("#img-ceklis-all").css("display", "none");
-  $("#img-ceklis-gold").css("display", "inline");
-  $("#img-ceklis-silver").css("display", "none");
+  $("#img-ceklis-telat").css("display", "inline");
+  $("#img-ceklis-tepat").css("display", "none");
 } else {
   $("#img-ceklis-all").css("display", "inline");
-  $("#img-ceklis-gold").css("display", "none");
-  $("#img-ceklis-silver").css("display", "none");
+  $("#img-ceklis-telat").css("display", "none");
+  $("#img-ceklis-tepat").css("display", "none");
 }
 
 data = {
-  status_struk: window.localStorage.getItem("status_struk"),
+  status_presensi: window.localStorage.getItem("status_presensi"),
 };
 
 $.ajax({
@@ -46,14 +46,11 @@ $.ajax({
   .done(function (values) {
     console.log(values);
 
-    var count_struk = values.total_struk;
-    if (count_struk > 0) {
-      // if (count_struk == 3) {
-      //   // console.log("hello");
-      // }
-      $("#struk-count").append("(" + count_struk + ")");
+    var count_presensi = values.total_struk;
+    if (count_presensi > 0) {
+      $("#jml_presensi").append("(" + count_presensi + ")");
     } else {
-      $("#struk-count").append("(0)");
+      $("#jml_presensi").append("(0)");
     }
 
     var data = values.receipt;
@@ -101,7 +98,7 @@ $.ajax({
         }
 
         list_receipt_html +=
-          '<div class="card mt-3" id="list-struk">' +
+          '<div class="card mt-3" id="list-data">' +
           ribbon +
           '<div class="card-body" style="">' +
           '<div class="row">' +

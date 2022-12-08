@@ -14,10 +14,10 @@
   <div class="right"></div>
 </div>
 
-<div id="menu-kupon">
+<div id="menu-listed">
   <div class="section-page">
-    <div class="total-kupon">
-      <div class="div-total-kupon">
+    <div class="total-listed">
+      <div class="div-total-listed">
         <!-- <img
           src="assets/img/sample/home/icon3.png"
           class="icon-voucher"
@@ -32,11 +32,11 @@
       </div>
     </div>
 
-    <div class="kategori-kupon">
+    <div class="kategori-listed">
       <a
         href="javascript:void(0)"
         id="all"
-        onClick="clickKuponAll(this.id)"
+        onClick="clickPembayaranAll(this.id)"
         class="btn-list-kategori"
         style="background: #476fc9"
         >Semua
@@ -49,11 +49,11 @@
       <a
         href="javascript:void(0)"
         id="1"
-        onClick="clickKuponSilver(this.id)"
+        onClick="clickPembayaranB(this.id)"
         class="btn-list-kategori"
         style="background: #47c9c9"
         >Bulanan
-        <div id="img-ceklis-silver">
+        <div id="img-ceklis-bulanan">
           <img
             src="assets/img/sample/kupon/checklist.png"
             style="width: 13%"
@@ -62,28 +62,22 @@
       <a
         href="javascript:void(0)"
         id="0"
-        onClick="clickKuponGold(this.id)"
+        onClick="clickPembayaranA(this.id)"
         class="btn-list-kategori"
         style="background: #ff4e4e"
         >Agenda
-        <div id="img-ceklis-gold">
+        <div id="img-ceklis-agenda">
           <img
             src="assets/img/sample/kupon/checklist.png"
             style="width: 13%"
           /></div
       ></a>
     </div>
-
-    <div id="list-kupon"></div>
-
-    <input type="hidden" name="" id="count_awal_kupon" value="" />
-    <input type="hidden" name="" id="count_kupon" value="" />
-    <!-- <div class="load-more-kupon"><span>Muat Lebih Banyak</span></div> -->
   </div>
 </div>
 
 <div
-  class="modal fade modal-detail-struk"
+  class="modal fade modal-detail-pembayaran"
   id="exampleModalCenter"
   tabindex="-1"
   role="dialog"
@@ -95,7 +89,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">
-          Modal title voucher
+          Modal title pembayaran
         </h5>
         <button
           type="button"
