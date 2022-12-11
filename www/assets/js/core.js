@@ -33,7 +33,7 @@ String.prototype.capitalize = function () {
 //https://mobil-indostation.co.id
 //http://103.111.186.84/
 
-var server_url = "https://trial.nadyne.com:10381/mobil-indostation";
+var server_url = "https://tpa-almuhibbin.com/public";
 var conn = server_url + "/api";
 var timeout = 50000; // 40 second, global
 var timeout1 = 30000; // 2 second, check version
@@ -860,11 +860,8 @@ function loginOnline() {
     SpinnerDialog.hide();
   } else {
     data = {
-      identity: identity,
+      email: identity,
       password: password,
-      latitude: latitude,
-      longitude: longitude,
-      device_uuid: window.localStorage.getItem("device_uuid"),
     };
     SpinnerDialog.show(null, "Mengirim data ...");
     //console.log(data);
@@ -877,7 +874,7 @@ function loginOnline() {
     })
       .done(function (values) {
         console.log(values);
-        if (values.status == "error") {
+        if (values.success == "error") {
           navigator.notification.alert(
             values.message,
             alertDismissed,
@@ -885,7 +882,7 @@ function loginOnline() {
             "Ok"
           );
           SpinnerDialog.hide();
-        } else if (values.status == "failed") {
+        } else if (values.success == "failed") {
           navigator.notification.alert(
             values.message,
             alertDismissed,
@@ -894,7 +891,7 @@ function loginOnline() {
           );
           SpinnerDialog.hide();
           $("#usernameFormLogin").val(identity);
-        } else if (values.status == "failed-otp") {
+        } else if (values.success == "failed-otp") {
           navigator.notification.alert(
             values.message,
             alertDismissed,
@@ -905,11 +902,12 @@ function loginOnline() {
           window.localStorage.setItem(
             "register_user_id_sess",
             values.user.user_id
-          );
-          window.localStorage.setItem("register_email_sess", values.user.email);
-          pages("otp-register");
-        } else if (values.status == "success") {
-          //console.log(values.role[0]);
+            );
+            window.localStorage.setItem("register_email_sess", values.user.email);
+            pages("otp-register");
+          } else if (values.success == "success") {
+            pages("dashboard");
+            //console.log(values.role[0]);
 
           window.localStorage.setItem("userID", values.user_id);
           NativeStorage.setItem(
@@ -955,7 +953,6 @@ function loginOnline() {
 
           window.localStorage.setItem("otp_login", "1");
 
-          pages("dashboard");
           setTimeout(function () {
             // notification();
             // notifVoucher();
