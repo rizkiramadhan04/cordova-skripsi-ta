@@ -103,7 +103,7 @@ if (firstCon == "online") {
 }
 
 $(document).ready(function () {
-  $(".appBottomMenu").css("display", "flex");
+  $(".appBottomMenuGuru").css("display", "flex");
   $("#dashboardSectionAppContainer").text("v" + version_number);
   document.querySelectorAll(".carousel-dashboard").forEach((carousel) =>
     new Splide(carousel, {

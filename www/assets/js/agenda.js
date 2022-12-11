@@ -1,6 +1,5 @@
 var firstCon = firstConnection();
 
-// console.log('js berita');
 if (firstCon == "online") {
   data = {
     user_id: window.localStorage.getItem("userID"),

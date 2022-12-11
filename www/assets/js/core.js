@@ -750,6 +750,22 @@ function pages(main) {
       target_main.load("contents/hafalan.html");
       break;
 
+    case "mengaji-guru":
+      window.localStorage.setItem("current_page", "mengaji");
+      $(".appBottomMenu").find("a").removeClass("active");
+      $("#linkBottomMenuMengaji").addClass("active");
+
+      target_main.load("contents/mengaji-guru.html");
+      break;
+
+    case "hafalan-guru":
+      window.localStorage.setItem("current_page", "hafalan");
+      $(".appBottomMenu").find("a").removeClass("active");
+      $("#linkBottomMenuHafalan").addClass("active");
+
+      target_main.load("contents/hafalan-guru.html");
+      break;
+
     case "slider-agenda-detail":
       window.localStorage.setItem("current_page", "slider-agenda-detail");
       target_main.load("contents/slider-agenda-detail.html");
