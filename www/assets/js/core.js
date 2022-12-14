@@ -693,6 +693,15 @@ function pages(main) {
       profilHeader();
       break;
 
+    case "dashboard-guru":
+      window.localStorage.setItem("current_page", "dashboard-guru");
+      $(".appBottomMenu").find("a").removeClass("active");
+      $("#linkBottomMenuDashboard").addClass("active");
+
+      target_main.load("contents/dashboard-guru.html");
+      profilHeader();
+      break;
+
     case "login":
       window.localStorage.setItem("current_page", "login");
       target_main.load("contents/login.html");
@@ -891,21 +900,10 @@ function loginOnline() {
           );
           SpinnerDialog.hide();
           $("#usernameFormLogin").val(identity);
-        } else if (values.success == "failed-otp") {
-          navigator.notification.alert(
-            values.message,
-            alertDismissed,
-            TITLE_ALERT,
-            "Ok"
-          );
-          SpinnerDialog.hide();
-          window.localStorage.setItem(
-            "register_user_id_sess",
-            values.user.user_id
-            );
-            window.localStorage.setItem("register_email_sess", values.user.email);
-            pages("otp-register");
-          } else if (values.success == "success") {
+        } else if (values.success == "success") {
+          if (values.status == 1) {
+            pages('dashboard-guru')
+          }
             pages("dashboard");
             //console.log(values.role[0]);
 
