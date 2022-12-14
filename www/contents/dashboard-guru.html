@@ -1,0 +1,104 @@
+<script src="assets/vendor/splide/splide.min.js"></script>
+
+<script type="text/javascript" src="assets/js/dashboard-guru.js"></script>
+<script type="text/javascript" src="assets/js/agenda.js"></script>
+<script type="text/javascript" src="assets/js/slider-agenda.js"></script>
+
+<!-- Agenda -->
+<div  class="section wallet-card-section pt-1 text-center">
+    <h1>Dashboard Guru</h1>
+    <div style="padding:2px 2px !important" class="wallet-card">
+        <div id="boxAgendContainer"
+            class="carousel-dashboard splide splide--loop splide--ltr splide--draggable is-active"
+            style="visibility: visible;">
+
+            <div class="splide__track" id="boxAgendaContainer-track">
+                <ul class="splide__list" id="boxAgendaContainer-list">
+
+                    <li class="splide__slide splide__slide--clone">
+                        <div class="card">
+                            <img src="" class="card-img-top slider-agenda1" alt="image" onClick="clickAgendaDetailDashboard(this.id)" id="">
+                        </div>
+                    </li>
+                    <li class="splide__slide splide__slide--clone">
+                        <div class="card">
+                            <img src="" class="card-img-top slider-agenda2" alt="image" onClick="clickAgendaDetailDashboard(this.id)" id="">
+                        </div>
+                    </li>
+                    <li class="splide__slide splide__slide--clone">
+                        <div class="card">
+                            <img src="" class="card-img-top slider-agenda3" alt="image" onClick="clickAgendaDetailDashboard(this.id)" id="">
+                        </div>
+                    </li>
+                    <li class="splide__slide splide__slide--clone">
+                        <div class="card">
+                            <img src="" class="card-img-top slider-agenda4" alt="image" onClick="clickAgendaDetailDashboard(this.id)" id="">
+                        </div>
+                    </li>
+                    <li class="splide__slide splide__slide--clone">
+                        <div class="card">
+                            <img src="" class="card-img-top slider-agenda5" alt="image" onClick="clickAgendaDetailDashboard(this.id)" id="">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Agenda -->
+
+<!-- List Presensi -->
+<div id="sectionPresensiContainer" class=" section mt-4 mb-4 ">
+    <div class="section-heading ">
+        <h2 class="title ">Daftar presensi anda</h2>
+        <a href="javascript:void(0)" onClick="pages('site');" class="link" style="text-decoration: underline;">Lihat Detailnya</a>
+    </div>
+    <div id="dashboardPresensiContainer" class="transactions">
+
+    </div>
+</div>
+<!-- List Presensi -->
+
+<!-- List Mengaji -->
+<div id="sectionMengajiContainer" class=" section mt-4 mb-4 ">
+    <div class="section-heading ">
+        <h2 class="title ">Daftar mengaji anda</h2>
+        <a href="javascript:void(0)" onClick="pages('site');" class="link" style="text-decoration: underline;">Lihat Detailnya</a>
+    </div>
+    <div id="dashboardMengajiContainer" class="transactions">
+
+    </div>
+</div>
+<!-- List Mengaji -->
+
+<!-- List Hafalan -->
+<div id="sectionHafalanContainer" class=" section mt-4 mb-4 ">
+    <div class="section-heading ">
+        <h2 class="title ">Daftar hafalan anda</h2>
+        <a href="javascript:void(0)" onClick="pages('site');" class="link" style="text-decoration: underline;">Lihat Detailnya</a>
+    </div>
+    <div id="dashboardHafalanContainer" class="transactions">
+
+    </div>
+</div>
+<!-- List Hafalan -->
+
+
+
+<!-- app footer -->
+<div class="appFooter ">
+    <div class="footer-title ">
+        Copyright &copy; TPA Al Muhibbin 2022. All Rights Reserved.
+    </div>
+</div>
+<!-- * app footer -->
+
+
+<!-- <script type="text/javascript">
+    var splide = new Splide( '#splide02', {
+      type   : 'loop',
+      padding: '1rem',
+    } );
+
+splide.mount();
+</script>

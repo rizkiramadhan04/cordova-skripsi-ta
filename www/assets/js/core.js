@@ -901,11 +901,12 @@ function loginOnline() {
           SpinnerDialog.hide();
           $("#usernameFormLogin").val(identity);
         } else if (values.success == "success") {
-          if (values.status == 1) {
-            pages('dashboard-guru')
-          }
+          console.log("status user:" + values.user_status);
+          if (values.user_status == "Guru") {
+            pages('dashboard-guru');
+          } else {
             pages("dashboard");
-            //console.log(values.role[0]);
+          }
 
           window.localStorage.setItem("userID", values.user_id);
           NativeStorage.setItem(
