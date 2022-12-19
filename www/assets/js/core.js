@@ -3,8 +3,8 @@
 //====================================================
 
 var isProduction = 0;
-var versionDevice = "0.20.8";
-var versionDeviceLocal = "0.20.8";
+var versionDevice = "0.0.1";
+var versionDeviceLocal = "0.0.1";
 var versionServer, TITLE_ALERT;
 var checkVersion = false;
 var statusLoginOnline = true;
@@ -52,39 +52,6 @@ document.querySelectorAll("img").forEach((img) => {
     this.style.display = "none";
   };
 });
-
-
-
-
-var onSuccessGeoLocation = function (position) {
-  window.localStorage.setItem("latitude", position.coords.latitude);
-  window.localStorage.setItem("longitude", position.coords.longitude);
-
-  // console.log('Latitude: ' + position.coords.latitude + '\n' +
-  //     'Longitude: ' + position.coords.longitude + '\n' +
-  //     'Altitude: ' + position.coords.altitude + '\n' +
-  //     'Accuracy: ' + position.coords.accuracy + '\n' +
-  //     'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
-  //     'Heading: ' + position.coords.heading + '\n' +
-  //     'Speed: ' + position.coords.speed + '\n' +
-  //     'Timestamp: ' + position.timestamp + '\n');
-};
-
-// onError Callback receives a PositionError object
-function onErrorGeoLocation(error) {
-  console.log(
-    "code: " + error.code + "\n" + "message: " + error.message + "\n"
-  );
-}
-
-var successCallbackLocAccuracy = function (position) {
-  console.log("Location callback geo accuracy");
-};
-
-// onError Callback receives a PositionError object
-function errorCallbackLocAccuracy(error) {
-  console.log(error);
-}
 
 function successNativeStorageCallback(message) {}
 
@@ -429,20 +396,6 @@ function onDeviceReady() {
   //cordova.plugins.locationAccuracy.request(successCallbackLocAccuracy, errorCallbackLocAccuracy)
   //navigator.splashscreen.show();
 
-  var optionsGeoLoc = {
-    enableHighAccuracy: true,
-    timeout: 10000,
-    maximumAge: 0,
-  };
-
-  geolocationStart = navigator.geolocation.getCurrentPosition(
-    onSuccessGeoLocation,
-    onErrorGeoLocation,
-    optionsGeoLoc
-  );
-
-  // getLocation();
-
   pictureSource = navigator.camera.PictureSourceType;
   destinationType = navigator.camera.DestinationType;
 
@@ -489,20 +442,6 @@ function onDeviceReady() {
   window.localStorage.removeItem("countvcr");
   init();
 } //end onDeviceReady
-
-function getLocation() {
-  var optionsGeoLoc = {
-    enableHighAccuracy: true,
-    timeout: 10000,
-    maximumAge: 0,
-  };
-
-  geolocationStart = navigator.geolocation.getCurrentPosition(
-    onSuccessGeoLocation,
-    onErrorGeoLocation,
-    optionsGeoLoc
-  );
-}
 
 function firstConnection() {
   //console.log(checkConnection());
@@ -794,8 +733,9 @@ function pages(main) {
       break;
 
     default:
-      window.localStorage.setItem("current_page", "login");
-      target_main.load("contents/login.html");
+      window.localStorage.setItem("current_page", "dashboard");
+      target_main.load("contents/dashboard.html");
+      
   }
   $("#sidebarPanel").modal("hide");
 }
@@ -853,14 +793,12 @@ function loginOnline() {
 
   var data = [];
 
-  var latitude = window.localStorage.getItem("latitude");
-  var longitude = window.localStorage.getItem("longitude");
   var identity = $("#usernameFormLogin").val();
   var password = $("#passwordFormLogin").val();
 
   if (identity == "" && password == "") {
     navigator.notification.alert(
-      "Email/No telepon dan password belum diisi",
+      "Email dan password belum diisi",
       alertDismissed,
       TITLE_ALERT,
       "Ok"
@@ -908,32 +846,32 @@ function loginOnline() {
             pages("dashboard");
           }
 
-          window.localStorage.setItem("userID", values.user_id);
+          window.localStorage.setItem("userID", values.user.id);
           NativeStorage.setItem(
             "userID",
-            values.user_id,
+            values.user.id,
             function () {},
             function () {}
           );
           window.localStorage.setItem(
             "name",
-            values.name,
+            values.user.name,
             function () {},
             function () {}
           );
           NativeStorage.setItem("name", values.name, function () {});
-          window.localStorage.setItem("email", values.email);
+          window.localStorage.setItem("email", values.user.email);
           NativeStorage.setItem(
             "email",
             values.email,
             function () {},
             function () {}
           );
-          window.localStorage.setItem("no_hp", values.no_hp);
-          window.localStorage.setItem("access_token", values.access_token);
+          window.localStorage.setItem("no_hp", values.user.no_hp);
+          window.localStorage.setItem("access_token", values.token);
           NativeStorage.setItem(
             "access_token",
-            values.access_token,
+            values.token,
             function () {},
             function () {}
           );
@@ -952,11 +890,6 @@ function loginOnline() {
 
           window.localStorage.setItem("otp_login", "1");
 
-          setTimeout(function () {
-            // notification();
-            // notifVoucher();
-            voucher_modal();
-          }, 2000);
         }
 
         window.localStorage.setItem("status_struk", "all");
@@ -1288,17 +1221,13 @@ function profilHeader() {
         xhr.setRequestHeader("Accept", "application/json");
       },
       type: "POST",
-      url: conn + "/profile",
+      url: conn + "/get-data",
       dataType: "json",
       timeout: timeout,
     })
       .done(function (values) {
         if (values.status == "success") {
-          if (values.file_photo == null) {
             var foto = "assets/img/sample/avatar/icon-user.png";
-          } else {
-            var foto = values.file_photo;
-          }
 
           $("#profileHeader").attr("src", foto);
         }

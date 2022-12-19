@@ -3751,7 +3751,7 @@ textarea,
 }
 
 .form-group .input-wrapper.active .label {
-  color: #6236ff !important;
+  color: grey !important;
 }
 
 .form-group.basic {
@@ -3773,8 +3773,8 @@ textarea,
 
 .form-group.basic .form-control:focus,
 .form-group.basic .custom-select:focus {
-  border-bottom-color: #6236ff;
-  box-shadow: inset 0 -1px 0 0 #6236ff;
+  border-bottom-color: #958d9e;
+  box-shadow: inset 0 -1px 0 0 #958d9e;
 }
 
 .form-group.basic .custom-select {

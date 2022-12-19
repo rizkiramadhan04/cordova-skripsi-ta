@@ -1,70 +1,225 @@
-$(document).ready(function () {
-    checkIsLoggedIn().done(function (values) {
-      if (values.status_login == false) {
-        pages("login");
-      }
-    });
-  });
   
   var firstCon = firstConnection();
+
+  $(document).ready(function () {
+
+    $(".select2-basic").select2();
+
+    $('#iqro').hide();
+    $('#surah').hide();
+    $('#ayat').hide();
+    $('#juz_wrap').hide();
+
+    $('#jenis_kitab').on('change', function () {
+      // console.log($('#jenis_kitab').val());
+      if ($('#jenis_kitab').val() == 'al_quran') {
+          $('#iqro').hide();
+          $('#surah').show();
+          $('#ayat').show();
+          $('#juz_wrap').show();
+      } else {
+          $('#iqro').show();
+          $('#surah').hide();
+          $('#ayat').hide();
+          $('#juz_wrap').hide();
+      }
+
+    });
+
+    //ayat
+    var dropdown_juz;
+    for (let i = 1; i < 30; i++) {
+      dropdown_juz += '<option value="' + i + '">' + i + "</option>";
+    }
+
+    $("#juz").append(dropdown_juz);
+    
+  });
   
   if (firstCon == "online") {
-    window.localStorage.removeItem("province_id");
   
+  // get data alquran
+
+  $.ajax({
+    type: "GET",
+    url: conn + "/get-data-alquran",
+    dataType: "json",
+    timeout: timeout,
+  })
+    .done(function (values) {
+      console.log(values);
+      var data = values.data;
+      SpinnerDialog.hide();
+      if (values.status == "failed") {
+        navigator.notification.alert(
+          'Data tidak ada!',
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
+        
+      } else if (values.status == "success") {
+        var result_list = "";
+        for (var i = 0; i < data.length; i++) {
+          var data_obj = data[i];
+          
+          result_list += '<option value="' + data_obj.no_surah + '">' + data_obj.nama_surah + "</option>";;
+        }
+
+        $("#no_surah").append(result_list);
+
+      } else {
+        navigator.notification.alert(
+          values.message,
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
+      }
+      //loading('close');
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+      SpinnerDialog.hide();
+      if (jqXHR.readyState == 0) {
+        console.log(
+          "Network error (i.e. connection refused, access denied due to CORS, etc.)"
+        );
+        navigator.notification.alert(
+          "Koneksi offline - Cek koneksi internet Anda.",
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
+      } else {
+        if (textStatus == "timeout") {
+          navigator.notification.alert(
+            "Request Time Out - Cek koneksi internet Anda.",
+            alertDismissed,
+            TITLE_ALERT,
+            "Ok"
+          );
+        }
+      }
+    });
+
+    //get data alquran
+
+  // get data murid
+
+  $.ajax({
+    type: "GET",
+    url: conn + "/get-data-murid",
+    dataType: "json",
+    timeout: timeout,
+  })
+    .done(function (values) {
+      console.log(values);
+      var data = values.data;
+      SpinnerDialog.hide();
+
+      if (values.status == "failed") {
+
+        navigator.notification.alert(
+          'Data tidak ada!',
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
+        
+      } else if (values.status == "success") {
+
+        var list_anak = "";
+
+        for (var i = 0; i < data.length; i++) {
+          var data_obj = data[i];
+          
+          list_anak += '<option value="' + data_obj.id + '">' + data_obj.nama_murid + "</option>";;
+        }
+
+        $("#murid_id").append(list_anak);
+
+      } else {
+        navigator.notification.alert(
+          values.message,
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
+      }
+      //loading('close');
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+      SpinnerDialog.hide();
+      if (jqXHR.readyState == 0) {
+        console.log(
+          "Network error (i.e. connection refused, access denied due to CORS, etc.)"
+        );
+        navigator.notification.alert(
+          "Koneksi offline - Cek koneksi internet Anda.",
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
+      } else {
+        if (textStatus == "timeout") {
+          navigator.notification.alert(
+            "Request Time Out - Cek koneksi internet Anda.",
+            alertDismissed,
+            TITLE_ALERT,
+            "Ok"
+          );
+        }
+      }
+    });
+
+    //get data murid
   
+  // Input data
+  
+  function postData() {
+    event.preventDefault();
+    // SpinnerDialog.show(null, "Mengirim data ...");
+
+    data = {
+      murid_id: $("#murid_id").val(),
+      jenis_kitab: $("#jenis_kitab").val(),
+      juz: $("#juz").val(),
+      no_surah: $("#no_surah").val(),
+      no_ayat: $("#no_ayat").val(),
+      no_iqro: $("#no_iqro").val(),
+      jilid: $("#jilid").val(),
+      halaman: $("#halaman").val(),
+      hasil: $("#hasil").val(),
+      tanggal: $("#tanggal").val(),
+    };
+
+    console.log(data);
+    
     $.ajax({
-      type: "POST",
-      url: conn + "/get-nearest-site",
-      data: {
-        latitude: window.localStorage.getItem("latitude"),
-        longitude: window.localStorage.getItem("longitude"),
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader(
+          "Authorization",
+          "Bearer " + window.localStorage.getItem("access_token")
+        );
+        xhr.setRequestHeader("Accept", "application/json");
       },
+      type: "POST",
+      url: conn + "/input-data-pencatatan",
       dataType: "json",
       timeout: timeout,
-      // data: data,
+      data: data,
     })
       .done(function (values) {
-        // console.log(values);
-        var results = values.results;
+        console.log(values);
+        
         SpinnerDialog.hide();
         if (values.status == "failed") {
-          //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
+
+          navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
+
         } else if (values.status == "success") {
-          //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
-          var result_list = "";
-          for (var i = 0; i < 5; i++) {
-            //,\"' +results[i].site_name + '\"
-            result_list +=
-              '<a href="javascript:void(0)" onClick="openMap(' +
-              results[i].latitude +
-              "," +
-              results[i].longitude +
-              ')" class="">';
-            result_list += '<div class="row detail item mb-2 p-0">';
-            result_list +=
-              '<div class="col-3"><img src="assets/img/site-icon-120.png" alt="img" class="image-block imaged w76"></div>';
-            result_list +=
-              '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">';
-            result_list += "<strong>" + results[i].site_name + "</strong>";
-            result_list +=
-              "<p>Kode Outlet : <strong>" +
-              results[i].site_code +
-              "</strong><br/>";
-            result_list += results[i].address_1 + "</p>";
-            result_list += "</div>";
-            result_list += '<div class="col-3 text-center">';
-            result_list +=
-              '<img src="assets/img/sample/site/icon-site.png" alt="img" class="image-block" style="width: 20px;">';
-            result_list +=
-              '<strong style="font-size:.8rem;display:block;">' +
-              results[i].distance +
-              " KM</strong>";
-            result_list += "</div>";
-            result_list += "</div>";
-            result_list += "</a>";
-          }
-  
-          $("#pageMengajiContainer").html(result_list);
+          navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
+          pages('mengaji-guru')
         } else {
           navigator.notification.alert(
             values.message,
@@ -82,7 +237,7 @@ $(document).ready(function () {
             "Network error (i.e. connection refused, access denied due to CORS, etc.)"
           );
           navigator.notification.alert(
-            "Koneksi offline - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #DB-001",
+            "Koneksi offline - Cek koneksi internet Anda.",
             alertDismissed,
             TITLE_ALERT,
             "Ok"
@@ -90,7 +245,7 @@ $(document).ready(function () {
         } else {
           if (textStatus == "timeout") {
             navigator.notification.alert(
-              "Request Time Out - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #OFF-001",
+              "Request Time Out - Cek koneksi internet Anda.",
               alertDismissed,
               TITLE_ALERT,
               "Ok"
@@ -98,10 +253,14 @@ $(document).ready(function () {
           }
         }
       });
+    }
+
+  // Input data
+
   } else {
     SpinnerDialog.hide();
     navigator.notification.alert(
-      "Koneksi offline - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #DB-001",
+      "Koneksi offline - Cek koneksi internet Anda.",
       alertDismissed,
       TITLE_ALERT,
       "Ok"
