@@ -1,43 +1,38 @@
-  
-  var firstCon = firstConnection();
+var firstCon = firstConnection();
 
-  $(document).ready(function () {
+$(document).ready(function () {
+  $(".select2-basic").select2();
 
-    $(".select2-basic").select2();
+  $("#iqro").hide();
+  $("#surah").hide();
+  $("#ayat").hide();
+  $("#juz_wrap").hide();
 
-    $('#iqro').hide();
-    $('#surah').hide();
-    $('#ayat').hide();
-    $('#juz_wrap').hide();
-
-    $('#jenis_kitab').on('change', function () {
-      // console.log($('#jenis_kitab').val());
-      if ($('#jenis_kitab').val() == 'al_quran') {
-          $('#iqro').hide();
-          $('#surah').show();
-          $('#ayat').show();
-          $('#juz_wrap').show();
-      } else {
-          $('#iqro').show();
-          $('#surah').hide();
-          $('#ayat').hide();
-          $('#juz_wrap').hide();
-      }
-
-    });
-
-    //ayat
-    var dropdown_juz;
-    for (let i = 1; i < 30; i++) {
-      dropdown_juz += '<option value="' + i + '">' + i + "</option>";
+  $("#jenis_kitab").on("change", function () {
+    // console.log($('#jenis_kitab').val());
+    if ($("#jenis_kitab").val() == "Al Qur'an") {
+      $("#iqro").hide();
+      $("#surah").show();
+      $("#ayat").show();
+      $("#juz_wrap").show();
+    } else {
+      $("#iqro").show();
+      $("#surah").hide();
+      $("#ayat").hide();
+      $("#juz_wrap").hide();
     }
-
-    $("#juz").append(dropdown_juz);
-    
   });
-  
-  if (firstCon == "online") {
-  
+
+  //juz
+  var dropdown_juz;
+  for (let i = 1; i < 30; i++) {
+    dropdown_juz += '<option value="' + i + '">' + i + "</option>";
+  }
+
+  $("#juz").append(dropdown_juz);
+});
+
+if (firstCon == "online") {
   // get data alquran
 
   $.ajax({
@@ -52,22 +47,25 @@
       SpinnerDialog.hide();
       if (values.status == "failed") {
         navigator.notification.alert(
-          'Data tidak ada!',
+          "Data tidak ada!",
           alertDismissed,
           TITLE_ALERT,
           "Ok"
         );
-        
       } else if (values.status == "success") {
         var result_list = "";
         for (var i = 0; i < data.length; i++) {
           var data_obj = data[i];
-          
-          result_list += '<option value="' + data_obj.no_surah + '">' + data_obj.nama_surah + "</option>";;
+
+          result_list +=
+            '<option value="' +
+            data_obj.no_surah +
+            '">' +
+            data_obj.nama_surah +
+            "</option>";
         }
 
         $("#no_surah").append(result_list);
-
       } else {
         navigator.notification.alert(
           values.message,
@@ -102,7 +100,7 @@
       }
     });
 
-    //get data alquran
+  //get data alquran
 
   // get data murid
 
@@ -118,26 +116,27 @@
       SpinnerDialog.hide();
 
       if (values.status == "failed") {
-
         navigator.notification.alert(
-          'Data tidak ada!',
+          "Data tidak ada!",
           alertDismissed,
           TITLE_ALERT,
           "Ok"
         );
-        
       } else if (values.status == "success") {
-
         var list_anak = "";
 
         for (var i = 0; i < data.length; i++) {
           var data_obj = data[i];
-          
-          list_anak += '<option value="' + data_obj.id + '">' + data_obj.nama_murid + "</option>";;
+
+          list_anak +=
+            '<option value="' +
+            data_obj.id +
+            '">' +
+            data_obj.nama_murid +
+            "</option>";
         }
 
         $("#murid_id").append(list_anak);
-
       } else {
         navigator.notification.alert(
           values.message,
@@ -172,13 +171,13 @@
       }
     });
 
-    //get data murid
-  
+  //get data murid
+
   // Input data
-  
+
   function postData() {
     event.preventDefault();
-    // SpinnerDialog.show(null, "Mengirim data ...");
+    SpinnerDialog.show(null, "Mengirim data ...");
 
     data = {
       murid_id: $("#murid_id").val(),
@@ -194,7 +193,7 @@
     };
 
     console.log(data);
-    
+
     $.ajax({
       beforeSend: function (xhr) {
         xhr.setRequestHeader(
@@ -211,15 +210,23 @@
     })
       .done(function (values) {
         console.log(values);
-        
+
         SpinnerDialog.hide();
         if (values.status == "failed") {
-
-          navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
-
+          navigator.notification.alert(
+            values.message,
+            alertDismissed,
+            TITLE_ALERT,
+            "Ok"
+          );
         } else if (values.status == "success") {
-          navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
-          pages('mengaji-guru')
+          navigator.notification.alert(
+            values.message,
+            alertDismissed,
+            TITLE_ALERT,
+            "Ok"
+          );
+          pages("mengaji-guru");
         } else {
           navigator.notification.alert(
             values.message,
@@ -253,17 +260,15 @@
           }
         }
       });
-    }
+  }
 
   // Input data
-
-  } else {
-    SpinnerDialog.hide();
-    navigator.notification.alert(
-      "Koneksi offline - Cek koneksi internet Anda.",
-      alertDismissed,
-      TITLE_ALERT,
-      "Ok"
-    );
-  }
-  
+} else {
+  SpinnerDialog.hide();
+  navigator.notification.alert(
+    "Koneksi offline - Cek koneksi internet Anda.",
+    alertDismissed,
+    TITLE_ALERT,
+    "Ok"
+  );
+}

@@ -3,8 +3,8 @@
 //====================================================
 
 var isProduction = 0;
-var versionDevice = "0.0.1";
-var versionDeviceLocal = "0.0.1";
+var versionDevice = "1.0.0";
+var versionDeviceLocal = "1.0.0";
 var versionServer, TITLE_ALERT;
 var checkVersion = false;
 var statusLoginOnline = true;
@@ -233,14 +233,6 @@ var callbackActionSheet2 = function (tipe_foto, buttonIndex) {
             console.log(textStatus);
             console.log(errorThrown);
 
-            if (jqXHR.responseJSON.message == "Service Unavailable") {
-              $(".modal-maintenance").modal("show");
-
-              $("#btn-modal-close").click(function () {
-                navigator.app.exitApp();
-              });
-            }
-
             if (jqXHR.readyState == 0) {
               console.log(
                 "Network error (i.e. connection refused, access denied due to CORS, etc.)"
@@ -324,7 +316,6 @@ function onDeviceReady() {
   };
   window.CacheClear(success, error);
   //end clear cache
-  
 
   var deviceManufacturer = device.manufacturer;
   var model = device.model;
@@ -725,17 +716,13 @@ function pages(main) {
       break;
 
     case "list-pembayaran":
-      window.localStorage.setItem(
-        "current_page",
-        "list-pembayaran"
-      );
+      window.localStorage.setItem("current_page", "list-pembayaran");
       target_main.load("contents/list-pembayaran.html");
       break;
 
     default:
       window.localStorage.setItem("current_page", "dashboard");
       target_main.load("contents/dashboard.html");
-      
   }
   $("#sidebarPanel").modal("hide");
 }
@@ -841,7 +828,7 @@ function loginOnline() {
         } else if (values.success == "success") {
           console.log("status user:" + values.user_status);
           if (values.user_status == "Guru") {
-            pages('dashboard-guru');
+            pages("dashboard-guru");
           } else {
             pages("dashboard");
           }
@@ -889,7 +876,6 @@ function loginOnline() {
           SpinnerDialog.hide();
 
           window.localStorage.setItem("otp_login", "1");
-
         }
 
         window.localStorage.setItem("status_struk", "all");
@@ -898,14 +884,6 @@ function loginOnline() {
       })
       .fail(function (jqXHR, textStatus, errorThrown) {
         var contentType = jqXHR.getResponseHeader("Content-Type");
-
-        if (jqXHR.responseJSON.message == "Service Unavailable") {
-          $(".modal-maintenance").modal("show");
-
-          $("#btn-modal-close").click(function () {
-            navigator.app.exitApp();
-          });
-        }
 
         console.log(jqXHR.status);
         //console.log(textStatus);
@@ -1168,45 +1146,44 @@ function openMap(latitude, longitude, site_name) {
 function clickPresensiTelat(id) {
   window.localStorage.removeItem("status_presensi");
   window.localStorage.setItem("status_presensi", id);
-  
+
   pages("presensi");
 }
 
 function clickPresensiTepat(id) {
   window.localStorage.removeItem("status_presensi");
   window.localStorage.setItem("status_presensi", id);
-  
+
   pages("presensi");
 }
 
 function clickPresensiAll(id) {
   window.localStorage.removeItem("status_presensi");
   window.localStorage.setItem("status_presensi", id);
-  
+
   pages("presensi");
 }
 
 function clickPembayaranA(id) {
   window.localStorage.removeItem("status_pembayaran");
   window.localStorage.setItem("status_pembayaran", id);
-  
+
   pages("list-pembayaran");
 }
 
 function clickPembayaranB(id) {
   window.localStorage.removeItem("status_pembayaran");
   window.localStorage.setItem("status_pembayaran", id);
-  
+
   pages("list-pembayaran");
 }
 
 function clickPembayaranAll(id) {
   window.localStorage.removeItem("status_pembayaran");
   window.localStorage.setItem("status_pembayaran", id);
-  
+
   pages("list-pembayaran");
 }
-
 
 function profilHeader() {
   var akses_token = window.localStorage.getItem("access_token");
@@ -1227,7 +1204,7 @@ function profilHeader() {
     })
       .done(function (values) {
         if (values.status == "success") {
-            var foto = "assets/img/sample/avatar/icon-user.png";
+          var foto = "assets/img/sample/avatar/icon-user.png";
 
           $("#profileHeader").attr("src", foto);
         }
@@ -1236,14 +1213,6 @@ function profilHeader() {
         console.log(jqXHR);
         console.log(textStatus);
         console.log(errorThrown);
-
-        if (jqXHR.responseJSON.message == "Service Unavailable") {
-          $(".modal-maintenance").modal("show");
-
-          $("#btn-modal-close").click(function () {
-            navigator.app.exitApp();
-          });
-        }
 
         if (jqXHR.readyState == 0) {
           console.log(

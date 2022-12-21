@@ -1,4 +1,4 @@
-<script type="text/javascript" src="assets/js/site.js"></script>
+<script type="text/javascript" src="assets/js/hafalan-guru.js"></script>
 
 <div class="appHeader bg-primary">
   <div class="left">
@@ -21,31 +21,125 @@
 <!-- list hadiah vouhcer -->
 
 <div class="section wallet-card-section pt-1 new-menu-content">
-    <div style="padding:0 !important" class="wallet-card">
-        <div class="img-menu-content">
-             <img src="assets/img/hafalan/mengafal.jpg">
-        </div>
-        <div class="text-content">
-            <div class="title">
-                <span>Kegiatan menghafal doa sehari-hari</span>
-            </div>
-            <div class="detail-text">
-                <ul style="padding:2px 15px;">
-                    <li>Kegiatan ini dilaksanakan pada setiap selesai mengaji Al quran dan Iqra - TPA Al Muhibbin</li>
-                </ul>
-            </div>
-        </div>
+  <div style="padding: 0 !important" class="wallet-card">
+    <div class="img-menu-content">
+      <img src="assets/img/hafalan/hafalan.jpg" />
     </div>
-</div> 
-
-    <!-- list presensi -->
-    <div id="sectionListContainer" class=" section mt-4 mb-4">
-      <div class="section-heading">
-          <h2 class="title ">Daftar hafalan anda</h2>
+    <div class="text-content">
+      <div class="title">
+        <span>Kegiatan menghafal doa sehari-hari</span>
       </div>
-      <div id="pageListContainer" class="transactions pageListContainerHafalan">
-
+      <div class="detail-text">
+        <ul style="padding: 2px 15px">
+          <li>
+            Kegiatan ini dilaksanakan pada setiap selesai mengaji Al quran dan
+            Iqra - TPA Al Muhibbin
+          </li>
+        </ul>
       </div>
     </div>
-    <!-- * list presensi -->
+  </div>
+</div>
 
+<!-- list presensi -->
+<div id="sectionListContainer" class="section mt-4 mb-4">
+  <div class="section-heading">
+    <h2 class="title">Input hafalan</h2>
+  </div>
+  <div
+    id="pageListContainer"
+    class="transactions pageListContainerHafalan section wallet-card pt-3 pb-3"
+  >
+    <form method="POST" onsubmit="postData()">
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label" for="murid_id">Nama Murid</label>
+          <div class="row mt-1">
+            <div class="col-12">
+              <select class="form-control select2-basic" id="murid_id">
+                <option value="">-- Pilih Nama Murid --</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label" for="jenis">Jenis Hafalan</label>
+          <div class="row mt-1">
+            <div class="col-12">
+              <select class="form-control select2-basic" id="jenis">
+                <option value="">-- Pilih Jenis Hafalan --</option>
+                <option value="1">Bacaan Sholat</option>
+                <option value="2">Doa Sehari-hari</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label" for="jenis">Materi Hafalan</label>
+          <div class="row mt-1">
+            <div class="col-12">
+              <select class="form-control select2-basic" id="materi_hafalan">
+                <option value="">-- Pilih Materi --</option>
+                <option value="Doa Iftitah">Doa Iftitah</option>
+                <option value="Surah Al - Fatihah">Surah Al - Fatihah</option>
+                <option value="Doa Ruku & I'tidal">Doa Ruku & I'tidal</option>
+                <option value="Doa Sujud">Doa Sujud</option>
+                <option value="Doa Duduk iftirasy">Doa Duduk iftirasy</option>
+                <option value="Doa Tasyahud">Doa Tasyahud</option>
+                <option value="Dzikir Ba'da Sholat">Dzikir Ba'da Sholat</option>
+
+                <option value="Doa Kebaikan">
+                  Doa Kebaikan Dunia & Akhirat
+                </option>
+                <option value="Doa Sebelum Makan">Doa Sebelum Makan</option>
+                <option value="Doa Setelah Makan">Doa Setelah Makan</option>
+                <option value="Doa Sebelum Tidur">Doa Sebelum Tidur</option>
+                <option value="Doa Bangun Tidur">Doa Bangun Tidur</option>
+                <option value="Doa Masuk Rumah">Doa Masuk Rumah</option>
+                <option value="Doa Keluar Rumah">Doa Keluar Rumah</option>
+                <option value="Doa Masuk WC">Doa Masuk WC</option>
+                <option value="Doa Keluar WC">Doa Keluar WC</option>
+                <option value="Doa Setelah Adzan">Doa Setelah Adzan</option>
+                <option value="Doa Setelah Iqomah">Doa Setelah Iqomah</option>
+                <option value="Doa Selesai Wudhu">Doa Selesai Wudhu</option>
+                <option value="Doa Bercermin">Doa Bercermin</option>
+                <option value="Doa Untuk Orang Tua">Doa Untuk Orang Tua</option>
+                <option value="Doa Qunut">Doa Qunut</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label" for="nilai">Nilai</label>
+          <input type="number" class="form-control mt-1" id="nilai" />
+        </div>
+      </div>
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label" for="tanggal_hafalan">Tanggal Hafalan</label>
+          <input type="date" class="form-control mt-1" id="tanggal_hafalan" />
+        </div>
+      </div>
+
+      <div class="mt-2 mb-4 transparent">
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          Simpan
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="mt-5 mb-4 transparent">
+    <a href="#" class="btn btn-primary btn-block btn-lg">Lihat Data Menyimak</a>
+  </div>
+</div>
+<!-- * list presensi -->

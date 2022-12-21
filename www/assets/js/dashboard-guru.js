@@ -1,64 +1,74 @@
 var firstCon = firstConnection();
 var version_number = window.localStorage.getItem("versionDevice");
-// var get_count_vcr = window.localStorage.getItem('countvcr');
 
 if (firstCon == "online") {
   window.localStorage.removeItem("province_id");
 
-
   $.ajax({
-    type: "POST",
-    url: conn + "/get-nearest-site",
-    data: {
-      latitude: window.localStorage.getItem("latitude"),
-      longitude: window.localStorage.getItem("longitude"),
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader(
+        "Authorization",
+        "Bearer " + window.localStorage.getItem("access_token")
+      );
+      xhr.setRequestHeader("Accept", "application/json");
     },
+    type: "POST",
+    url: conn + "/get-data-hafalan-by-guru",
     dataType: "json",
     timeout: timeout,
     // data: data,
   })
     .done(function (values) {
-      // console.log(values);
-      var results = values.results;
+      console.log(values);
+      var results = values.data;
       SpinnerDialog.hide();
       if (values.status == "failed") {
-        //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
+        navigator.notification.alert(
+          values.message,
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
       } else if (values.status == "success") {
-        //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
+        //   //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
         var result_list = "";
         for (var i = 0; i < 5; i++) {
+          // console.log(results[i].nama_murid);
           //,\"' +results[i].site_name + '\"
-          result_list +=
-            '<a href="javascript:void(0)" onClick="openMap(' +
-            results[i].latitude +
-            "," +
-            results[i].longitude +
-            ')" class="">';
+          result_list += '<a href="javascript:void(0)">';
           result_list += '<div class="row detail item mb-2 p-0">';
           result_list +=
             '<div class="col-3"><img src="assets/img/site-icon-120.png" alt="img" class="image-block imaged w76"></div>';
           result_list +=
             '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">';
-          result_list += "<strong>" + results[i].site_name + "</strong>";
+          result_list += "<strong>Hafalan</strong>";
           result_list +=
-            "<p>Kode Outlet : <strong>" +
-            results[i].site_code +
+            "<p>Nama Murid : <strong>" +
+            results[i].nama_murid +
             "</strong><br/>";
-          result_list += results[i].address_1 + "</p>";
+          result_list +=
+            "<p>Materi : <strong>" +
+            results[i].materi_hafalan +
+            "</strong><br/>";
+          result_list +=
+            "<p>Nama Guru : <strong>" + results[i].nama_guru + "</strong><br/>";
+          result_list +=
+            "<p>Tanggal : <strong>" +
+            results[i].tanggal_hafalan +
+            "</strong><br/></p>";
           result_list += "</div>";
           result_list += '<div class="col-3 text-center">';
-          result_list +=
-            '<img src="assets/img/sample/site/icon-site.png" alt="img" class="image-block" style="width: 20px;">';
+          result_list += '<p style="width: 20px;"><b> Nilai </b></p>';
           result_list +=
             '<strong style="font-size:.8rem;display:block;">' +
-            results[i].distance +
-            " KM</strong>";
+            results[i].nilai +
+            "</strong>";
           result_list += "</div>";
           result_list += "</div>";
           result_list += "</a>";
         }
 
-        $("#dashboardSiteContainer").html(result_list);
+        $("#dashboardHafalanContainer").html("result_list");
       } else {
         navigator.notification.alert(
           values.message,
@@ -126,5 +136,4 @@ $(document).ready(function () {
       },
     }).mount()
   );
-
 });
