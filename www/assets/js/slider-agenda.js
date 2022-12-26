@@ -1,22 +1,6 @@
 var firstCon = firstConnection();
 
-// $(document).ready(function() {
-//     var user_id = window.localStorage.getItem('userID');
-//     checkIsLoggedIn().done(function(values) {
-//         if (values.status_login == false) {
-//            console.log('user id : kosong');
-//         }
-//         else
-//         {
-//             console.log('user id :' +user_id);
-//         }
-//     });
-// });
-// console.log('js berita');
 if (firstCon == "online") {
-  data = {
-    user_id: window.localStorage.getItem("userID"),
-  };
   $.ajax({
     beforeSend: function (xhr) {
       $(".slider-agenda1").attr("src", "assets/img/sample/news/loading.gif");
@@ -25,14 +9,14 @@ if (firstCon == "online") {
       $(".slider-agenda4").attr("src", "assets/img/sample/news/loading.gif");
       $(".slider-agenda5").attr("src", "assets/img/sample/news/loading.gif");
     },
-    type: "POST",
-    url: conn + "/promo",
+    type: "GET",
+    url: conn + "/get-data-agenda",
     dataType: "json",
     timeout: timeout,
-    data: data,
+    // data: data,
   })
     .done(function (values) {
-      // console.log(values);
+      console.log(values);
       SpinnerDialog.hide();
       if (values.status == "errors") {
         //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
@@ -44,7 +28,7 @@ if (firstCon == "online") {
         var data_fl = values.data;
 
         var length_data = data_fl.length;
-        // console.log('jumlah data promo:'+length_data);
+        console.log('jumlah data:'+length_data);
         if (length_data >= 5) {
           $(".slider-agenda1").attr("id", data_fl[0].id);
           $(".slider-agenda2").attr("id", data_fl[1].id);
@@ -54,23 +38,23 @@ if (firstCon == "online") {
 
           $(".slider-agenda1").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
           $(".slider-agenda2").attr(
             "src",
-            server_url + "/images/" + data_fl[1].image
+            server_url + "/storage/agenda/" + data_fl[1].gambar_agenda
           );
           $(".slider-agenda3").attr(
             "src",
-            server_url + "/images/" + data_fl[2].image
+            server_url + "/storage/agenda/" + data_fl[2].gambar_agenda
           );
           $(".slider-agenda4").attr(
             "src",
-            server_url + "/images/" + data_fl[3].image
+            server_url + "/storage/agenda/" + data_fl[3].gambar_agenda
           );
           $(".slider-agenda5").attr(
             "src",
-            server_url + "/images/" + data_fl[4].image
+            server_url + "/storage/agenda/" + data_fl[4].gambar_agenda
           );
         } else if (length_data == 4) {
           $(".slider-agenda1").attr("id", data_fl[0].id);
@@ -81,23 +65,23 @@ if (firstCon == "online") {
 
           $(".slider-agenda1").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
           $(".slider-agenda2").attr(
             "src",
-            server_url + "/images/" + data_fl[1].image
+            server_url + "/storage/agenda/" + data_fl[1].gambar_agenda
           );
           $(".slider-agenda3").attr(
             "src",
-            server_url + "/images/" + data_fl[2].image
+            server_url + "/storage/agenda/" + data_fl[2].gambar_agenda
           );
           $(".slider-agenda4").attr(
             "src",
-            server_url + "/images/" + data_fl[3].image
+            server_url + "/storage/agenda/" + data_fl[3].gambar_agenda
           );
           $(".slider-agenda5").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
         } else if (length_data == 3) {
           $(".slider-agenda1").attr("id", data_fl[0].id);
@@ -108,23 +92,23 @@ if (firstCon == "online") {
 
           $(".slider-agenda1").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
           $(".slider-agenda2").attr(
             "src",
-            server_url + "/images/" + data_fl[1].image
+            server_url + "/storage/agenda/" + data_fl[1].gambar_agenda
           );
           $(".slider-agenda3").attr(
             "src",
-            server_url + "/images/" + data_fl[2].image
+            server_url + "/storage/agenda/" + data_fl[2].gambar_agenda
           );
           $(".slider-agenda4").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
           $(".slider-agenda5").attr(
             "src",
-            server_url + "/images/" + data_fl[1].image
+            server_url + "/storage/agenda/" + data_fl[1].gambar_agenda
           );
         } else if (length_data == 2) {
           $(".slider-agenda1").attr("id", data_fl[0].id);
@@ -135,23 +119,23 @@ if (firstCon == "online") {
 
           $(".slider-agenda1").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
           $(".slider-agenda2").attr(
             "src",
-            server_url + "/images/" + data_fl[1].image
+            server_url + "/storage/agenda/" + data_fl[1].gambar_agenda
           );
           $(".slider-agenda3").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
           $(".slider-agenda4").attr(
             "src",
-            server_url + "/images/" + data_fl[1].image
+            server_url + "/storage/agenda/" + data_fl[1].gambar_agenda
           );
           $(".slider-agenda5").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
         } else if (length_data == 1) {
           $(".slider-agenda1").attr("id", data_fl[0].id);
@@ -162,23 +146,23 @@ if (firstCon == "online") {
 
           $(".slider-agenda1").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
           $(".slider-agenda2").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
           $(".slider-agenda3").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
           $(".slider-agenda4").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
           $(".slider-agenda5").attr(
             "src",
-            server_url + "/images/" + data_fl[0].image
+            server_url + "/storage/agenda/" + data_fl[0].gambar_agenda
           );
         }
 

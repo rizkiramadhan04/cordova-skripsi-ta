@@ -1,9 +1,7 @@
 var firstCon = firstConnection();
 
 if (firstCon == "online") {
-  data = {
-    user_id: window.localStorage.getItem("userID"),
-  };
+ 
   $.ajax({
     beforeSend: function (xhr) {
       $(".img-slider-dsb-0").attr("src", "assets/img/sample/news/loading.gif");
@@ -11,14 +9,14 @@ if (firstCon == "online") {
       $(".img-slider-dsb-2").attr("src", "assets/img/sample/news/loading.gif");
       $(".img-slider-dsb-3").attr("src", "assets/img/sample/news/loading.gif");
     },
-    type: "POST",
-    url: conn + "/news",
+    type: "GET",
+    url: conn + "/get-data-agenda",
     dataType: "json",
     timeout: timeout,
-    data: data,
+    // data: data,
   })
     .done(function (values) {
-      // console.log(values);
+      console.log(values);
       SpinnerDialog.hide();
       if (values.status == "errors") {
         //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');

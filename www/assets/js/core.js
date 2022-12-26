@@ -79,12 +79,19 @@ function onPause() {
 
 function onBackKeyDown(e) {
   var current_page = window.localStorage.getItem("current_page");
+  var section_page_of = window.localStorage.getItem("section_page_of");
 
   console.log(current_page);
-  if (current_page == "dashboard") {
+  if (current_page == "dashboard" && "dashboard-guru") {
     navigator.app.exitApp();
   } else {
-    pages("dashboard");
+    if (section_page_of == 'Guru') {
+      pages("dashboard-guru");
+      
+    } else {
+      pages("dashboard");
+
+    }
   }
 }
 
@@ -431,7 +438,7 @@ function onDeviceReady() {
   window.localStorage.setItem("versionDevice", versionDevice);
   window.localStorage.removeItem("province_id");
   window.localStorage.removeItem("countvcr");
-  init();
+  checkLogin();
 } //end onDeviceReady
 
 function firstConnection() {
@@ -626,7 +633,7 @@ function pages(main) {
     case "dashboard-guru":
       window.localStorage.setItem("current_page", "dashboard-guru");
       $(".appBottomMenu").find("a").removeClass("active");
-      $("#linkBottomMenuDashboard").addClass("active");
+      $("#linkBottomMenuDashboardGuru").addClass("active");
 
       target_main.load("contents/dashboard-guru.html");
       profilHeader();
@@ -692,7 +699,7 @@ function pages(main) {
     case "mengaji-guru":
       window.localStorage.setItem("current_page", "mengaji");
       $(".appBottomMenu").find("a").removeClass("active");
-      $("#linkBottomMenuMengaji").addClass("active");
+      $("#linkBottomMenuMengajiGuru").addClass("active");
 
       target_main.load("contents/mengaji-guru.html");
       break;
@@ -700,7 +707,7 @@ function pages(main) {
     case "hafalan-guru":
       window.localStorage.setItem("current_page", "hafalan");
       $(".appBottomMenu").find("a").removeClass("active");
-      $("#linkBottomMenuHafalan").addClass("active");
+      $("#linkBottomMenuHafalanGuru").addClass("active");
 
       target_main.load("contents/hafalan-guru.html");
       break;
@@ -720,9 +727,15 @@ function pages(main) {
       target_main.load("contents/list-pembayaran.html");
       break;
 
+    case "list-presensi":
+      window.localStorage.setItem("current_page", "list-presensi");
+      target_main.load("contents/list-presensi.html");
+      break;
+
     default:
-      window.localStorage.setItem("current_page", "dashboard");
-      target_main.load("contents/dashboard.html");
+      window.localStorage.setItem("current_page", "login");
+      target_main.load("contents/login.html");
+    
   }
   $("#sidebarPanel").modal("hide");
 }
@@ -829,8 +842,10 @@ function loginOnline() {
           console.log("status user:" + values.user_status);
           if (values.user_status == "Guru") {
             pages("dashboard-guru");
+            window.localStorage.setItem("section_page_of", values.user_status );
           } else {
             pages("dashboard");
+            window.localStorage.setItem("section_page_of", values.user_status );
           }
 
           window.localStorage.setItem("userID", values.user.id);
@@ -875,7 +890,7 @@ function loginOnline() {
           //loading('show');
           SpinnerDialog.hide();
 
-          window.localStorage.setItem("otp_login", "1");
+          window.localStorage.setItem("status_login", "1");
         }
 
         window.localStorage.setItem("status_struk", "all");
@@ -946,6 +961,8 @@ function logout(logout_type) {
         window.CacheClear(success, error);
         //end clear cache
 
+        window.localStorage.setItem('status_login', 0);
+
         NativeStorage.remove(
           "userID",
           successNativeStorageCallback,
@@ -958,7 +975,6 @@ function logout(logout_type) {
         );
         window.localStorage.removeItem("userID");
         window.localStorage.removeItem("access_token");
-        window.localStorage.removeItem("otp_login");
         window.localStorage.removeItem("name");
         window.localStorage.removeItem("email");
         window.localStorage.removeItem("role");
@@ -1143,25 +1159,25 @@ function openMap(latitude, longitude, site_name) {
   );
 }
 
-function clickPresensiTelat(id) {
+function clickPresensi(id) {
   window.localStorage.removeItem("status_presensi");
   window.localStorage.setItem("status_presensi", id);
 
-  pages("presensi");
+  pages("list-presensi");
 }
 
-function clickPresensiTepat(id) {
+function clickPresensiIzin(id) {
   window.localStorage.removeItem("status_presensi");
   window.localStorage.setItem("status_presensi", id);
 
-  pages("presensi");
+  pages("list-presensi");
 }
 
 function clickPresensiAll(id) {
   window.localStorage.removeItem("status_presensi");
   window.localStorage.setItem("status_presensi", id);
 
-  pages("presensi");
+  pages("list-presensi");
 }
 
 function clickPembayaranA(id) {
@@ -1227,4 +1243,23 @@ function profilHeader() {
         }
       });
   }
+}
+
+function checkLogin() {
+
+  var status_login = window.localStorage.getItem('status_login');
+  var section_page_of = window.localStorage.getItem("section_page_of");
+
+  // console.log(section_page_of);
+
+  if (status_login == 1) {
+    if (section_page_of == 'Guru') {
+      pages('dasboard-guru');
+    } else {
+      pages('dashboard');
+    }
+  } else {
+    pages('login');
+  }
+
 }

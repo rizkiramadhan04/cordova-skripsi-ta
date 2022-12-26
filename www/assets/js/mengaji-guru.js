@@ -263,6 +263,13 @@ if (firstCon == "online") {
   }
 
   // Input data
+
+  // List data presensi
+
+    
+
+  // List data presensi
+
 } else {
   SpinnerDialog.hide();
   navigator.notification.alert(
