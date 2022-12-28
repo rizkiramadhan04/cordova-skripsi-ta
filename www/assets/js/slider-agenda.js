@@ -16,7 +16,7 @@ if (firstCon == "online") {
     // data: data,
   })
     .done(function (values) {
-      console.log(values);
+      // console.log(values);
       SpinnerDialog.hide();
       if (values.status == "errors") {
         //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
@@ -28,7 +28,7 @@ if (firstCon == "online") {
         var data_fl = values.data;
 
         var length_data = data_fl.length;
-        console.log('jumlah data:'+length_data);
+        // console.log("jumlah data:" + length_data);
         if (length_data >= 5) {
           $(".slider-agenda1").attr("id", data_fl[0].id);
           $(".slider-agenda2").attr("id", data_fl[1].id);
