@@ -23,6 +23,8 @@
               <div class="btn-group btn-block" role="group">
                   <button onClick="scan()" class="btn btn-primary btn-lg">Scan QR-Code</button>
                   <button onClick="scan()" class="btn btn-primary btn-lg"><i class="material-icons">flip</i></button>
+
+                  <button onClick="pages('input-izin')" class="btn btn-primary btn-lg mt-3">Izin</button>
               </div>
               <img class="mt-2" id="scaner_qr" src="assets/img/icon-add-image.png" width="98%" />
               <input type="hidden" name="kode_jadwal_presensi" id="kode_jadwal_presensi" />
@@ -36,7 +38,7 @@
                       <td><span id="namePresensiUser"></span></td>
                   </tr>
                   <tr>
-                      <td>Time</td>
+                      <td>Waktu</td>
                       <td style="width:38px;text-align:center;">:</td>
                       <td><span id="timePresensiUser"></span></td>
                   </tr>
@@ -72,18 +74,6 @@
         <a href="#" onclick="pages('list-presensi')" class="btn btn-primary btn-block btn-lg">Lihat Data Presensi</a>
       </div>
   </div>
-
-
-<!-- List Presensi -->
-<div id="sectionPresensiContainer" class=" section mt-4 mb-4 ">
-  <div class="section-heading ">
-      <h2 class="title ">Daftar presensi anda</h2>
-  </div>
-  <div id="presensiContainer" class="transactions">
-
-  </div>
-</div>
-<!-- List Presensi -->
 
 <div
   class="modal fade modal-detail-struk"

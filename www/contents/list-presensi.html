@@ -18,9 +18,7 @@
   <div class="section-page">
     <div class="total-listed">
       <div class="div-total-listed">
-        <span
-          >Total Presensi Saya
-          <strong id="jml_presensi"></strong>
+        <h6><strong>List Presensi Anda :</strong></h6>
       </div>
     </div>
 
@@ -44,7 +42,7 @@
         onClick="clickPresensi(this.id)"
         class="btn-list-kategori"
         style="background: #47c9c9"
-        >Tepat Waktu
+        >Presensi
         <div id="img-ceklis-presensi">
           <img
             src="assets/img/sample/kupon/checklist.png"
@@ -65,8 +63,15 @@
           /></div
       ></a>
     </div>
-
-    <div id="list-presensi"></div>
+    <div id="sectionPresensiContainer" class=" section mt-4 mb-4 ">
+      <div class="section-heading ">
+          <h2 class="title ">Daftar presensi anda</h2>
+          <a href="javascript:void(0)" onclick="page('presensi')" class="link" style="text-decoration: underline;">Lihat Detailnya</a>
+      </div>
+      <div id="list-presensi" class="transactions">
+  
+      </div>
+  </div>
   </div>
 </div>
 

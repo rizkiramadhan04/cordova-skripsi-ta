@@ -134,7 +134,8 @@ if (firstCon == "online") {
             "Ok"
           );
 
-          $(".pageListContainerHafalan").html(result_list);
+          pages('list-hafalan');
+          
         } else {
           navigator.notification.alert(
             values.message,
