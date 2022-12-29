@@ -1,0 +1,67 @@
+<script type="text/javascript" src="assets/js/presensi.js"></script>
+
+<div class="appHeader bg-primary">
+  <div class="left">
+    <a
+      href="javascript:void(0)"
+      onClick="pages('dashboard')"
+      class="headerButton goBack"
+    >
+      <i style="font-size: 2rem" class="material-icons">chevron_left</i>
+    </a>
+  </div>
+  <div class="pageTitle">Izin</div>
+  <div class="right"></div>
+</div>
+
+<!-- list presensi -->
+<div id="sectionListContainer" class="section mt-4 mb-4">
+  <div class="section-heading">
+    <h2 class="title">Input Izin</h2>
+  </div>
+  <div
+    id="pageListContainer"
+    class="transactions pageListContainerHafalan section wallet-card pt-3 pb-3"
+  >
+    <form method="POST" onsubmit="postData()">
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label" for="nilai">Nama User</label>
+          <input type="text" class="form-control mt-1" id="nama_user" />
+        </div>
+      </div>
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label" for="nilai">Alasan Izin</label>
+          <input type="text" class="form-control mt-1" id="alasan_izin" />
+        </div>
+      </div>
+
+      <div class="form-group basic">
+        <div class="input-wrapper">
+          <label class="label" for="tanggal_hafalan">Tanggal Izin</label>
+          <input type="date" class="form-control mt-1" id="tanggal_izin" />
+          <i class="clear-input" style="display: flex">
+            <i class="material-icons">date_range</i>
+          </i>
+        </div>
+      </div>
+
+      <div class="mt-2 mb-4 transparent">
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          Simpan
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="mt-5 mb-4 transparent">
+    <a
+      href="javascript:void(0)"
+      onclick="pages('list-hafalan')"
+      class="btn btn-primary btn-block btn-lg"
+      >Lihat Data Presensi</a
+    >
+  </div>
+</div>
+<!-- * list presensi -->

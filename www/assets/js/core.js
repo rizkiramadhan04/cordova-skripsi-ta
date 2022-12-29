@@ -85,12 +85,10 @@ function onBackKeyDown(e) {
   if (current_page == "dashboard" && "dashboard-guru") {
     navigator.app.exitApp();
   } else {
-    if (section_page_of == 'Guru') {
+    if (section_page_of == "Guru") {
       pages("dashboard-guru");
-      
     } else {
       pages("dashboard");
-
     }
   }
 }
@@ -742,10 +740,14 @@ function pages(main) {
       target_main.load("contents/list-hafalan.html");
       break;
 
+    case "input-izin":
+      window.localStorage.setItem("current_page", "input-izin");
+      target_main.load("contents/input-izin.html");
+      break;
+
     default:
       window.localStorage.setItem("current_page", "login");
       target_main.load("contents/login.html");
-    
   }
   $("#sidebarPanel").modal("hide");
 }
@@ -850,17 +852,17 @@ function loginOnline() {
           $("#usernameFormLogin").val(identity);
         } else if (values.success == "success") {
           console.log("status user:" + values.user_status);
-          window.localStorage.setItem('status_user', values.user_status);
+          window.localStorage.setItem("status_user", values.user_status);
           if (values.user_status == "Guru") {
             pages("dashboard-guru");
-            window.localStorage.setItem("section_page_of", values.user_status );
+            window.localStorage.setItem("section_page_of", values.user_status);
           } else {
             pages("dashboard");
-            window.localStorage.setItem("section_page_of", values.user_status );
+            window.localStorage.setItem("section_page_of", values.user_status);
           }
 
           window.localStorage.removeItem("status_presensi");
-          window.localStorage.setItem("status_presensi", 'all');
+          window.localStorage.setItem("status_presensi", "all");
 
           window.localStorage.setItem("userID", values.user.id);
           NativeStorage.setItem(
@@ -975,7 +977,7 @@ function logout(logout_type) {
         window.CacheClear(success, error);
         //end clear cache
 
-        window.localStorage.setItem('status_login', 0);
+        window.localStorage.setItem("status_login", 0);
 
         NativeStorage.remove(
           "userID",
@@ -1006,7 +1008,7 @@ function logout(logout_type) {
         window.localStorage.removeItem("current_page");
         window.localStorage.removeItem("register_user_id_sess");
         window.localStorage.removeItem("status_presensi");
-        window.localStorage.removeItem('status_user');
+        window.localStorage.removeItem("status_user");
 
         $(document.body).removeClass("modal-open");
         $("#sidebarPanel").modal("hide");
@@ -1262,20 +1264,18 @@ function profilHeader() {
 }
 
 function checkLogin() {
-
-  var status_login = window.localStorage.getItem('status_login');
+  var status_login = window.localStorage.getItem("status_login");
   var section_page_of = window.localStorage.getItem("section_page_of");
 
   // console.log(section_page_of);
 
   if (status_login == 1) {
-    if (section_page_of == 'Guru') {
-      pages('dasboard-guru');
+    if (section_page_of == "Guru") {
+      pages("dasboard-guru");
     } else {
-      pages('dashboard');
+      pages("dashboard");
     }
   } else {
-    pages('login');
+    pages("login");
   }
-
 }
