@@ -727,6 +727,7 @@ if (firstCon == "online") {
 
 $(document).ready(function () {
   $("#appBottomMenuGuru").css("display", "flex");
+  $("#appBottomMenuMurid").css("display", "none");
   document.querySelectorAll(".carousel-dashboard").forEach((carousel) =>
     new Splide(carousel, {
       perPage: 1,

@@ -1,55 +1,47 @@
 <script type="text/javascript" src="assets/js/profil.js"></script>
 
 <div class="appHeader bg-primary">
-    <div class="left">
-        <a href="javascript:void(0)" onClick="pages('dashboard')" class="headerButton goBack">
-            <i style="font-size:2rem" class="material-icons">chevron_left</i>
-        </a>
-    </div>
-    <div class="pageTitle">
-        Profil
-    </div>
-    <div class="right">
-    </div>
+  <div class="left">
+    <a
+      href="javascript:void(0)"
+      onClick="pages('dashboard')"
+      class="headerButton goBack"
+    >
+      <i style="font-size: 2rem" class="material-icons">chevron_left</i>
+    </a>
+  </div>
+  <div class="pageTitle">Profil</div>
+  <div class="right"></div>
 </div>
 
-<div style="height:180px" class="section wallet-card-section pt-1 text-center" id="profil-user">
-    <div style="padding:2px 2px !important;background: transparent;border-radius:0;
-        margin: 0 auto;
-        top: 35px;box-shadow: none;" class="wallet-card">
-        <div class="listview-title">
-            <img class="rounded-circle" src="" alt="" style="width:150px;height:150px;" id="foto-user">
-        </div>
+<div
+  style="height: 180px"
+  class="section wallet-card-section pt-1 text-center"
+  id="profil-user"
+>
+  <div
+    style="
+      padding: 2px 2px !important;
+      background: transparent;
+      border-radius: 0;
+      margin: 0 auto;
+      top: 35px;
+      box-shadow: none;
+    "
+    class="wallet-card"
+  >
+    <div class="listview-title">
+      <img
+        class="rounded-circle"
+        src=""
+        alt=""
+        style="width: 150px; height: 150px"
+        id="foto-user"
+      />
     </div>
+  </div>
 </div>
 
 <div class="section mt-2">
-    <div id="container_profile">
-
-    </div>
-</div>
-
-
-<!-- Modal Member Card -->
-<div class="modal fade" id="memberCardModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog  modal-sm modal-dialog-centered" role="document">
-        <div class="modal-content gradient-blue text-white z4">
-            <div class="modal-body text-white pr-4 pl-4">
-                <button onClick="closeMemberCardModal()" style="float: right !important;
-                    margin-right: -30px !important;
-                    margin-top: -30px !important;
-                    background-color: white !important;
-                    border-radius: 15px !important;
-                    width: 25px !important;
-                    height: 25px !important;
-                    opacity: 1 !important;
-                    padding: .20em .20em;" type="button" class="btn-close" aria-label="Close"></button>
-                <div class="card">
-                    <img style="border-radius:15px" src="assets/img/profil-header-member-id-full.png" class="card-img-top" alt="image">
-                    <div
-                        style="position: absolute;top: 72%;left: 7%;font-weight:bold;line-height: 1.1rem;font-size: .85rem;"><span id="modalMemberName"></span><br/><span id="modalMemberId"></span></div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="container_profile"></div>
 </div>

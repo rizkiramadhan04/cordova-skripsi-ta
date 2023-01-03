@@ -1,10 +1,10 @@
-$(document).ready(function () {
-  checkIsLoggedIn().done(function (values) {
-    if (values.status_login == false) {
-      pages("login");
-    }
-  });
-});
+// $(document).ready(function () {
+//   checkIsLoggedIn().done(function (values) {
+//     if (values.status_login == false) {
+//       pages("login");
+//     }
+//   });
+// });
 
 $.ajax({
   beforeSend: function (xhr) {
@@ -15,7 +15,7 @@ $.ajax({
     xhr.setRequestHeader("Accept", "application/json");
   },
   type: "POST",
-  url: conn + "/profile",
+  url: conn + "/get-data",
   dataType: "json",
   timeout: timeout,
 })
@@ -67,7 +67,7 @@ $.ajax({
       data_profile += "<tr>";
       data_profile += '<th scope="row">Tanggal lahir</th>';
       data_profile +=
-        '<td class="text-end text-primary">' + values.dob + "</td>";
+        '<td class="text-end text-primary">' + values.tgl_lahir + "</td>";
       data_profile += "</tr>";
       data_profile += "<tr>";
       data_profile += '<th scope="row">Email</th>';
@@ -77,12 +77,7 @@ $.ajax({
       data_profile += "<tr>";
       data_profile += '<th scope="row">Alamat</th>';
       data_profile +=
-        '<td class="text-end text-primary">' + values.provinsi + "</td>";
-      data_profile += "</tr>";
-      data_profile += "<tr>";
-      data_profile +=
-        '<td colspan="2 pt-2 pb-2"><button type="submit" onClick="pages(\'edit-user\')"class="btn btn-primary btn-block btn-lg">Ubah Profil</button>';
-      data_profile += "</td>";
+        '<td class="text-end text-primary">' + values.alamat + "</td>";
       data_profile += "</tr>";
       data_profile += "<tr>";
       data_profile +=
@@ -92,13 +87,6 @@ $.ajax({
       data_profile += "</table></div>";
 
       $("#container_profile").append(data_profile);
-
-      $("#formUpdateName").val(values.nama);
-      $("#formUpdateNoHp").val(values.no_hp);
-      $("#formUpdateEmail").val(values.email);
-      $("#formUpdateDob").val(values.tgl_lahir);
-      $("#formUpdateProvinsi").val(values.province_id);
-      window.localStorage.setItem("provinsi", values.provinsi);
     }
     SpinnerDialog.hide();
   })
@@ -111,7 +99,7 @@ $.ajax({
         "Network error (i.e. connection refused, access denied due to CORS, etc.)"
       );
       navigator.notification.alert(
-        "Koneksi offline - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #DB-001",
+        "Koneksi offline - Cek koneksi internet Anda.",
         alertDismissed,
         TITLE_ALERT,
         "Ok"
@@ -120,7 +108,7 @@ $.ajax({
       SpinnerDialog.hide();
       if (textStatus == "timeout") {
         navigator.notification.alert(
-          "Request Time Out - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #OFF-001",
+          "Request Time Out - Cek koneksi internet Anda.",
           alertDismissed,
           TITLE_ALERT,
           "Ok"

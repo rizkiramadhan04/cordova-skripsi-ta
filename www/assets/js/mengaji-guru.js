@@ -1,6 +1,9 @@
 var firstCon = firstConnection();
 
 $(document).ready(function () {
+  $("#appBottomMenuGuru").css("display", "flex");
+  $("#appBottomMenuMurid").css("display", "none");
+
   $(".select2-basic").select2();
 
   $("#iqro").hide();
@@ -219,6 +222,7 @@ if (firstCon == "online") {
             TITLE_ALERT,
             "Ok"
           );
+          pages("mengaji-guru");
         } else if (values.status == "success") {
           navigator.notification.alert(
             values.message,
@@ -226,7 +230,7 @@ if (firstCon == "online") {
             TITLE_ALERT,
             "Ok"
           );
-          pages("mengaji-guru");
+          pages("list-mengaji");
         } else {
           navigator.notification.alert(
             values.message,
@@ -266,10 +270,7 @@ if (firstCon == "online") {
 
   // List data presensi
 
-    
-
   // List data presensi
-
 } else {
   SpinnerDialog.hide();
   navigator.notification.alert(

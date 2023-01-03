@@ -1,14 +1,17 @@
-
 var firstCon = firstConnection();
-var status_user = window.localStorage.getItem('status_user');
+var status_user = window.localStorage.getItem("status_user");
 
 if (firstCon == "online") {
-
-  if (status_user == 'Guru') {
+  if (status_user == "Guru") {
     // hafalan
 
-    $('#title-page').append('List Menyimak');
-    $('#title-section').append('Daftar menyimak anda');
+    $(document).ready(function () {
+      $("#appBottomMenuGuru").css("display", "flex");
+      $("#appBottomMenuMurid").css("display", "none");
+    });
+
+    $("#title-page").append("List Menyimak");
+    $("#title-section").append("Daftar menyimak anda");
 
     $.ajax({
       beforeSend: function (xhr) {
@@ -27,7 +30,7 @@ if (firstCon == "online") {
       .done(function (values) {
         // console.log(values);
         var results = values.data;
-        
+
         SpinnerDialog.hide();
         if (values.status == "failed") {
           navigator.notification.alert(
@@ -39,32 +42,40 @@ if (firstCon == "online") {
         } else if (values.status == "success") {
           //   //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
           var result_list = "";
-          
+
           for (var i = 0; i < results.length; i++) {
-
             var data_ls = results[i];
-            
-            result_list += '<a href="javascript:void(0)">'+
-              '<div class="row detail item mb-2 p-0">'+
-                '<div class="col-3"><img src="assets/img/icon-hfl.png" alt="img" class="image-block imaged w76"></div>'+
-                  '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">'+
-                      '<strong>Hafalan</strong>'+
-                      '<p>Nama Murid : <strong>'+data_ls.nama_murid+'</strong><br/></p>'+
-                      '<p>Materi : <strong>'+data_ls.materi_hafalan+'</strong><br/></p>'+
-                      '<p>Nama Guru : <strong>'+data_ls.nama_guru+'</strong><br/></p>'+
-                      '<p>Tanggal : <strong>'+data_ls.tanggal_hafalan+'</strong><br/></p>'+
-                  '</div>'+
-                  '<div class="col-3 text-center">'+
-                      '<p><b> Nilai <b/><br/></p>'+
-                      '<p><strong style="font-size:.8rem;">'+data_ls.nilai+'</strong></p>'+
-                  '</div>'+
-              '</div>'+
-          '</a>';
 
+            result_list +=
+              '<a href="javascript:void(0)">' +
+              '<div class="row detail item mb-2 p-0">' +
+              '<div class="col-3"><img src="assets/img/icon-hfl.png" alt="img" class="image-block imaged w76"></div>' +
+              '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">' +
+              "<strong>Hafalan</strong>" +
+              "<p>Nama Murid : <strong>" +
+              data_ls.nama_murid +
+              "</strong><br/></p>" +
+              "<p>Materi : <strong>" +
+              data_ls.materi_hafalan +
+              "</strong><br/></p>" +
+              "<p>Nama Guru : <strong>" +
+              data_ls.nama_guru +
+              "</strong><br/></p>" +
+              "<p>Tanggal : <strong>" +
+              data_ls.tanggal_hafalan +
+              "</strong><br/></p>" +
+              "</div>" +
+              '<div class="col-3 text-center">' +
+              "<p><b> Nilai <b/><br/></p>" +
+              '<p><strong style="font-size:.8rem;">' +
+              data_ls.nilai +
+              "</strong></p>" +
+              "</div>" +
+              "</div>" +
+              "</a>";
           }
 
           $("#list-hafalan").html(result_list);
-
         } else {
           navigator.notification.alert(
             values.message,
@@ -99,14 +110,17 @@ if (firstCon == "online") {
         }
       });
 
-  //hafalan
-
+    //hafalan
   } else {
-
     // hafalan
 
-    $('#title-page').append('List Hafalan');
-    $('#title-section').append('Daftar hafalan anda');
+    $(document).ready(function () {
+      $("#appBottomMenuGuru").css("display", "none");
+      $("#appBottomMenuMurid").css("display", "flex");
+    });
+
+    $("#title-page").append("List Hafalan");
+    $("#title-section").append("Daftar hafalan anda");
 
     $.ajax({
       beforeSend: function (xhr) {
@@ -125,7 +139,7 @@ if (firstCon == "online") {
       .done(function (values) {
         console.log(values);
         var results = values.data;
-        
+
         SpinnerDialog.hide();
         if (values.status == "failed") {
           navigator.notification.alert(
@@ -137,32 +151,40 @@ if (firstCon == "online") {
         } else if (values.status == "success") {
           //   //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
           var result_list = "";
-          
+
           for (var i = 0; i < results.length; i++) {
-
             var data_ls = results[i];
-            
-            result_list += '<a href="javascript:void(0)">'+
-              '<div class="row detail item mb-2 p-0">'+
-                '<div class="col-3"><img src="assets/img/icon-hfl.png" alt="img" class="image-block imaged w76"></div>'+
-                  '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">'+
-                      '<strong>Hafalan</strong>'+
-                      '<p>Nama Murid : <strong>'+data_ls.nama_murid+'</strong><br/></p>'+
-                      '<p>Materi : <strong>'+data_ls.materi_hafalan+'</strong><br/></p>'+
-                      '<p>Nama Guru : <strong>'+data_ls.nama_guru+'</strong><br/></p>'+
-                      '<p>Tanggal : <strong>'+data_ls.tanggal_hafalan+'</strong><br/></p>'+
-                  '</div>'+
-                  '<div class="col-3 text-center">'+
-                      '<p><b> Nilai <b/><br/></p>'+
-                      '<p><strong style="font-size:.8rem;">'+data_ls.nilai+'</strong></p>'+
-                  '</div>'+
-              '</div>'+
-          '</a>';
 
+            result_list +=
+              '<a href="javascript:void(0)">' +
+              '<div class="row detail item mb-2 p-0">' +
+              '<div class="col-3"><img src="assets/img/icon-hfl.png" alt="img" class="image-block imaged w76"></div>' +
+              '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">' +
+              "<strong>Hafalan</strong>" +
+              "<p>Nama Murid : <strong>" +
+              data_ls.nama_murid +
+              "</strong><br/></p>" +
+              "<p>Materi : <strong>" +
+              data_ls.materi_hafalan +
+              "</strong><br/></p>" +
+              "<p>Nama Guru : <strong>" +
+              data_ls.nama_guru +
+              "</strong><br/></p>" +
+              "<p>Tanggal : <strong>" +
+              data_ls.tanggal_hafalan +
+              "</strong><br/></p>" +
+              "</div>" +
+              '<div class="col-3 text-center">' +
+              "<p><b> Nilai <b/><br/></p>" +
+              '<p><strong style="font-size:.8rem;">' +
+              data_ls.nilai +
+              "</strong></p>" +
+              "</div>" +
+              "</div>" +
+              "</a>";
           }
 
-          $("#list-hafalan").html(result_list);
-
+          $("#pageListContainer").html(result_list);
         } else {
           navigator.notification.alert(
             values.message,
@@ -197,10 +219,8 @@ if (firstCon == "online") {
         }
       });
 
-  //hafalan
-
+    //hafalan
   }
-  
 } else {
   SpinnerDialog.hide();
   navigator.notification.alert(

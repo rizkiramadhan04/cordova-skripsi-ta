@@ -1,6 +1,9 @@
 var firstCon = firstConnection();
 
 $(document).ready(function () {
+  $("#appBottomMenuGuru").css("display", "flex");
+  $("#appBottomMenuMurid").css("display", "none");
+
   $(".select2-basic").select2();
 
   $("#jenis").on("change", function () {
@@ -126,6 +129,7 @@ if (firstCon == "online") {
             TITLE_ALERT,
             "Ok"
           );
+          pages("hafalan-guru");
         } else if (values.status == "success") {
           navigator.notification.alert(
             values.message,
@@ -134,8 +138,7 @@ if (firstCon == "online") {
             "Ok"
           );
 
-          pages('list-hafalan');
-          
+          pages("list-hafalan");
         } else {
           navigator.notification.alert(
             values.message,

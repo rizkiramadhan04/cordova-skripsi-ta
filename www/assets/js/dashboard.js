@@ -1,10 +1,11 @@
 var firstCon = firstConnection();
-var version_number = window.localStorage.getItem("versionDevice");
-// var get_count_vcr = window.localStorage.getItem('countvcr');
+$(document).ready(function () {
+  $("#appBottomMenuGuru").css("display", "none");
+  $("#appBottomMenuMurid").css("display", "flex");
+});
 
 if (firstCon == "online") {
   window.localStorage.removeItem("province_id");
-
 
   $.ajax({
     type: "POST",
@@ -103,8 +104,6 @@ if (firstCon == "online") {
 }
 
 $(document).ready(function () {
-  $("#appBottomMenuMurid").css("display", "flex");
-  $("#dashboardSectionAppContainer").text("v" + version_number);
   document.querySelectorAll(".carousel-dashboard").forEach((carousel) =>
     new Splide(carousel, {
       perPage: 1,
@@ -126,5 +125,4 @@ $(document).ready(function () {
       },
     }).mount()
   );
-
 });
