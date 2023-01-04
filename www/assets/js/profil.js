@@ -67,7 +67,7 @@ $.ajax({
       data_profile += "<tr>";
       data_profile += '<th scope="row">Tanggal lahir</th>';
       data_profile +=
-        '<td class="text-end text-primary">' + values.tgl_lahir + "</td>";
+        '<td class="text-end text-primary">' + values.tanggal_lahir + "</td>";
       data_profile += "</tr>";
       data_profile += "<tr>";
       data_profile += '<th scope="row">Email</th>';
