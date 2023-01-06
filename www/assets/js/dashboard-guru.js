@@ -21,7 +21,7 @@ if (firstCon == "online") {
     data: data,
   })
     .done(function (values) {
-      // console.log(values);
+      console.log(values);
       var results = values.data;
 
       SpinnerDialog.hide();
@@ -37,32 +37,36 @@ if (firstCon == "online") {
         // console.log(results);
         var result_list = "";
 
-        if (results.length == 3) {
+        if (results.length == 3 || results.length > 3) {
           result_list +=
             '<a href="javascript:void(0)">' +
             '<div class="row detail item mb-2 p-0">' +
             '<div class="col-3"><img src="assets/img/icon-presensi.png" alt="img" class="image-block imaged w76"></div>' +
             '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">' +
-            "<strong>Presensi</strong>" +
+            "<strong>" +
+            results[0].jenis_presensi +
+            "</strong>" +
             "<p>Nama  : <strong>" +
             results[0].nama +
             "</strong><br/></p>" +
             "<p>Waktu : <strong>" +
-            results[0].waktu_masuk +
+            (results[0].waktu_masuk != null ? results[0].waktu_masuk : "-") +
             "</strong><br/></p>" +
             "<p>Tanggal : <strong>" +
-            (results[0].tanggal_masuk != null
+            (results[0].jenis_presensi == "Presensi"
               ? results[0].tanggal_masuk
               : results[0].tanggal_izin) +
             "</strong><br/></p>" +
-            "<p>Izin : <strong>" +
-            (results[0].izin != null ? results[0].alasan_izin : "-") +
+            "<p>Alasan : <strong>" +
+            (results[0].alasan_izin != null ? results[0].alasan_izin : "-") +
             "</strong><br/></p>" +
             "</div>" +
             '<div class="col-3 text-center">' +
             "<p><b> Status <b/><br/></p>" +
             '<p><strong style="font-size:.8rem;">' +
-            (results[0].status_masuk != null ? results[0].status_masuk : "-") +
+            (results[0].jenis_presensi != "Izin"
+              ? results[0].status_masuk
+              : results[0].jenis_presensi) +
             "</strong></p>" +
             "</div>" +
             "</div>" +
@@ -71,26 +75,30 @@ if (firstCon == "online") {
             '<div class="row detail item mb-2 p-0">' +
             '<div class="col-3"><img src="assets/img/icon-presensi.png" alt="img" class="image-block imaged w76"></div>' +
             '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">' +
-            "<strong>Presensi</strong>" +
+            "<strong>" +
+            results[1].jenis_presensi +
+            "</strong>" +
             "<p>Nama  : <strong>" +
             results[1].nama +
             "</strong><br/></p>" +
             "<p>Waktu : <strong>" +
-            results[1].waktu_masuk +
+            (results[1].waktu_masuk != null ? results[1].waktu_masuk : "-") +
             "</strong><br/></p>" +
             "<p>Tanggal : <strong>" +
-            (results[1].tanggal_masuk != null
+            (results[1].jenis_presensi == "Presensi"
               ? results[1].tanggal_masuk
               : results[1].tanggal_izin) +
             "</strong><br/></p>" +
-            "<p>Izin : <strong>" +
-            (results[1].izin != null ? results[1].alasan_izin : "-") +
+            "<p>Alasan : <strong>" +
+            (results[1].alasan_izin != null ? results[1].alasan_izin : "-") +
             "</strong><br/></p>" +
             "</div>" +
             '<div class="col-3 text-center">' +
             "<p><b> Status <b/><br/></p>" +
             '<p><strong style="font-size:.8rem;">' +
-            (results[0].status_masuk != null ? results[1].status_masuk : "-") +
+            (results[1].jenis_presensi != "Izin"
+              ? results[1].status_masuk
+              : results[1].jenis_presensi) +
             "</strong></p>" +
             "</div>" +
             "</div>" +
@@ -99,26 +107,30 @@ if (firstCon == "online") {
             '<div class="row detail item mb-2 p-0">' +
             '<div class="col-3"><img src="assets/img/icon-presensi.png" alt="img" class="image-block imaged w76"></div>' +
             '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">' +
-            "<strong>Presensi</strong>" +
+            "<strong>" +
+            results[2].jenis_presensi +
+            "</strong>" +
             "<p>Nama  : <strong>" +
             results[2].nama +
             "</strong><br/></p>" +
             "<p>Waktu : <strong>" +
-            results[2].waktu_masuk +
+            (results[2].waktu_masuk != null ? results[2].waktu_masuk : "-") +
             "</strong><br/></p>" +
             "<p>Tanggal : <strong>" +
-            (results[2].tanggal_masuk != null
+            (results[2].jenis_presensi == "Presensi"
               ? results[2].tanggal_masuk
               : results[2].tanggal_izin) +
             "</strong><br/></p>" +
-            "<p>Izin : <strong>" +
-            (results[2].izin != null ? results[2].alasan_izin : "-") +
+            "<p>Alasan : <strong>" +
+            (results[2].alasan_izin != null ? results[2].alasan_izin : "-") +
             "</strong><br/></p>" +
             "</div>" +
             '<div class="col-3 text-center">' +
             "<p><b> Status <b/><br/></p>" +
             '<p><strong style="font-size:.8rem;">' +
-            (results[2].status_masuk != null ? results[2].status_masuk : "-") +
+            (results[2].jenis_presensi != "Izin"
+              ? results[2].status_masuk
+              : results[2].jenis_presensi) +
             "</strong></p>" +
             "</div>" +
             "</div>" +
@@ -129,26 +141,30 @@ if (firstCon == "online") {
             '<div class="row detail item mb-2 p-0">' +
             '<div class="col-3"><img src="assets/img/icon-presensi.png" alt="img" class="image-block imaged w76"></div>' +
             '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">' +
-            "<strong>Presensi</strong>" +
+            "<strong>" +
+            results[0].jenis_presensi +
+            "</strong>" +
             "<p>Nama  : <strong>" +
             results[0].nama +
             "</strong><br/></p>" +
             "<p>Waktu : <strong>" +
-            results[0].waktu_masuk +
+            (results[0].waktu_masuk != null ? results[0].waktu_masuk : "-") +
             "</strong><br/></p>" +
             "<p>Tanggal : <strong>" +
-            (results[0].tanggal_masuk != null
+            (results[0].jenis_presensi == "Presensi"
               ? results[0].tanggal_masuk
               : results[0].tanggal_izin) +
             "</strong><br/></p>" +
-            "<p>Izin : <strong>" +
-            (results[0].izin != null ? results[0].alasan_izin : "-") +
+            "<p>Alasan : <strong>" +
+            (results[0].alasan_izin != null ? results[0].alasan_izin : "-") +
             "</strong><br/></p>" +
             "</div>" +
             '<div class="col-3 text-center">' +
             "<p><b> Status <b/><br/></p>" +
             '<p><strong style="font-size:.8rem;">' +
-            (results[0].status_masuk != null ? results[0].status_masuk : "-") +
+            (results[0].jenis_presensi != "Izin"
+              ? results[0].status_masuk
+              : results[0].jenis_presensi) +
             "</strong></p>" +
             "</div>" +
             "</div>" +
@@ -157,26 +173,30 @@ if (firstCon == "online") {
             '<div class="row detail item mb-2 p-0">' +
             '<div class="col-3"><img src="assets/img/icon-presensi.png" alt="img" class="image-block imaged w76"></div>' +
             '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">' +
-            "<strong>Presensi</strong>" +
+            "<strong>" +
+            results[1].jenis_presensi +
+            "</strong>" +
             "<p>Nama  : <strong>" +
             results[1].nama +
             "</strong><br/></p>" +
             "<p>Waktu : <strong>" +
-            results[1].waktu_masuk +
+            (results[1].waktu_masuk != null ? results[1].waktu_masuk : "-") +
             "</strong><br/></p>" +
             "<p>Tanggal : <strong>" +
-            (results[1].tanggal_masuk != null
+            (results[1].jenis_presensi == "Presensi"
               ? results[1].tanggal_masuk
               : results[1].tanggal_izin) +
             "</strong><br/></p>" +
-            "<p>Izin : <strong>" +
-            (results[1].izin != null ? results[1].alasan_izin : "-") +
+            "<p>Alasan : <strong>" +
+            (results[1].alasan_izin != null ? results[1].alasan_izin : "-") +
             "</strong><br/></p>" +
             "</div>" +
             '<div class="col-3 text-center">' +
             "<p><b> Status <b/><br/></p>" +
             '<p><strong style="font-size:.8rem;">' +
-            (results[1].status_masuk != null ? results[1].status_masuk : "-") +
+            (results[1].jenis_presensi != "Izin"
+              ? results[1].status_masuk
+              : results[1].jenis_presensi) +
             "</strong></p>" +
             "</div>" +
             "</div>" +
@@ -187,26 +207,30 @@ if (firstCon == "online") {
             '<div class="row detail item mb-2 p-0">' +
             '<div class="col-3"><img src="assets/img/icon-presensi.png" alt="img" class="image-block imaged w76"></div>' +
             '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">' +
-            "<strong>Presensi</strong>" +
+            "<strong>" +
+            results[0].jenis_presensi +
+            "</strong>" +
             "<p>Nama  : <strong>" +
             results[0].nama +
             "</strong><br/></p>" +
             "<p>Waktu : <strong>" +
-            results[0].waktu_masuk +
+            (results[0].waktu_masuk != null ? results[0].waktu_masuk : "-") +
             "</strong><br/></p>" +
             "<p>Tanggal : <strong>" +
-            (results[0].tanggal_masuk != null
+            (results[0].jenis_presensi == "Presensi"
               ? results[0].tanggal_masuk
               : results[0].tanggal_izin) +
             "</strong><br/></p>" +
-            "<p>Izin : <strong>" +
-            (results[0].izin != null ? results[0].alasan_izin : "-") +
+            "<p>Alasan : <strong>" +
+            (results[0].alasan_izin != null ? results[0].alasan_izin : "-") +
             "</strong><br/></p>" +
             "</div>" +
             '<div class="col-3 text-center">' +
             "<p><b> Status <b/><br/></p>" +
             '<p><strong style="font-size:.8rem;">' +
-            (results[0].status_masuk != null ? results[0].status_masuk : "-") +
+            (results[0].jenis_presensi != "Izin"
+              ? results[0].status_masuk
+              : results[0].jenis_presensi) +
             "</strong></p>" +
             "</div>" +
             "</div>" +
@@ -282,7 +306,7 @@ if (firstCon == "online") {
         //   //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
         var result_list = "";
 
-        if (results.length == 3) {
+        if (results.length == 3 || results.length > 3) {
           result_list +=
             '<a href="javascript:void(0)">' +
             '<div class="row detail item mb-2 p-0">' +
@@ -355,6 +379,8 @@ if (firstCon == "online") {
             "</strong><br/></p>" +
             "</div>" +
             '<div class="col-3 text-center">' +
+            "<p> Edit</p>" +
+            "<p> Hapus</p>" +
             "<p><b> Nilai </b><br/></p>" +
             '<p><strong style="font-size:.8rem;">' +
             results[2].hasil +
@@ -409,6 +435,8 @@ if (firstCon == "online") {
             "</strong><br/></p>" +
             "</div>" +
             '<div class="col-3 text-center">' +
+            "<p> Edit</p>" +
+            "<p> Hapus</p>" +
             "<p><b> Hasil </b><br/></p>" +
             '<p><strong style="font-size:.8rem;">' +
             results[1].hasil +
@@ -515,7 +543,7 @@ if (firstCon == "online") {
         //   //navigator.notification.alert(values.message, alertDismissed, TITLE_ALERT, 'Ok');
         var result_list = "";
 
-        if (results.length == 3) {
+        if (results.length == 3 || results.length > 3) {
           result_list +=
             '<a href="javascript:void(0)">' +
             '<div class="row detail item mb-2 p-0">' +
@@ -726,6 +754,12 @@ if (firstCon == "online") {
 }
 
 $(document).ready(function () {
+  checkIsLoggedIn().done(function (values) {
+    if (values.status_login == false) {
+      pages("login");
+    }
+  });
+
   $("#appBottomMenuGuru").css("display", "flex");
   $("#appBottomMenuMurid").css("display", "none");
   document.querySelectorAll(".carousel-dashboard").forEach((carousel) =>

@@ -23,11 +23,16 @@
     id="pageListContainer"
     class="transactions pageListContainerHafalan section wallet-card pt-3 pb-3"
   >
-    <form method="POST" onsubmit="postData()">
+    <form method="POST" onsubmit="postIzin()">
       <div class="form-group basic">
         <div class="input-wrapper">
           <label class="label" for="nilai">Nama User</label>
-          <input type="text" class="form-control mt-1" id="nama_user" />
+          <input
+            type="text"
+            class="form-control mt-1"
+            id="nama_user_izin"
+            readonly
+          />
         </div>
       </div>
 

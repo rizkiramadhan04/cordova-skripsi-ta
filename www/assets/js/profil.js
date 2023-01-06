@@ -1,10 +1,10 @@
-// $(document).ready(function () {
-//   checkIsLoggedIn().done(function (values) {
-//     if (values.status_login == false) {
-//       pages("login");
-//     }
-//   });
-// });
+$(document).ready(function () {
+  checkIsLoggedIn().done(function (values) {
+    if (values.status_login == false) {
+      pages("login");
+    }
+  });
+});
 
 $.ajax({
   beforeSend: function (xhr) {
@@ -28,6 +28,8 @@ $.ajax({
         TITLE_ALERT,
         "Ok"
       );
+
+      pages("login");
     } else if (values.status == "success") {
       // console.log('profil js started');
       let data_profile = "";

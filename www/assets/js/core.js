@@ -460,7 +460,7 @@ function checkIsLoggedIn() {
       xhr.setRequestHeader("Accept", "application/json");
     },
     type: "POST",
-    url: conn + "/is-logged-in",
+    url: conn + "/check-user-login",
     dataType: "json",
     async: true,
     timeout: timeout1,
@@ -708,6 +708,18 @@ function pages(main) {
       $("#linkBottomMenuHafalanGuru").addClass("active");
 
       target_main.load("contents/hafalan-guru.html");
+      break;
+
+    case "edit-pencatatan":
+      window.localStorage.setItem("current_page", "edit-pencatatan");
+
+      target_main.load("contents/edit-pencatatan.html");
+      break;
+
+    case "edit-hafalan":
+      window.localStorage.setItem("current_page", "edit-hafalan");
+
+      target_main.load("contents/edit-hafalan.html");
       break;
 
     case "slider-agenda-detail":
