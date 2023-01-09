@@ -45,11 +45,19 @@ if (firstCon == "online") {
             var data_pct = results[i];
 
             result_list +=
-              '<a href="javascript:void(0)">' +
-              '<div class="d-flex" style="float: right; position: absolute;">' +
-              '<a href="javascript:void(0)" onclick="editData(this)" class="link" style="text-decoration: underline; margin-right: 15px;">Edit</a>' +
-              '<a href="javascript:void(0)" onclick="hapusData()" class="link" style="text-decoration: underline;">Delete</a>' +
+              '<div class="row"><div class="col-6"></div>' +
+              '<div class="col-6">' +
+              '<div class="d-flex" style="float: right;">' +
+              '<a href="javascript:void(0)" data-id="' +
+              data_pct.id +
+              '" onclick="editData(this)" style="text-decoration: underline; margin-right: 15px;">Edit</a>' +
+              '<a href="javascript:void(0)" data-id="' +
+              data_pct.id +
+              '" onclick="hapusData(this)" style="text-decoration: underline;">Delete</a>' +
               "</div>" +
+              "</div>" +
+              "</div>" +
+              '<a href="javascript:void(0)">' +
               '<div class="row detail item mb-2 p-0">' +
               '<div class="col-3"><img src="assets/img/icon-cacatan.png" alt="img" class="image-block imaged w76"></div>' +
               '<div style="line-height:1.2rem;" class="col-6 pt-1 pb-1">' +
@@ -228,5 +236,8 @@ if (firstCon == "online") {
 }
 
 function editData(param) {
+  console.log($(param).data());
+  window.localStorage.removeItem("pencatatan_id");
+  window.localStorage.setItem("pencatatan_id", $(param).data("id"));
   pages("edit-pencatatan");
 }
