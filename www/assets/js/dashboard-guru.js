@@ -21,7 +21,7 @@ if (firstCon == "online") {
     data: data,
   })
     .done(function (values) {
-      console.log(values);
+      // console.log(values);
       var results = values.data;
 
       SpinnerDialog.hide();

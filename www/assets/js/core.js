@@ -12,9 +12,9 @@ var close_load_init = 0;
 var myDB = "";
 
 if (isProduction == 0) {
-  TITLE_ALERT = "Mobil Indostation App";
+  TITLE_ALERT = "TPA Al Muhibbin App";
 } else {
-  TITLE_ALERT = "Mobil Indostation App";
+  TITLE_ALERT = "TPA Al Muhibbin App";
 }
 
 /**

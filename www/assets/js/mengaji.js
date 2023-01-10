@@ -26,7 +26,7 @@ if (firstCon == "online") {
       // data: data,
     })
       .done(function (values) {
-        console.log(values);
+        // console.log(values);
         var results = values.data;
 
         SpinnerDialog.hide();
@@ -53,7 +53,7 @@ if (firstCon == "online") {
               '" onclick="editData(this)" style="text-decoration: underline; margin-right: 15px;">Edit</a>' +
               '<a href="javascript:void(0)" data-id="' +
               data_pct.id +
-              '" onclick="hapusData(this)" style="text-decoration: underline;">Delete</a>' +
+              '" onclick="confirm(this)" style="text-decoration: underline;">Delete</a>' +
               "</div>" +
               "</div>" +
               "</div>" +
@@ -240,4 +240,78 @@ function editData(param) {
   window.localStorage.removeItem("pencatatan_id");
   window.localStorage.setItem("pencatatan_id", $(param).data("id"));
   pages("edit-pencatatan");
+}
+
+function confirm(param) {
+  function onConfirm(buttonIndex) {
+    // console.log(buttonIndex);
+    if (buttonIndex == 1) {
+      var pencatatan_id = $(param).data("id");
+      deleteCatatan(pencatatan_id);
+    }
+  }
+
+  navigator.notification.confirm(
+    "Anda ingin menghapus voucher ini!", // message
+    onConfirm, // callback to invoke with index of button pressed
+    TITLE_ALERT, // title
+    ["Oke", "Tidak"] // buttonLabels
+  );
+}
+
+function deleteCatatan(pencatatan_id) {
+  var data = {
+    id: pencatatan_id,
+  };
+
+  $.ajax({
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Accept", "application/json");
+    },
+
+    type: "POST",
+    url: conn + "/delete-data-pencatatan",
+    dataType: "json",
+    timeout: timeout,
+    data: data,
+  })
+    .done(function (values) {
+      console.log(values);
+      if (values.status == "success") {
+        navigator.notification.alert(
+          values.message,
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
+
+        pages("list-pencatatan");
+      }
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+      console.log(jqXHR);
+      console.log(textStatus);
+      console.log(errorThrown);
+      if (jqXHR.readyState == 0) {
+        console.log(
+          "Network error (i.e. connection refused, access denied due to CORS, etc.)"
+        );
+        navigator.notification.alert(
+          "Koneksi offline - Cek koneksi internet Anda. Silahkan hubungi Call Center : Kode #DB-001",
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
+      } else {
+        SpinnerDialog.hide();
+        if (textStatus == "timeout") {
+          navigator.notification.alert(
+            "Koneksi Time Out - Cek koneksi internet Anda",
+            alertDismissed,
+            TITLE_ALERT,
+            "Ok"
+          );
+        }
+      }
+    });
 }

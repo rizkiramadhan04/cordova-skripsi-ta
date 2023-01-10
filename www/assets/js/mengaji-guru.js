@@ -230,7 +230,7 @@ if (firstCon == "online") {
             TITLE_ALERT,
             "Ok"
           );
-          pages("list-mengaji");
+          pages("list-pencatatan");
         } else {
           navigator.notification.alert(
             values.message,

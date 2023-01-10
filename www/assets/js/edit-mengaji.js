@@ -130,10 +130,6 @@ $(document).ready(function () {
 
   if (jenis_kitab != null) {
     list_jenis_kitab =
-      +'<option value="Al Quran">Al Quran</option>' +
-      '<option value="Iqro">Iqro</option>';
-
-    list_jenis_kitab =
       '<option value="Al Quran" ' +
       (jenis_kitab == "Al Quran" ? "selected" : "") +
       ">Al Quran</option>" +
@@ -348,3 +344,96 @@ $.ajax({
   });
 
 //get data murid
+
+// Input data
+
+function postData() {
+  event.preventDefault();
+  SpinnerDialog.show(null, "Mengirim data ...");
+
+  data = {
+    pencatatan_id: data_id,
+    murid_id: $("#murid_id").val(),
+    jenis_kitab: $("#jenis_kitab").val(),
+    juz: $("#juz").val(),
+    no_surah: $("#no_surah").val(),
+    no_ayat: $("#no_ayat").val(),
+    no_iqro: $("#no_iqro").val(),
+    jilid: $("#jilid").val(),
+    halaman: $("#halaman").val(),
+    hasil: $("#hasil").val(),
+    tanggal: $("#tanggal").val(),
+  };
+
+  console.log(data);
+
+  $.ajax({
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader(
+        "Authorization",
+        "Bearer " + window.localStorage.getItem("access_token")
+      );
+      xhr.setRequestHeader("Accept", "application/json");
+    },
+    type: "POST",
+    url: conn + "/update-data-pencatatan",
+    dataType: "json",
+    timeout: timeout,
+    data: data,
+  })
+    .done(function (values) {
+      console.log(values);
+
+      SpinnerDialog.hide();
+      if (values.status == "failed") {
+        navigator.notification.alert(
+          values.message,
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
+        pages("edit-pencatatan");
+      } else if (values.status == "success") {
+        navigator.notification.alert(
+          values.message,
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
+        pages("list-pencatatan");
+      } else {
+        navigator.notification.alert(
+          values.message,
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
+      }
+      //loading('close');
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+      SpinnerDialog.hide();
+      if (jqXHR.readyState == 0) {
+        console.log(
+          "Network error (i.e. connection refused, access denied due to CORS, etc.)"
+        );
+        navigator.notification.alert(
+          "Koneksi offline - Cek koneksi internet Anda.",
+          alertDismissed,
+          TITLE_ALERT,
+          "Ok"
+        );
+      } else {
+        if (textStatus == "timeout") {
+          navigator.notification.alert(
+            "Request Time Out - Cek koneksi internet Anda.",
+            alertDismissed,
+            TITLE_ALERT,
+            "Ok"
+          );
+        }
+      }
+    });
+}
+
+// Input data
